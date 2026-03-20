@@ -18,15 +18,19 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc}
 \usepackage[most]{tcolorbox}
-\usepackage{hyperref}
+\usepackage[hypertexnames=false]{hyperref}
 \usepackage{bookmark}
 \usepackage{helvet}
 \usepackage{xcolor}
+\usepackage{caption}
 
 \renewcommand{\familydefault}{\sfdefault}
 \setstretch{1.11}
 \setlist[itemize]{itemsep=2pt, topsep=3pt}
 \setlist[enumerate]{itemsep=2pt, topsep=3pt}
+\renewcommand{\arraystretch}{1.16}
+\setlength{\tabcolsep}{6pt}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
 
 \definecolor{unsaMaroon}{HTML}{7A0018}
 \definecolor{unsaInk}{HTML}{232323}
@@ -170,8 +174,9 @@ El sistema utiliza un motor de scraping en isolates para capturar y estructurar 
 \subsection{Simulador academico O(1)}
 Se incorporan calculos de proyeccion de notas y ponderados con operaciones optimizadas para respuestas inmediatas, mejorando la toma de decisiones del estudiante.
 
-\begin{figure}[h!]
+\begin{figure}[htbp]
 \centering
+\resizebox{0.98\textwidth}{!}{%
 \begin{tikzpicture}[
 	node distance=12mm,
 	boxA/.style={rectangle, rounded corners=1.8mm, draw=unsaMaroon, fill=unsaLight, align=center, minimum height=1.35cm, minimum width=3.5cm, line width=0.55pt},
@@ -192,6 +197,7 @@ Se incorporan calculos de proyeccion de notas y ponderados con operaciones optim
 \draw[arr] (hive) -- (chart);
 \draw[arr] (hive) -- (panel);
 \end{tikzpicture}
+}
 \caption{Esquema 1. Flujo de arquitectura de datos}
 \label{fig:flujo-datos}
 \end{figure}
@@ -206,8 +212,9 @@ El uso de correo institucional permite elevar niveles de confianza del ecosistem
 \subsection{Medallas local-first y actualizaciones optimistas}
 El sistema de medallas con respuesta visual instantanea (0ms percibidos en UI) mejora la motivacion y la recurrencia de uso, mientras la sincronizacion ocurre en segundo plano con manejo de rollback.
 
-\begin{figure}[h!]
+\begin{figure}[htbp]
 \centering
+\resizebox{0.92\textwidth}{!}{%
 \begin{tikzpicture}[
 	every node/.style={font=\small},
 	ring/.style={circle, draw=unsaMaroon, line width=0.6pt, minimum width=3.1cm, align=center, fill=unsaLight},
@@ -223,17 +230,18 @@ El sistema de medallas con respuesta visual instantanea (0ms percibidos en UI) m
 \draw[arr] (recompensa) -- (inversion);
 \draw[arr] (inversion) -- (trigger);
 \end{tikzpicture}
+}
 \caption{Esquema 2. Bucle de retencion basado en comportamiento}
 \label{fig:retencion-hook}
 \end{figure}
 
 \section{Mercado, Posicionamiento y Competencia}
 \subsection{Dimensionamiento TAM, SAM y SOM}
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Estimacion de mercado objetivo (referencial)}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{2.6cm}X X}
-	oprule
+\toprule
 Segmento & Alcance & Potencial de valor \\
 \midrule
 TAM & Estudiantes universitarios en Latinoamerica (aprox. 32 millones) & Mercado amplio de suscripcion, servicios y publicidad educativa \\
@@ -247,11 +255,11 @@ SOM & Fase inicial en UNSA y expansion Arequipa (aprox. 70,000) & Validacion tem
 Las plataformas tradicionales (LMS/ERP institucionales) operan bajo logica B2B. UNSAP adopta un enfoque bottom-up, centrado en el estudiante, con mayor velocidad de iteracion y diferenciacion en comunidad + gamificacion.
 
 \section{Modelo de Negocio y Monetizacion}
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Arquitectura de ingresos propuesta}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
-	oprule
+\toprule
 Canal & Mecanica de monetizacion & Valor estrategico \\
 \midrule
 B2C & Suscripcion UNSAP PRO con funciones avanzadas de analitica, personalizacion e IA & Ingreso recurrente y relacion directa con usuario final \\
@@ -271,8 +279,9 @@ Integracion de UNSAP GPT para consultas academicas, despliegue de marketplace C2
 \subsection{Fase 3: Escala regional y B2B (Meses 19--36)}
 Expasion multiuniversidad y consolidacion del producto como plataforma modular para nuevas instituciones.
 
-\begin{figure}[h!]
+\begin{figure}[htbp]
 \centering
+\resizebox{0.98\textwidth}{!}{%
 \begin{tikzpicture}[x=0.65cm,y=0.8cm]
 	\draw[draw=unsaSlate!40] (0,0) rectangle (14,4);
 	\foreach \x in {0,...,14} {\draw[unsaSlate!25] (\x,0) -- (\x,4);} 
@@ -293,16 +302,17 @@ Expasion multiuniversidad y consolidacion del producto como plataforma modular p
 		\node[anchor=north, text=unsaSlate, scale=0.72] at (\x,-0.1) {\q};
 	}
 \end{tikzpicture}
+}
 \caption{Esquema 3. Roadmap tipo Gantt por fases de crecimiento}
 \label{fig:gantt}
 \end{figure}
 
 \section{Proyecciones de Desempeno y Finanzas (Escenario Referencial)}
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Proyeccion financiera referencial a 36 meses (USD)}
 \begin{tabularx}{\textwidth}{>{\bfseries}X r r r}
-	oprule
+\toprule
 Metrica & Ano 1 & Ano 2 & Ano 3 \\
 \midrule
 MAU estimado & 25,000 & 120,000 & 450,000 \\
@@ -319,11 +329,11 @@ EBITDA estimado & -47,000 & 86,400 & 624,000 \\
 \section{Requerimiento de Capital y Uso de Fondos}
 Se propone una ronda pre-seed/seed de referencia en torno a \$200,000 USD, orientada a extender runway operativo y ejecutar roadmap de 18 meses.
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Asignacion objetivo de capital}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm}c X}
-	oprule
+\toprule
 Linea de inversion & Peso & Aplicacion \\
 \midrule
 Ingenieria y producto & 50\% & Equipo tecnico senior para arquitectura, desarrollo y calidad \\
@@ -335,11 +345,11 @@ Legal y estructuracion & 10\% & Gobierno corporativo, propiedad intelectual y cu
 \end{table}
 
 \section{Riesgos y Mitigacion}
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Matriz ejecutiva de riesgos}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{2.8cm}X X}
-	oprule
+\toprule
 Tipo & Riesgo principal & Mitigacion y foso defensivo \\
 \midrule
 Tecnico & Cambios de estructura en portales fuente afectan scraping & Arquitectura de adaptadores, alertas tempranas y estrategia de hot-fix \\
@@ -359,7 +369,7 @@ Bajo una ejecucion disciplinada del roadmap y una gobernanza adecuada de datos y
 
 \section{Stack Tecnologico Consolidado}
 \begin{longtable}{>{\bfseries}p{4.2cm}p{9.8cm}}
-	oprule
+\toprule
 Componente & Tecnologias \\
 \midrule
 Frontend movil & Flutter 3.9.2, Dart 3.9.2 \\

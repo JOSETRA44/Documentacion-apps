@@ -1,0 +1,6 @@
+info.txt
+info2.txt
+*.log
+*.tmp
+*.bak
+.DS_Store

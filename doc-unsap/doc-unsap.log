@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.30)  20 MAR 2026 16:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.30)  20 MAR 2026 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -654,6 +654,7 @@ File: puenc.def 2023-11-26 v7.01g Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
+Package hyperref Info: Option `hypertexnames' set `false' on input line 4064.
 Package hyperref Info: Hyper figures OFF on input line 4181.
 Package hyperref Info: Link nesting OFF on input line 4186.
 Package hyperref Info: Hyper index ON on input line 4189.
@@ -715,14 +716,35 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count343
 )) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen311
+\captionmargin=\dimen312
+\caption@leftmargin=\dimen313
+\caption@rightmargin=\dimen314
+\caption@width=\dimen315
+\caption@indent=\dimen316
+\caption@parindent=\dimen317
+\caption@hangindent=\dimen318
+Package caption Info: Standard document class detected.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 48.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 83.
+\c@caption@flags=\count344
+\c@continuedfloat=\count345
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 52.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 87.
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 ) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count344
+\l__color_backend_stack_int=\count346
 \l__pdf_internal_box=\box89
 ) (doc-unsap.aux
 LaTeX Info: Redefining \. on input line 12.
@@ -730,26 +752,26 @@ LaTeX Info: Redefining \% on input line 12.
 )
 \openout1 = `doc-unsap.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -785,13 +807,13 @@ LaTeX Info: Redefining \% on input line 83.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 83.
-Package microtype Info: Applying patch `item' on input line 83.
-Package microtype Info: Applying patch `toc' on input line 83.
-Package microtype Info: Applying patch `eqnum' on input line 83.
-Package microtype Info: Applying patch `footnote' on input line 83.
-Package microtype Info: Applying patch `verbatim' on input line 83.
-LaTeX Info: Redefining \microtypesetup on input line 83.
+LaTeX Info: Redefining \microtypecontext on input line 87.
+Package microtype Info: Applying patch `item' on input line 87.
+Package microtype Info: Applying patch `toc' on input line 87.
+Package microtype Info: Applying patch `eqnum' on input line 87.
+Package microtype Info: Applying patch `footnote' on input line 87.
+Package microtype Info: Applying patch `verbatim' on input line 87.
+LaTeX Info: Redefining \microtypesetup on input line 87.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -808,16 +830,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count345
-\scratchdimen=\dimen311
+\scratchcounter=\count347
+\scratchdimen=\dimen319
 \scratchbox=\box90
-\nofMPsegments=\count346
-\nofMParguments=\count347
+\nofMPsegments=\count348
+\nofMParguments=\count349
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count348
-\MPscratchDim=\dimen312
-\MPnumerator=\count349
-\makeMPintoPDFobject=\count350
+\MPscratchCnt=\count350
+\MPscratchDim=\dimen320
+\MPnumerator=\count351
+\makeMPintoPDFobject=\count352
 \everyMPtoPDFconversion=\toks52
 ) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -825,8 +847,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count351
-Package hyperref Info: Link coloring ON on input line 83.
+\c@lstlisting=\count353
+Package hyperref Info: Link coloring ON on input line 87.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) [1
@@ -852,28 +876,9 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lof=\write6
 \openout6 = `doc-unsap.lof'.
 
- [3]
-Overfull \hbox (138.9485pt too wide) in paragraph at lines 194--195
- [][] 
- []
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.197 \end{figure}
-                   [1]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
-[]|\T1/phv/b/n/10.95 (+20) oprule Seg-
- []
-
-[2] [3] [4] 
+ [3] [1] [2] [3] [4] [5] 
 AED: lastpage setting LastPage
-[5] (doc-unsap.aux
+[6] (doc-unsap.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 )
@@ -883,17 +888,17 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33203 strings out of 474479
- 665859 string characters out of 5744062
- 1944542 words of memory out of 5000000
- 54756 multiletter control sequences out of 15000+600000
- 598633 words of font info for 162 fonts, out of 8000000 for 9000
+ 34560 strings out of 474479
+ 692441 string characters out of 5744062
+ 1947542 words of memory out of 5000000
+ 56103 multiletter control sequences out of 15000+600000
+ 598585 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,12n,98p,1056b,844s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,12n,98p,1056b,893s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on doc-unsap.pdf (9 pages, 86858 bytes).
+Output written on doc-unsap.pdf (10 pages, 87982 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
  47477 words of extra memory for PDF output out of 51595 (max. 10000000)
 
