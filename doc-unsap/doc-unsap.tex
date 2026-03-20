@@ -1,0 +1,379 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{helvet}
+\usepackage{xcolor}
+
+\renewcommand{\familydefault}{\sfdefault}
+\setstretch{1.11}
+\setlist[itemize]{itemsep=2pt, topsep=3pt}
+\setlist[enumerate]{itemsep=2pt, topsep=3pt}
+
+\definecolor{unsaMaroon}{HTML}{7A0018}
+\definecolor{unsaInk}{HTML}{232323}
+\definecolor{unsaSlate}{HTML}{5C6470}
+\definecolor{unsaLight}{HTML}{F5F6F8}
+\definecolor{unsaBlue}{HTML}{0B5CAD}
+\definecolor{unsaGreen}{HTML}{1B7F4E}
+\definecolor{unsaGold}{HTML}{B88400}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=unsaMaroon,
+	urlcolor=unsaBlue,
+	citecolor=unsaMaroon,
+	pdftitle={UNSAP - Whitepaper de Inversion y Plan de Expansion},
+	pdfauthor={Equipo UNSAP},
+	pdfsubject={EdTech, SuperApp universitaria, estrategia de inversion},
+	pdfkeywords={UNSAP, EdTech, Flutter, Supabase, Whitepaper, Inversion}
+}
+
+\titleformat{\section}{\Large\bfseries\color{unsaMaroon}}{\thesection.}{0.55em}{}
+\titleformat{\subsection}{\large\bfseries\color{unsaInk}}{\thesubsection}{0.45em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{unsaInk}}{\thesubsubsection}{0.45em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{unsaSlate}{UNSAP | Whitepaper de Inversion}}
+\fancyhead[R]{\textcolor{unsaSlate}{\thepage\ de \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.25pt}
+\setlength{\headheight}{14pt}
+
+\newtcolorbox{keybox}{
+	colback=unsaLight,
+	colframe=unsaMaroon,
+	boxrule=0.55pt,
+	arc=1.2mm,
+	left=2.2mm,
+	right=2.2mm,
+	top=1.1mm,
+	bottom=1.1mm
+}
+
+\newtcolorbox{signalbox}{
+	colback=white,
+	colframe=unsaBlue,
+	boxrule=0.5pt,
+	arc=1.0mm,
+	left=2mm,
+	right=2mm,
+	top=1mm,
+	bottom=1mm
+}
+
+\begin{document}
+
+\begin{titlepage}
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\fill[unsaMaroon] (current page.north west) rectangle ([yshift=-3.8cm]current page.north east);
+		\fill[unsaLight] ([yshift=-4.5cm]current page.north west) rectangle ([yshift=-5.1cm]current page.north east);
+	\end{tikzpicture}
+
+	\vspace*{0.8cm}
+	{\color{white}\Large\bfseries UNIVERSIDAD NACIONAL DE SAN AGUSTIN}\par
+	\vspace{0.2cm}
+	{\color{white}\normalsize Propuesta de Transformacion Digital Academica}\par
+
+	\vspace{2.5cm}
+	\begin{center}
+		{\Huge\bfseries\color{unsaMaroon}UNSAP}\\[0.2cm]
+		{\Large\color{unsaInk}Sistema Operativo de la Vida Universitaria}\\[0.9cm]
+
+		\rule{0.88\textwidth}{0.4pt}\\[0.35cm]
+		{\large\bfseries Whitepaper de Inversion y Plan de Expansion Estrategica}\\[0.25cm]
+		{\normalsize Ronda Pre-Seed / Seed}\\[0.35cm]
+		\rule{0.88\textwidth}{0.4pt}
+
+		\vspace{1.2cm}
+		\begin{minipage}{0.9\textwidth}
+			\begin{keybox}
+			\textbf{Clasificacion:} Documento estrictamente confidencial.\\
+			\textbf{Proposito:} Evaluacion tecnica, estrategica y financiera para entidades de financiamiento e inversion.
+			\end{keybox}
+		\end{minipage}
+
+		\vspace{1.1cm}
+		\begin{tabular}{>{\bfseries}p{0.32\textwidth}p{0.5\textwidth}}
+			Version del producto: & 1.4.0 \\
+			Preparado por: & CEO \& Founder \\
+			Base tecnologica: & Flutter, Supabase, Dart Isolates, arquitectura local-first \\
+			Fecha: & Marzo 2026 \\
+		\end{tabular}
+	\end{center}
+
+	\vfill
+	{\small\color{unsaSlate}UNSAP plantea una plataforma escalable para productividad, comunidad y analitica academica con estrategia de monetizacion multicapas.}\par
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listoftables
+\newpage
+\listoffigures
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Resumen Ejecutivo}
+La educacion superior en Latinoamerica presenta una brecha visible entre la calidad de las experiencias digitales de consumo masivo y la experiencia de uso de portales academicos institucionales. UNSAP responde a esta brecha con una \textbf{SuperApp universitaria} que integra informacion academica, analitica de rendimiento, red social contextual y gamificacion.
+
+El valor diferencial del producto radica en una combinacion tecnica y de producto:
+\begin{itemize}[leftmargin=1.1cm]
+	\item experiencia \textbf{offline-first} con consulta inmediata de informacion;
+	\item arquitectura \textbf{agnostica al backend institucional} mediante scraping estructurado;
+	\item modulo social y gamificado para \textbf{retencion recurrente};
+	\item camino claro de monetizacion B2C, B2B2C y B2B.
+\end{itemize}
+
+\begin{signalbox}
+\textbf{Hipotesis de inversion:} consolidar UNSAP en el mercado inicial (UNSA), acelerar modulos de IA y marketplace, y empaquetar la arquitectura para expansion regional y licenciamiento white-label.
+\end{signalbox}
+
+\section{Problema Estructural y Oportunidad}
+\subsection{Friccion digital actual}
+Los sistemas academicos tradicionales presentan latencias altas en picos de uso, interfaces de baja usabilidad y dependencia fuerte de conectividad. Esto genera ansiedad operativa y bajo compromiso de uso.
+
+\subsection{Fragmentacion del ciclo de vida estudiantil}
+La informacion academica, la colaboracion entre pares y la vida social estudiantil se distribuyen en plataformas no integradas. La consecuencia es perdida de contexto, baja productividad y escasa trazabilidad de decisiones academicas.
+
+\subsection{Carga cognitiva y ausencia de prediccion}
+Sin herramientas predictivas integradas, el estudiante realiza calculos manuales para tomar decisiones criticas sobre su rendimiento. Esta friccion representa una oportunidad para soluciones con analitica accionable en tiempo real.
+
+\section{Solucion UNSAP y Ventaja Competitiva}
+\subsection{Arquitectura offline-first y experiencia de cero friccion}
+UNSAP persiste informacion en almacenamiento local (Hive), permitiendo consulta instantanea de notas, horario y estadisticas, incluso sin red o ante degradacion de servicios externos.
+
+\subsection{Motor de extraccion agnostico}
+El sistema utiliza un motor de scraping en isolates para capturar y estructurar datos desde portales legacy sin bloquear la interfaz de usuario.
+
+\subsection{Simulador academico O(1)}
+Se incorporan calculos de proyeccion de notas y ponderados con operaciones optimizadas para respuestas inmediatas, mejorando la toma de decisiones del estudiante.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+	node distance=12mm,
+	boxA/.style={rectangle, rounded corners=1.8mm, draw=unsaMaroon, fill=unsaLight, align=center, minimum height=1.35cm, minimum width=3.5cm, line width=0.55pt},
+	boxB/.style={rectangle, rounded corners=1.8mm, draw=unsaBlue, fill=white, align=center, minimum height=1.35cm, minimum width=4.6cm, line width=0.55pt},
+	arr/.style={-{Latex[length=2.3mm]}, draw=unsaSlate, line width=0.7pt}
+]
+\node[boxA] (legacy) {\textbf{Portal Universitario Legacy}\\HTML / flujo tradicional};
+\node[boxB, right=13mm of legacy] (scraper) {\textbf{Isolate Scraper Engine}\\Parsing en background\\normalizacion JSON};
+\node[boxA, right=13mm of scraper] (hive) {\textbf{Capa de Datos UNSAP}\\Hive Local Storage};
+
+\node[boxB, below left=10mm and -4mm of hive] (sim) {\textbf{Modulo Simulador}};
+\node[boxB, below=10mm of hive] (chart) {\textbf{Modulo Analitica Fl\_Chart}};
+\node[boxB, below right=10mm and -4mm of hive] (panel) {\textbf{Panel de Notas}};
+
+\draw[arr] (legacy) -- (scraper);
+\draw[arr] (scraper) -- (hive);
+\draw[arr] (hive) -- (sim);
+\draw[arr] (hive) -- (chart);
+\draw[arr] (hive) -- (panel);
+\end{tikzpicture}
+\caption{Esquema 1. Flujo de arquitectura de datos}
+\label{fig:flujo-datos}
+\end{figure}
+
+\section{Motor de Retencion: Comunidad y Gamificacion}
+\subsection{Campus social institucional}
+UNSAP integra un feed en tiempo real sobre Supabase para publicaciones estudiantiles, interacciones y notificaciones. El anonimato controlado incrementa participacion sin perder trazabilidad de calidad de comunidad.
+
+\subsection{Identidad verificada y reputacion}
+El uso de correo institucional permite elevar niveles de confianza del ecosistema y habilita segmentacion de alto valor para futuras verticales de monetizacion.
+
+\subsection{Medallas local-first y actualizaciones optimistas}
+El sistema de medallas con respuesta visual instantanea (0ms percibidos en UI) mejora la motivacion y la recurrencia de uso, mientras la sincronizacion ocurre en segundo plano con manejo de rollback.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+	every node/.style={font=\small},
+	ring/.style={circle, draw=unsaMaroon, line width=0.6pt, minimum width=3.1cm, align=center, fill=unsaLight},
+	arr/.style={-{Latex[length=2.3mm]}, draw=unsaSlate, line width=0.75pt}
+]
+\node[ring] (trigger) at (0,2.8) {\textbf{Trigger Externo}\\Push, nueva nota,\\actividad social};
+\node[ring] (accion) at (3.6,0) {\textbf{Accion}\\Apertura de app\\(carga instantanea)};
+\node[ring] (recompensa) at (0,-2.8) {\textbf{Recompensa Variable}\\insights, contenido,\\medallas};
+\node[ring] (inversion) at (-3.6,0) {\textbf{Inversion}\\perfil, vinculacion,\\publicacion};
+
+\draw[arr] (trigger) -- (accion);
+\draw[arr] (accion) -- (recompensa);
+\draw[arr] (recompensa) -- (inversion);
+\draw[arr] (inversion) -- (trigger);
+\end{tikzpicture}
+\caption{Esquema 2. Bucle de retencion basado en comportamiento}
+\label{fig:retencion-hook}
+\end{figure}
+
+\section{Mercado, Posicionamiento y Competencia}
+\subsection{Dimensionamiento TAM, SAM y SOM}
+\begin{table}[h!]
+\centering
+\caption{Estimacion de mercado objetivo (referencial)}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.6cm}X X}
+	oprule
+Segmento & Alcance & Potencial de valor \\
+\midrule
+TAM & Estudiantes universitarios en Latinoamerica (aprox. 32 millones) & Mercado amplio de suscripcion, servicios y publicidad educativa \\
+SAM & Estudiantes universitarios en Peru (aprox. 1.5 millones) & Escala nacional para crecimiento progresivo y alianzas \\
+SOM & Fase inicial en UNSA y expansion Arequipa (aprox. 70,000) & Validacion temprana, iteracion rapida y evidencia de PMF \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Tesis competitiva}
+Las plataformas tradicionales (LMS/ERP institucionales) operan bajo logica B2B. UNSAP adopta un enfoque bottom-up, centrado en el estudiante, con mayor velocidad de iteracion y diferenciacion en comunidad + gamificacion.
+
+\section{Modelo de Negocio y Monetizacion}
+\begin{table}[h!]
+\centering
+\caption{Arquitectura de ingresos propuesta}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
+	oprule
+Canal & Mecanica de monetizacion & Valor estrategico \\
+\midrule
+B2C & Suscripcion UNSAP PRO con funciones avanzadas de analitica, personalizacion e IA & Ingreso recurrente y relacion directa con usuario final \\
+B2B2C & Publicidad nativa y lead generation de alto contexto academico & Margen superior por segmentacion y precision de audiencia \\
+B2B & Licenciamiento white-label para universidades (setup + fee anual por estudiante) & Escalamiento institucional con contratos recurrentes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Roadmap Tecnologico 2026--2028}
+\subsection{Fase 1: Dominio local y robustez (Meses 1--6)}
+Enfoque en penetracion de mercado inicial, hardening tecnico, observabilidad y resiliencia operativa.
+
+\subsection{Fase 2: Servicios de valor (Meses 7--18)}
+Integracion de UNSAP GPT para consultas academicas, despliegue de marketplace C2C y capa de transacciones.
+
+\subsection{Fase 3: Escala regional y B2B (Meses 19--36)}
+Expasion multiuniversidad y consolidacion del producto como plataforma modular para nuevas instituciones.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[x=0.65cm,y=0.8cm]
+	\draw[draw=unsaSlate!40] (0,0) rectangle (14,4);
+	\foreach \x in {0,...,14} {\draw[unsaSlate!25] (\x,0) -- (\x,4);} 
+	\foreach \y/\label in {3.3/Fase 1,2.1/Fase 2,0.9/Fase 3} {
+		\node[anchor=east, text=unsaInk] at (-0.2,\y) {\label};
+	}
+
+	\fill[unsaMaroon!75] (0.1,2.9) rectangle (3.8,3.7);
+	\node[text=white] at (1.95,3.3) {Q3 2026 -- Q4 2026};
+
+	\fill[unsaBlue!75] (3.9,1.7) rectangle (9.6,2.5);
+	\node[text=white] at (6.75,2.1) {Q1 2027 -- Q4 2027};
+
+	\fill[unsaGreen!78] (9.7,0.5) rectangle (13.8,1.3);
+	\node[text=white] at (11.75,0.9) {Q1 2028 -- Q4 2028};
+
+	\foreach \x/\q in {0/Q3-26,2/Q1-27,4/Q3-27,6/Q1-28,8/Q3-28,10/Q1-29,12/Q3-29,14/Q1-30} {
+		\node[anchor=north, text=unsaSlate, scale=0.72] at (\x,-0.1) {\q};
+	}
+\end{tikzpicture}
+\caption{Esquema 3. Roadmap tipo Gantt por fases de crecimiento}
+\label{fig:gantt}
+\end{figure}
+
+\section{Proyecciones de Desempeno y Finanzas (Escenario Referencial)}
+\begin{table}[h!]
+\centering
+\caption{Proyeccion financiera referencial a 36 meses (USD)}
+\begin{tabularx}{\textwidth}{>{\bfseries}X r r r}
+	oprule
+Metrica & Ano 1 & Ano 2 & Ano 3 \\
+\midrule
+MAU estimado & 25,000 & 120,000 & 450,000 \\
+Ingresos suscripcion PRO & 18,000 & 86,400 & 324,000 \\
+Ingresos Ad-Tech \& Lead Gen & 15,000 & 110,000 & 450,000 \\
+Ingresos SaaS white-label & 0 & 40,000 & 250,000 \\
+Ingresos brutos estimados & 33,000 & 236,400 & 1,024,000 \\
+OPEX estimado & 80,000 & 150,000 & 400,000 \\
+EBITDA estimado & -47,000 & 86,400 & 624,000 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Requerimiento de Capital y Uso de Fondos}
+Se propone una ronda pre-seed/seed de referencia en torno a \$200,000 USD, orientada a extender runway operativo y ejecutar roadmap de 18 meses.
+
+\begin{table}[h!]
+\centering
+\caption{Asignacion objetivo de capital}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm}c X}
+	oprule
+Linea de inversion & Peso & Aplicacion \\
+\midrule
+Ingenieria y producto & 50\% & Equipo tecnico senior para arquitectura, desarrollo y calidad \\
+Adquisicion y growth & 25\% & Embajadores, marketing de performance y expansion de base \\
+Infraestructura tecnica & 15\% & Escalamiento cloud, observabilidad y servicios de soporte \\
+Legal y estructuracion & 10\% & Gobierno corporativo, propiedad intelectual y cumplimiento \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Riesgos y Mitigacion}
+\begin{table}[h!]
+\centering
+\caption{Matriz ejecutiva de riesgos}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.8cm}X X}
+	oprule
+Tipo & Riesgo principal & Mitigacion y foso defensivo \\
+\midrule
+Tecnico & Cambios de estructura en portales fuente afectan scraping & Arquitectura de adaptadores, alertas tempranas y estrategia de hot-fix \\
+Operativo & Bloqueo por politicas de red o limites institucionales & Rate limiting, ventanas de sincronizacion y resiliencia offline-first \\
+Competitivo & Aparicion de app oficial institucional & Ventaja en velocidad de iteracion, comunidad y gamificacion persistente \\
+Regulatorio & Exigencias de proteccion de datos y cumplimiento & Gobierno de datos, politicas de consentimiento y trazabilidad de acceso \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Conclusiones y Tesis de Inversion}
+UNSAP combina un problema real de alta frecuencia con una solucion tecnicamente madura y un modelo de ingresos escalable. La plataforma no solo optimiza la experiencia academica, sino que construye un activo digital de relacion continua con el estudiante.
+
+Bajo una ejecucion disciplinada del roadmap y una gobernanza adecuada de datos y crecimiento, el proyecto presenta condiciones solidas para financiamiento de etapa temprana con potencial de expansion regional y salida estrategica de mediano plazo.
+
+\appendix
+
+\section{Stack Tecnologico Consolidado}
+\begin{longtable}{>{\bfseries}p{4.2cm}p{9.8cm}}
+	oprule
+Componente & Tecnologias \\
+\midrule
+Frontend movil & Flutter 3.9.2, Dart 3.9.2 \\
+Arquitectura de app & MVVM, Provider, Clean Architecture \\
+Persistencia local & Hive, flutter\_secure\_storage \\
+Backend y tiempo real & Supabase, PostgreSQL, canales Realtime \\
+Analitica visual & fl\_chart y modulos de simulacion academica \\
+Red y parsing & http, parser HTML, isolates para procesos asincornos \\
+Cache y media & cached\_network\_image, share\_plus \\
+Configuracion & flutter\_dotenv y gestion de entorno \\
+\bottomrule
+\end{longtable}
+
+\section{Notas de alcance y uso}
+Las cifras de mercado y proyecciones de este documento se presentan como escenario referencial para modelado y decision de inversion. Se recomienda validacion continua con datos operativos reales a medida que avance la implementacion del roadmap.
+
+\end{document}

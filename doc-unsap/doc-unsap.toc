@@ -1,0 +1,28 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Resumen Ejecutivo}{1}{section.1}%
+\contentsline {section}{\numberline {2}Problema Estructural y Oportunidad}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Friccion digital actual}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Fragmentacion del ciclo de vida estudiantil}{1}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Carga cognitiva y ausencia de prediccion}{1}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Solucion UNSAP y Ventaja Competitiva}{1}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Arquitectura offline-first y experiencia de cero friccion}{1}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Motor de extraccion agnostico}{1}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Simulador academico O(1)}{2}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Motor de Retencion: Comunidad y Gamificacion}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Campus social institucional}{2}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Identidad verificada y reputacion}{2}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Medallas local-first y actualizaciones optimistas}{2}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Mercado, Posicionamiento y Competencia}{2}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Dimensionamiento TAM, SAM y SOM}{2}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Tesis competitiva}{3}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Modelo de Negocio y Monetizacion}{3}{section.6}%
+\contentsline {section}{\numberline {7}Roadmap Tecnologico 2026--2028}{3}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Fase 1: Dominio local y robustez (Meses 1--6)}{3}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Fase 2: Servicios de valor (Meses 7--18)}{4}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Fase 3: Escala regional y B2B (Meses 19--36)}{4}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Proyecciones de Desempeno y Finanzas (Escenario Referencial)}{4}{section.8}%
+\contentsline {section}{\numberline {9}Requerimiento de Capital y Uso de Fondos}{4}{section.9}%
+\contentsline {section}{\numberline {10}Riesgos y Mitigacion}{5}{section.10}%
+\contentsline {section}{\numberline {11}Conclusiones y Tesis de Inversion}{5}{section.11}%
+\contentsline {section}{\numberline {A}Stack Tecnologico Consolidado}{5}{appendix.Alph1}%
+\contentsline {section}{\numberline {B}Notas de alcance y uso}{5}{appendix.Alph2}%

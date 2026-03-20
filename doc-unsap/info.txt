@@ -1,0 +1,586 @@
+<div align="center">
+
+# UNSAP
+
+**Portal Académico UNSA**
+
+<br/>
+
+![Flutter](https://img.shields.io/badge/Flutter-3.9.2-02569B?style=flat-square&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-3.9.2-0175C2?style=flat-square&logo=dart&logoColor=white)
+![Android](https://img.shields.io/badge/Android-API_21+-3DDC84?style=flat-square&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-12.0+-000000?style=flat-square&logo=apple&logoColor=white)
+
+<br/>
+
+![Architecture](https://img.shields.io/badge/Architecture-MVVM-8B0000?style=flat-square)
+![State](https://img.shields.io/badge/State-Provider-6C63FF?style=flat-square)
+![Storage](https://img.shields.io/badge/Storage-Hive-FF7043?style=flat-square)
+![Backend](https://img.shields.io/badge/Backend-Supabase-3ECF8E?style=flat-square)
+![Charts](https://img.shields.io/badge/Charts-fl__chart-00BCD4?style=flat-square)
+
+<br/>
+
+![Version](https://img.shields.io/badge/Version-1.4.0-grey?style=flat-square)
+![License](https://img.shields.io/badge/License-Private-red?style=flat-square)
+
+</div>
+
+<br/>
+
+---
+
+## Actualizaciones Recientes (v1.4.0)
+
+### Sistema de Medallas y Gamificación
+- **Arquitectura Local-First**: Implementación de BadgeAssets con renderizado instantáneo (0ms latency)
+- **5 Medallas del Sistema**: MVP, Boss, GPT, Fósil y Fantasma con iconografía Material Design
+- **UX Toggle Instantáneo**: Sistema metralleta sin confirmaciones (tap gris = otorgar, tap color = quitar)
+- **Background Sync**: Mapeo icon_key → UUID con caché en memoria
+- **Optimistic Updates**: Feedback visual inmediato con rollback automático en errores
+- **Clean Architecture**: Separación completa Domain/Data/Presentation layers
+
+### Bug Fixes Críticos (v1.3.0)
+- **Persistencia de sesión offline corregida**: Sesión mantenida al matar/reabrir la aplicación
+- **Validación de tokens de Supabase**: Detección y recreación automática de sesiones expiradas
+- **Eliminación de doble bucle O(n²)**: Cálculo de promedio optimizado a O(1) en campus_screen
+
+### Optimizaciones de Rendimiento
+- **Cache de avatares**: CachedNetworkImage reduce tráfico de red en 90%
+- **Theme.of(context) optimizado**: Pasado como parámetro en métodos privados (83% menos lookups)
+- **ScaffoldMessenger seguro**: Capturas antes de operaciones async para prevenir crashes
+- **Mapeo JSON corregido**: Backend icon_key mapeado correctamente con JOIN queries
+
+---
+
+Aplicación móvil de alto rendimiento para la gestión académica de estudiantes de la Universidad Nacional de San Agustín (UNSA). Desarrollada con enfoque offline-first, soporte de tema oscuro, red social estudiantil integrada y sistema de gamificación con medallas.
+
+---
+
+## Tabla de Contenidos
+
+1. [Descripción General](#descripción-general)
+2. [Capturas de Pantalla](#capturas-de-pantalla)
+3. [Requisitos del Sistema](#requisitos-del-sistema)
+4. [Instalación](#instalación)
+5. [Arquitectura](#arquitectura)
+6. [Estructura del Proyecto](#estructura-del-proyecto)
+7. [Funcionalidades](#funcionalidades)
+8. [Sistema de Temas](#sistema-de-temas)
+9. [Dependencias](#dependencias)
+10. [Configuración](#configuración)
+11. [Compilación](#compilación)
+12. [Autoría](#autoría)
+
+---
+
+## Descripción General
+
+UNSAP proporciona una interfaz moderna y optimizada para el seguimiento de calificaciones, métricas de rendimiento académico, red social estudiantil y datos del perfil estudiantil.
+
+<table>
+<tr>
+<td width="50%">
+
+**Características Principales**
+
+- Sincronización vía web scraping del portal institucional
+- Persistencia local con Hive para acceso offline
+- Visualización de estadísticas con gráficos interactivos
+- Red social estudiantil (Campus) con Supabase
+- Sistema de notificaciones en tiempo real (Realtime)
+- Sistema de badges por niveles de verificación
+- Sistema de medallas gamificado con arquitectura local-first
+- Tema oscuro/claro con persistencia
+- Simulador de notas interactivo
+
+</td>
+<td width="50%">
+
+**Optimizaciones de Rendimiento**
+
+- Parsing de HTML en Isolates (no bloquea UI)
+- Memoización de cálculos O(1) en ViewModels
+- Lazy Loading diferido para pantallas pesadas
+- Staggered loading de gráficos fl_chart
+- ValueNotifier para rebuilds granulares
+- ColoredBox anti-flash en transiciones
+- CachedNetworkImage para avatares (caché L1/L2)
+- Theme.of(context) pasado como parámetro
+- TimeAgoManager singleton para Timers compartidos
+- RepaintBoundary en widgets de lista
+
+</td>
+</tr>
+</table>
+
+---
+
+## Capturas de Pantalla
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/login.png" width="200" alt="Login"/>
+      <br/>
+      <sub><b>Login</b></sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/perfil.png" width="200" alt="Perfil"/>
+      <br/>
+      <sub><b>Perfil</b></sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/notas.png" width="200" alt="Notas"/>
+      <br/>
+      <sub><b>Notas</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/estadisticas.png" width="200" alt="Estadísticas"/>
+      <br/>
+      <sub><b>Estadísticas</b></sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/lab.png" width="200" alt="Laboratorio"/>
+      <br/>
+      <sub><b>Laboratorio</b></sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/campus.png" width="200" alt="Campus"/>
+      <br/>
+      <sub><b>Campus</b></sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+## Requisitos del Sistema
+
+| Componente | Versión Mínima |
+|------------|----------------|
+| Flutter SDK | 3.9.2 o superior |
+| Dart SDK | 3.9.2 o superior |
+| Android SDK | API 21 (Android 5.0) |
+| iOS | 12.0 o superior |
+
+---
+
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/JOSETRA44/unsap.git
+cd unsap
+```
+
+2. Configurar variables de entorno:
+
+```bash
+cp .env.example .env
+# Editar .env con las credenciales de Supabase
+```
+
+3. Instalar dependencias:
+
+```bash
+flutter pub get
+```
+
+4. Ejecutar la aplicación:
+
+```bash
+flutter run
+```
+
+---
+
+## Arquitectura
+
+El proyecto implementa una arquitectura **MVVM** (Model-View-ViewModel) con separación clara de responsabilidades:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                       │
+│              (Screens, Widgets, UI Components)              │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     ViewModel Layer                         │
+│         (State Management, Business Logic, Memoization)     │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       Data Layer                            │
+│              (Models, DataSources, Repositories)            │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       Core Layer                            │
+│           (Network, Storage, Theme, Services)               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Patrones Implementados:**
+
+| Patrón | Implementación |
+|--------|----------------|
+| State Management | Provider con ChangeNotifier |
+| Clean Architecture | Domain/Data/Presentation layers |
+| Local-First Architecture | BadgeAssets con background sync |
+| Memoization | Cálculos cacheados O(1) en ViewModels |
+| Lazy Loading | Construcción diferida de pantallas pesadas |
+| Keep Alive | AutomaticKeepAliveClientMixin en navegación |
+| Isolates | Parsing de HTML en hilos separados |
+| Repository Pattern | Abstracción de fuentes de datos (Supabase/Local) |
+| UseCase Pattern | Lógica de negocio aislada en Domain layer |
+| Singleton | Servicios centralizados (UserProfile, Identity, Notification) |
+| Disposed Guard | Prevención de crashes por uso después de dispose() |
+| Optimistic Updates | Feedback visual inmediato con rollback en errores |
+
+---
+
+## Estructura del Proyecto
+
+```
+lib/
+├── main.dart                          # Punto de entrada, SplashScreen
+├── core/
+│   ├── constants/
+│   │   ├── api_constants.dart         # URLs y constantes de API
+│   │   └── badge_definitions.dart     # BadgeAssets - Catálogo local de medallas
+│   ├── error/
+│   │   └── exceptions.dart            # Excepciones personalizadas
+│   ├── network/
+│   │   └── cookie_client.dart         # Cliente HTTP con manejo de cookies
+│   ├── services/
+│   │   ├── supabase_auth_service.dart # Autenticación y Account Linking
+│   │   ├── deep_link_handler.dart     # Manejo de Deep Links (email confirm)
+│   │   ├── share_service.dart         # Servicio de compartir contenido
+│   │   ├── user_profile_service.dart  # Servicio centralizado de perfil
+│   │   ├── identity_service.dart      # Gestión de identidad (Nuclear Wipe)
+│   │   ├── verification_service.dart  # Lógica de verificación de usuarios
+│   │   └── notification_service.dart  # Notificaciones Realtime Supabase
+│   ├── widgets/
+│   │   ├── session_guard.dart         # Guard para acciones sociales
+│   │   └── verification_badge.dart    # Badge de verificación por niveles
+│   ├── storage/
+│   │   ├── storage_service.dart       # Persistencia con Hive
+│   │   └── secure_storage_service.dart # Almacenamiento seguro
+│   └── theme/
+│       ├── app_colors.dart            # Colores institucionales (legacy)
+│       ├── app_theme.dart             # ThemeData Light/Dark
+│       └── theme_manager.dart         # Gestión de tema con persistencia
+│
+└── features/
+    ├── academic/
+    │   ├── data/
+    │   │   ├── datasources/
+    │   │   │   ├── portal_scraper_service.dart  # Web scraping con Isolates
+    │   │   │   └── mock_data.dart               # Datos demo
+    │   │   └── models/
+    │   │       ├── course_model.dart            # Modelo de curso
+    │   │       ├── evaluation_model.dart        # Modelo de evaluación
+    │   │       └── student_profile_model.dart   # Modelo de perfil
+    │   └── presentation/
+    │       ├── screens/
+    │       │   ├── home_screen.dart             # Navegación principal
+    │       │   ├── profile_screen.dart          # Perfil estudiantil
+    │       │   ├── grades_screen.dart           # Lista de notas
+    │       │   ├── statistics_screen.dart       # Gráficos y métricas
+    │       │   ├── laboratory_screen.dart       # Funciones experimentales
+    │       │   ├── course_simulator_screen.dart # Simulador de notas
+    │       │   └── login_webview_screen.dart    # Autenticación WebView
+    │       ├── viewmodels/
+    │       │   └── grades_viewmodel.dart        # Estado y lógica de notas
+    │       └── widgets/
+    │           └── profile_side_menu.dart       # Menú lateral del perfil
+    │
+    ├── campus/
+    │   ├── data/
+    │   │   ├── datasources/
+    │   │   │   └── student_directory_remote_datasource.dart # Supabase queries
+    │   │   └── repositories/
+    │   │       ├── campus_repository.dart       # Repositorio Supabase
+    │   │       └── student_directory_repository_impl.dart # Implementación Clean Architecture
+    │   ├── domain/
+    │   │   ├── entities/
+    │   │   │   └── badge_entity.dart            # Entity de medalla
+    │   │   ├── models/
+    │   │   │   └── post_model.dart              # Modelo de publicación
+    │   │   ├── repositories/
+    │   │   │   └── student_directory_repository.dart # Contrato de repositorio
+    │   │   └── usecases/
+    │   │       ├── get_my_awarded_badges_usecase.dart # UseCase obtener badges otorgadas
+    │   │       ├── award_badge_usecase.dart     # UseCase otorgar medalla
+    │   │       └── remove_badge_usecase.dart    # UseCase quitar medalla
+    │   └── presentation/
+    │       ├── screens/
+    │       │   ├── campus_screen.dart           # Pantalla principal Campus
+    │       │   ├── notifications_screen.dart    # Notificaciones
+    │       │   └── post_detail_screen.dart      # Detalle de publicación
+    │       ├── viewmodels/
+    │       │   └── student_directory_viewmodel.dart # Estado con caché de mapeo badges
+    │       └── widgets/
+    │           ├── post_card.dart               # Tarjeta de publicación
+    │           ├── notification_tile.dart       # Tile de notificación
+    │           ├── create_post_dialog.dart      # Diálogo crear post
+    │           ├── instant_award_badge_dialog.dart # Diálogo medallas (0ms latency)
+    │           └── social_feed_view.dart        # Feed social
+    │
+    └── settings/
+        └── presentation/
+            └── screens/
+                ├── settings_screen.dart         # Pantalla de ajustes
+                ├── personal_info_screen.dart    # Información personal
+                ├── security_screen.dart         # Seguridad y Account Linking
+                └── appearance_screen.dart       # Configuración de tema
+```
+
+---
+
+## Funcionalidades
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Autenticación
+
+- Login mediante WebView embebido al portal institucional
+- Captura de credenciales en tiempo real con listeners DOM
+- Auto-fill de credenciales guardadas (compatible con CAPTCHA)
+- Persistencia segura de sesión
+- Sesión anónima de Supabase para funciones sociales
+- Account Linking (vincular email/contraseña a cuenta anónima)
+- Recuperación de cuenta después de reinstalar
+- Deep Links para confirmación de email
+
+### Panel de Notas
+
+- Visualización de cursos con evaluaciones parciales
+- Cálculo automático de promedios ponderados
+- Indicadores visuales de estado (aprobado/riesgo/reprobado)
+- Modo selección para captura y compartición
+- Captura de imagen con RepaintBoundary
+
+### Simulador de Notas
+
+- Proyección de promedio final
+- Edición de pesos de evaluaciones
+- Simulación de sustitutorios
+- Cálculo de nota máxima alcanzable
+
+</td>
+<td width="50%" valign="top">
+
+### Campus (Red Social)
+
+- Feed de publicaciones estudiantiles
+- Sistema de likes con contador en tiempo real
+- Notificaciones Realtime con Supabase Channels
+- Sistema de badges por niveles de verificación:
+  - Nivel 0: Sin badge (anónimo)
+  - Nivel 1: Badge azul (cuenta verificada)
+  - Nivel 2+: Badge dorado (delegados/admins)
+- Sistema de medallas gamificado:
+  - 5 Medallas: MVP, Boss, GPT, Fósil, Fantasma
+  - Arquitectura local-first (renderizado 0ms)
+  - Toggle instantáneo sin confirmaciones
+  - Background sync con mapeo icon_key → UUID
+  - Optimistic updates con rollback automático
+- Creación de posts con texto
+- Posts anónimos (confesiones)
+- Compartir publicaciones como imagen
+- Generación automática de email institucional
+
+### Estadísticas
+
+- Velocímetro de promedio global (fl_chart)
+- Gráfico de barras por curso
+- Tarjetas de resumen (mejor/peor curso, cursos en riesgo)
+- Carga diferida con skeletons
+
+### Ajustes
+
+- Información personal (CUI, Email vinculado, Programa)
+- Visualización de cuenta vinculada vs modo demo
+- Edición de nickname y email institucional
+- Configuración de apariencia (tema)
+- Copiar datos al portapapeles
+
+### Seguridad y Acceso
+
+- Panel de estado inteligente (detecta cuenta vinculada vs anónima)
+- Vinculación de cuenta: convierte sesión anónima en permanente
+- Recuperación de cuenta: login con credenciales existentes
+- Cambio de contraseña para cuentas vinculadas
+- Confirmación de email con Deep Links
+- Recuperación de contraseña por email
+- Nuclear Wipe: limpieza segura al cambiar de usuario
+- Servicio de identidad centralizado
+
+</td>
+</tr>
+</table>
+
+---
+
+## Sistema de Temas
+
+UNSAP incluye un sistema completo de temas con soporte para modo claro, oscuro y automático (según sistema).
+
+### Paleta de Colores
+
+| Modo | Background | Surface | Accent |
+|------|------------|---------|--------|
+| Light | `#F5F5F5` | `#FFFFFF` | `#8B0000` (Maroon) |
+| Dark | `#121212` | `#1E1E1E` | `#FF6B6B` (Coral) |
+
+### Arquitectura del Sistema de Temas
+
+```dart
+// lib/core/theme/app_theme.dart
+class AppTheme {
+  static ThemeData get light => ThemeData(...);
+  static ThemeData get dark => ThemeData(...);
+}
+
+// lib/core/theme/theme_manager.dart
+class ThemeManager extends ChangeNotifier {
+  ThemeMode _themeMode = ThemeMode.system;
+  // Persistencia con Hive
+}
+```
+
+### Uso en Widgets
+
+```dart
+final theme = Theme.of(context);
+final isDark = theme.brightness == Brightness.dark;
+final primaryColor = isDark ? AppTheme.darkAccent : AppTheme.maroon;
+
+Container(
+  color: theme.cardTheme.color,
+  child: Text('Texto', style: theme.textTheme.bodyLarge),
+)
+```
+
+---
+
+## Dependencias
+
+### Producción
+
+| Paquete | Versión | Propósito |
+|---------|---------|-----------|
+| provider | ^6.1.1 | Gestión de estado |
+| hive | ^2.2.3 | Base de datos local |
+| hive_flutter | ^1.1.0 | Integración Hive con Flutter |
+| supabase_flutter | ^2.8.4 | Backend y autenticación |
+| flutter_inappwebview | ^6.1.5 | WebView para autenticación |
+| http | ^1.2.0 | Cliente HTTP |
+| html | ^0.15.4 | Parsing de HTML |
+| fl_chart | ^1.1.1 | Gráficos y visualizaciones |
+| flutter_secure_storage | ^9.0.0 | Almacenamiento seguro |
+| share_plus | ^12.0.1 | Compartir contenido |
+| path_provider | ^2.1.5 | Acceso a directorios |
+| cached_network_image | ^3.4.1 | Cache de imágenes de red |
+| timeago | ^3.7.0 | Fechas relativas |
+| flutter_dotenv | ^5.2.1 | Variables de entorno |
+
+### Desarrollo
+
+| Paquete | Versión | Propósito |
+|---------|---------|-----------|
+| flutter_lints | ^5.0.0 | Reglas de linting |
+| flutter_launcher_icons | ^0.14.4 | Generación de iconos |
+
+---
+
+## Configuración
+
+### Variables de Entorno
+
+Crear archivo `.env` en la raíz del proyecto:
+
+```env
+SUPABASE_URL=https://tu-proyecto.supabase.co
+SUPABASE_ANON_KEY=tu-anon-key
+```
+
+### Colores Institucionales
+
+Los colores están centralizados en `lib/core/theme/app_theme.dart`:
+
+```dart
+class AppTheme {
+  // Institucional
+  static const Color maroon = Color(0xFF8B0000);
+  
+  // Dark Theme
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkSurface = Color(0xFF1E1E1E);
+  static const Color darkAccent = Color(0xFFFF6B6B);
+}
+```
+
+### Splash Screen Nativo
+
+Configurado en `android/app/src/main/res/values/styles.xml` con el color institucional para una transición imperceptible entre la capa nativa y Flutter.
+
+---
+
+## Compilación
+
+### Debug
+
+```bash
+flutter run --debug
+```
+
+### Release Android
+
+```bash
+flutter build apk --release
+```
+
+### App Bundle (Play Store)
+
+```bash
+flutter build appbundle --release
+```
+
+### Release iOS
+
+```bash
+flutter build ios --release
+```
+
+### Generar Iconos
+
+```bash
+dart run flutter_launcher_icons
+```
+
+---
+
+## Autoría
+
+<div align="center">
+
+**Desarrollado por JOSETRA44**
+
+</div>
+
+---
+
+<div align="center">
+<sub>Versión 1.4.0 | Licencia Privada | Todos los derechos reservados</sub>
+</div>
