@@ -1,0 +1,661 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[margin=2.35cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc,fit,backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[most]{tcolorbox}
+\usepackage[hypertexnames=false]{hyperref}
+\usepackage{bookmark}
+\usepackage{helvet}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{amsmath}
+
+\renewcommand{\familydefault}{\sfdefault}
+\setstretch{1.1}
+\setlist[itemize]{itemsep=2pt, topsep=3pt}
+\setlist[enumerate]{itemsep=2pt, topsep=3pt}
+\renewcommand{\arraystretch}{1.16}
+\setlength{\tabcolsep}{6pt}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+
+\definecolor{wayquiLime}{HTML}{A4C639}
+\definecolor{wayquiLimeDark}{HTML}{5F8E00}
+\definecolor{wayquiInk}{HTML}{1D1F22}
+\definecolor{wayquiSlate}{HTML}{5D646D}
+\definecolor{wayquiLight}{HTML}{F7FAEF}
+\definecolor{wayquiSky}{HTML}{0B6EA8}
+\definecolor{wayquiLine}{HTML}{DCE6C0}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=wayquiLimeDark,
+	urlcolor=wayquiSky,
+	citecolor=wayquiLimeDark,
+	pdftitle={WAYQUI - Whitepaper de Inversion y Plan de Expansion},
+	pdfauthor={CEO \& Founder},
+	pdfsubject={Fintech zero-custody, deuda informal, expansion LatAm},
+	pdfkeywords={Wayqui, Fintech, Zero-Custody, Yape, Plin, Supabase, Whitepaper}
+}
+
+\titleformat{\section}{\Large\bfseries\color{wayquiLimeDark}}{\thesection.}{0.55em}{}
+\titleformat{\subsection}{\large\bfseries\color{wayquiInk}}{\thesubsection}{0.45em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{wayquiInk}}{\thesubsubsection}{0.45em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{wayquiSlate}{WAYQUI | Whitepaper de Inversion}}
+\fancyhead[R]{\textcolor{wayquiSlate}{\thepage\ de \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.25pt}
+\setlength{\headheight}{14pt}
+
+\newtcolorbox{keybox}{
+	colback=wayquiLight,
+	colframe=wayquiLimeDark,
+	boxrule=0.55pt,
+	arc=1.2mm,
+	left=2.2mm,
+	right=2.2mm,
+	top=1.1mm,
+	bottom=1.1mm
+}
+
+\newtcolorbox{signalbox}{
+	colback=white,
+	colframe=wayquiSky,
+	boxrule=0.5pt,
+	arc=1.0mm,
+	left=2mm,
+	right=2mm,
+	top=1mm,
+	bottom=1mm
+}
+
+\begin{document}
+
+\begin{titlepage}
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\fill[wayquiLimeDark] (current page.north west) rectangle ([yshift=-5.5cm]current page.north east);
+		\fill[white] ([yshift=-5.5cm]current page.north west) rectangle (current page.south east);
+		\draw[wayquiLine, line width=1.0pt] ([xshift=0cm,yshift=-5.5cm]current page.north west) -- ([xshift=0cm,yshift=-5.5cm]current page.north east);
+	\end{tikzpicture}
+
+	\vspace*{1.2cm}
+	\begin{center}
+		{\color{white}\fontsize{48}{52}\selectfont\bfseries WAYQUI}\\[0.3cm]
+		{\color{wayquiLight}\Large Institucionalizando el credito informal}
+	\end{center}
+
+	\vspace{3.2cm}
+	\begin{center}
+		{\fontsize{32}{36}\selectfont\bfseries\color{wayquiLimeDark}Whitepaper}\\[0.2cm]
+		{\fontsize{18}{22}\selectfont\color{wayquiInk}de Inversion 2026}
+	\end{center}
+
+	\vspace{1.8cm}
+	\begin{center}
+		\rule{5.5cm}{0.5pt}\\[0.6cm]
+		{\normalsize\color{wayquiSlate}Ronda Pre-Seed Fintech | Zero-Custody | LatAm}\\[0.6cm]
+		\rule{5.5cm}{0.5pt}
+	\end{center}
+
+	\vspace{1.8cm}
+	\begin{center}
+		\begin{minipage}{0.85\textwidth}
+			\begin{keybox}
+			{\bfseries\color{wayquiLimeDark}Confianza verificable.} Wayqui construye infraestructura de registro para deudas informales usando criptografia SHA-256, zero-custody y deep links integrados a billeteras digitales de LatAm.
+			\end{keybox}
+		\end{minipage}
+	\end{center}
+
+	\vspace{2.2cm}
+	\begin{center}
+		\begin{tabular}{c c}
+			\begin{minipage}{0.45\textwidth}
+				\begin{tabular}{>{\color{wayquiLimeDark}\bfseries}l p{0.48\textwidth}}
+					CEO & CEO \& Founder \\[0.15cm]
+					Tech & Flutter, Riverpod, Supabase (PostgreSQL) \\[0.15cm]
+					Mercado & Peru (PEN) $\rightarrow$ LatAm \\[0.15cm]
+					Capital & S/ 1,000,000
+				\end{tabular}
+			\end{minipage}
+			&
+			\begin{minipage}{0.35\textwidth}
+				\centering
+				\fbox{\includegraphics[width=3.5cm]{qr-wayqui.png}}\\[0.3cm]
+				{\tiny\color{wayquiSlate}https://josetra44.github.io/wayqui/}
+			\end{minipage}
+		\end{tabular}
+	\end{center}
+
+	\vfill
+	\begin{center}
+		{\tiny\color{wayquiSlate}Documento confidencial | Proposito: Evaluacion de inversion | Marzo 2026}
+	\end{center}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listoftables
+\newpage
+\listoffigures
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Resumen Ejecutivo}
+Peru ya resolvio la inmediatez del pago digital con Yape y Plin, pero no resolvio la memoria financiera de los prestamos personales. Las transferencias de prestamo quedan mezcladas con pagos de consumo, sin trazabilidad de deuda, sin conciliacion y con alta friccion social para cobrar.
+
+Wayqui es una plataforma Fintech de \textbf{cero custodia} para registrar, gestionar y conciliar deudas informales entre personas. El dinero nunca pasa por Wayqui: los pagos se ejecutan por \textit{deep links} directos a Yape/Plin, mientras Wayqui opera como un \textit{ledger} criptograficamente verificable.
+
+\begin{signalbox}
+\textbf{Propuesta de inversion:} levantar S/ 1,000,000 para consolidar liderazgo en Peru, escalar la infraestructura de integridad de datos y habilitar monetizacion dual: Wayqui Premium (B2C) + Wayqui Score (B2B).
+\end{signalbox}
+
+\section{Problema: Deuda Informal, Alta Frecuencia y Baja Infraestructura}
+\subsection{Friccion social del cobro}
+El credito entre familiares, amigos y colegas nace de la confianza, pero su cobranza crea incomodidad y conflicto relacional. El acreedor evita cobrar y el deudor posterga el pago por ausencia de ritual formal.
+
+\subsection{Contabilidad mental y fragmentacion}
+La deuda informal se registra en memoria, chats o notas sueltas. No existe un estado de cuenta unificado de balance neto entre lo que una persona debe y lo que le deben.
+
+\subsection{Repudio y disputas}
+En mensajeria, los mensajes se pueden editar o borrar. Sin rastro auditable, la disputa se vuelve personal y costosa en capital social.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+	width=0.9\textwidth,
+	height=6cm,
+	ybar stacked,
+	bar width=30pt,
+	ymin=0,
+	ymax=22000,
+	grid=major,
+	grid style={draw=wayquiLine},
+	axis line style={draw=wayquiSlate},
+	tick style={draw=wayquiSlate},
+	ylabel={Volumen anual estimado (Millones S/)},
+	symbolic x coords={Peru 2026},
+	xtick=data,
+	legend style={at={(0.5,1.1)},anchor=south,legend columns=2,draw=none,fill=none}
+]
+\addplot[fill=wayquiSky!70, draw=wayquiSky] coordinates {(Peru 2026,5000)};
+\addplot[fill=wayquiLime!80, draw=wayquiLimeDark] coordinates {(Peru 2026,15000)};
+\legend{Sistema financiero formal, Prestamos familiares/informales}
+\end{axis}
+\end{tikzpicture}
+\caption{Esquema 1. Mapa de calor de la informalidad financiera (estimado referencial)}
+\label{fig:mapa-informalidad}
+\end{figure}
+
+\section{Solucion Wayqui: Trust as a Service}
+\subsection{Gestion de prestamos zero-custody}
+El acreedor registra monto, descripcion y vencimiento. Wayqui mantiene la verdad transaccional, pero no participa en el flujo de fondos.
+
+\subsection{Payment bridge nativo}
+El pago se gatilla por deep links, con monto prellenado y friccion minima. El flujo operativo baja de siete pasos manuales a dos acciones principales.
+
+\subsection{Integridad criptografica anti-tampering}
+Sea un prestamo $L$ con atributos criticos $A=\{c,d,m,t,p\}$:
+\begin{itemize}[leftmargin=1.1cm]
+	\item $c$: UUID del acreedor
+	\item $d$: UUID del deudor
+	\item $m$: monto original
+	\item $t$: timestamp de creacion
+	\item $p$: proposito del prestamo
+\end{itemize}
+
+El checksum se calcula como:
+$$
+H(L)=\text{SHA-256}(c \parallel d \parallel m \parallel t \parallel p)
+$$
+Si cualquier atributo cambia, el hash deja de coincidir y la app marca el registro como \textit{disputed}.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.98\textwidth}{!}{%
+\begin{tikzpicture}[
+	node distance=12mm,
+	boxA/.style={rectangle, rounded corners=1.8mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.35cm, minimum width=3.6cm, line width=0.55pt},
+	boxB/.style={rectangle, rounded corners=1.8mm, draw=wayquiSky, fill=white, align=center, minimum height=1.35cm, minimum width=4.2cm, line width=0.55pt},
+	arr/.style={-{Latex[length=2.3mm]}, draw=wayquiSlate, line width=0.7pt},
+	money/.style={-{Latex[length=2.7mm]}, draw=wayquiLimeDark, line width=1.0pt, dashed}
+]
+\node[boxA] (acreedor) {\textbf{Acreedor}\\Genera deuda};
+\node[boxB, right=13mm of acreedor] (motor) {\textbf{Motor Wayqui}\\Genera hash SHA-256\\y registra evento};
+\node[boxA, right=13mm of motor] (db) {\textbf{Supabase DB}\\Ledger inmutable};
+
+\node[boxB, below=13mm of db] (deudor) {\textbf{Deudor}\\Recibe push y paga};
+
+\draw[arr] (acreedor) -- (motor);
+\draw[arr] (motor) -- (db);
+\draw[arr] (db) -- (deudor);
+\draw[money] (deudor.west) to[bend right=20] node[midway, below, text=wayquiLimeDark] {API Deep Link Yape/Plin} (acreedor.south);
+
+\node[draw=red!80!black, rounded corners=1.1mm, line width=0.7pt, text=red!80!black, fill=white, anchor=north] at ($(motor.south)!0.5!(deudor.north)+(0,-0.25)$) {\textbf{Wayqui NUNCA toca el dinero}};
+\end{tikzpicture}
+}
+\caption{Esquema 2. Arquitectura zero-custody e integridad criptografica}
+\label{fig:arquitectura-zero-custody}
+\end{figure}
+
+\section{Producto y Economia del Comportamiento}
+\subsection{Comic design system con intencion funcional}
+Wayqui evita el lenguaje hostil de cobranza tradicional. El diseno usa colores semanticos, bordes robustos y copywriting empatico para reducir ansiedad y facilitar accion.
+
+\subsection{Nudge operativo y recuperacion}
+La app actua como tercero neutral de recordatorio. El resultado esperado es mayor tasa de recuperacion frente al cobro manual, con menor deterioro de la relacion interpersonal.
+
+\section{Arquitectura Tecnica y Seguridad}
+\subsection{Estructura de software}
+Base Flutter 3.x con enfoque \textit{feature-first}, capas de dominio separadas e inyeccion de dependencias con Riverpod.
+
+\subsection{Persistencia y RPC}
+Supabase sobre PostgreSQL con agregaciones en funciones RPC como \texttt{get\_user\_summary()}, minimizando latencia en consultas de balance.
+
+\subsection{RLS de grado bancario}
+Politicas de Row Level Security permiten lectura y escritura solo cuando el UUID del usuario corresponde al acreedor o deudor.
+
+\begin{table}[htbp]
+\centering
+\caption{Diccionario de datos -- tabla loans}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.7cm}p{2.8cm}X}
+\toprule
+Columna & Tipo & Restriccion / Nota \\
+\midrule
+id & uuid & Primary key autogenerado \\
+creditor\_id & uuid & Foreign key a auth.users \\
+debtor\_id & uuid & Foreign key a auth.users, nullable para contactos externos \\
+amount & numeric(12,2) & Precision monetaria exacta (PEN / USD) \\
+remaining\_amount & numeric(12,2) & Recalculado por trigger/funcion en DB \\
+checksum & text & Hash SHA-256 de validacion de integridad \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\begin{tikzpicture}[
+	node distance=11mm,
+	user/.style={rectangle, rounded corners=1.6mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.3cm, minimum width=2.8cm, line width=0.6pt, font=\small},
+	db/.style={rectangle, rounded corners=1.6mm, draw=wayquiSky, fill=white, align=center, minimum height=2.8cm, minimum width=3.5cm, line width=0.7pt, font=\small},
+	rls/.style={double, double distance=1.5pt, draw=red!70!black, line width=0.8pt},
+	allow/.style={-{Latex[length=2.3mm]}, draw=wayquiLimeDark, line width=0.75pt},
+	block/.style={-{Latex[length=2.3mm]}, draw=red!70!black, line width=1.0pt}
+]
+
+\node[user] (acreedor) {Acreedor\\UUID: 1};
+\node[user, right=2.2cm of acreedor] (deudor) {Deudor\\UUID: 2};
+
+\node[db, below=1.5cm of acreedor] (loans) {Tabla loans\\\\  id, creditor\_id,\\debtor\_id, amount,\\checksum};
+
+\draw[allow] (acreedor) -- (loans) node[midway, left, scale=0.8]{SELECT/UPDATE\\donde creditor\_id = 1};
+\draw[allow] (deudor) -- (loans) node[midway, right, scale=0.8]{SELECT/UPDATE\\donde debtor\_id = 2};
+
+\node[rectangle, rounded corners=1.2mm, draw=red!70!black, fill=white, line width=0.6pt, text=red!70!black, anchor=north] at ($(loans.south)+(0,-0.35)$) {\small\textbf{RLS: Acceso segregado por fila}};
+
+\end{tikzpicture}
+}
+\caption{Esquema 7. Seguridad Row-Level Security (RLS) en PostgreSQL}
+\label{fig:rls-seguridad}
+\end{figure}
+
+\section{Mercado: TAM, SAM y SOM}
+\begin{table}[htbp]
+\centering
+\caption{Dimensionamiento de mercado (estimado)}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
+\toprule
+Segmento & Alcance & Valor estrategico \\
+\midrule
+TAM & LatAm: mas de 200 millones de adultos con smartphone y acceso parcial al credito formal & Oportunidad multibillonaria en infraestructura de confianza y scoring alternativo \\
+SAM & Peru: +15 millones de usuarios de billeteras digitales con transferencias P2P frecuentes & Traccion nacional en un mercado sin capa de registro especializada \\
+SOM & Fase 1: estudiantes, freelancers y microcomerciantes (objetivo 1.5 millones de usuarios en 24 meses) & Captura acelerada por viralidad transaccional y efecto de red \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+	scale=1.0,
+	axis/.style={-{Latex[length=2.0mm]}, draw=wayquiSlate, line width=0.8pt},
+	comp/.style={circle, line width=0.6pt, minimum size=1.2cm, font=\small\bfseries, align=center},
+	wayqui/.style={fill=wayquiLime!80, draw=wayquiLimeDark},
+	yape/.style={fill=wayquiSky!70, draw=wayquiSky},
+	arcor/.style={fill=gray!40, draw=gray},
+	label/.style={text=wayquiSlate, scale=0.85}
+]
+
+\draw[-] (0,0) -- (10,0) node[right, label]{Capacidad de custodia de fondos};
+\draw[-] (0,0) -- (0,6) node[above, label]{Friccion de cobro};
+
+\node[comp, wayqui] at (2,4.5){Wayqui\\Zero-Custody};
+\node[comp, yape, minimum size=2.0cm] at (8,1.5){Yape/\\Plin};
+\node[comp, arcor] at (7,3.5){Arcor\\fintech};
+
+\draw[dashed, wayquiLine] (2,0) -- (2,4.5);
+\draw[dashed, wayquiLine] (0,4.5) -- (2,4.5);
+
+\end{tikzpicture}
+}
+\caption{Esquema 6. Posicionamiento competitivo de Wayqui}
+\label{fig:posicionamiento}
+\end{figure}
+
+\section{Modelo de Negocio}
+\subsection{B2C -- Wayqui Premium}
+Suscripcion de S/ 9.90 por mes para \textit{power users}: cobranza automatizada, gestion de juntas y contratos digitales con sellos de tiempo.
+
+\subsection{B2B -- Wayqui Score}
+Con consentimiento explicito del usuario, se comercializa un score de comportamiento de pago informal para originacion de credito formal en cajas y financieras, bajo modelo CPA.
+
+\begin{table}[htbp]
+\centering
+\caption{Arquitectura de ingresos Wayqui}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
+\toprule
+Canal & Mecanica & Impacto de margen \\
+\midrule
+B2C & Suscripcion mensual por productividad financiera y automatizacion de cobranza & Flujo recurrente de caja con alta predictibilidad \\
+B2B & CPA por cliente convertido con historial alternativo validado & Ticket alto, escalable y con barrera de datos \\
+Datos e insights & Inteligencia agregada para entidades financieras (cumplimiento y consentimiento) & Expande moat analitico y defensivo \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+	node distance=14mm,
+	boxUser/.style={rectangle, rounded corners=2.0mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.8cm, minimum width=3.2cm, line width=0.6pt, font=\small},
+	boxRev/.style={rectangle, rounded corners=1.8mm, draw=wayquiSky, fill=white, align=center, minimum height=1.5cm, minimum width=3.8cm, line width=0.6pt, font=\small},
+	arr/.style={-{Latex[length=2.3mm]}, draw=wayquiSlate, line width=0.8pt},
+	arrmoney/.style={-{Latex[length=2.3mm]}, draw=wayquiLimeDark, line width=1.1pt, dashed}
+]
+
+\node[boxUser] (estudiante) {Estudiante\\Freelancer\\Comerciante};
+\node[boxRev, right=16mm of estudiante] (premium) {Wayqui\\Premium\\S/ 9.90/mes};
+\node[boxRev, below=16mm of premium] (score) {Wayqui Score\\CPA Lead\\S/ 100-200};
+\node[boxUser, below left=16mm and 8mm of score] (banco) {Caja Municipal\\Banco Fintech};
+
+\draw[arr] (estudiante) -- (premium);
+\draw[arrmoney] (premium.east) to[bend left=10] +(1.6cm,0) node[midway, above, text=wayquiLimeDark, scale=0.9]{Ingreso B2C};
+
+\draw[arr] (estudiante) -- (score);
+\draw[arrmoney] (score.south) to[bend right=15] node[midway, right, text=wayquiLimeDark, scale=0.9]{Ingreso B2B} (banco.north east);
+
+\end{tikzpicture}
+}
+\caption{Esquema 4. Modelo de negocio dual B2C + B2B}
+\label{fig:modelo-negocio}
+\end{figure}
+
+\section{Ventaja Regulatoria y Foso Defensivo}
+Wayqui se posiciona como plataforma SaaS de gestion de informacion y no como entidad de intermediacion financiera. Al no captar fondos ni custodiar dinero:
+\begin{itemize}[leftmargin=1.1cm]
+	\item elimina riesgo de liquidez institucional;
+	\item reduce friccion regulatoria estructural frente a modelos custodiales;
+	\item concentra inversion en producto, seguridad de datos y crecimiento.
+\end{itemize}
+
+\section{Go-To-Market y Bucle Viral}
+La adquisicion ocurre por obligacion funcional en cada prestamo: el acreedor invita al deudor para registrar y cerrar el ciclo. Ese deudor luego se convierte en nuevo acreedor dentro del ecosistema.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}[
+	every node/.style={font=\small},
+	ring/.style={circle, draw=wayquiLimeDark, line width=0.7pt, minimum width=2.8cm, align=center, fill=wayquiLight},
+	arr/.style={-{Latex[length=2.5mm]}, draw=wayquiSlate, line width=0.9pt},
+	label/.style={text=wayquiSlate, scale=0.85}
+]
+
+\node[ring] (trigger) at (0,3.0) {\textbf{Acreedor}\\crea prestamo};
+\node[ring] (convite) at (3.8,1.0) {\textbf{Convite}\\por WhatsApp\\link Wayqui};
+\node[ring] (adoption) at (2.2,-2.4) {\textbf{Deudor}\\descarga app};
+\node[ring] (pago) at (-2.2,-2.4) {\textbf{Pago}\\via Yape/Plin};
+\node[ring] (viral) at (-3.8,1.0) {\textbf{Nuevo}\\acreedor};
+
+\draw[arr] (trigger) -- node[label, above]{Paso 1} (convite);
+\draw[arr] (convite) -- node[label, right]{Paso 2} (adoption);
+\draw[arr] (adoption) -- node[label, below]{Paso 3} (pago);
+\draw[arr] (pago) -- node[label, left]{Paso 4} (viral);
+\draw[arr] (viral) -- node[label, above, scale=0.8]{Vuelta 1+}{white, text=wayquiInk} (trigger);
+
+\node[draw=wayquiSky!80, rounded corners=1.0mm, line width=0.7pt, text=wayquiInk, fill=white, anchor=center, minimum width=4.5cm] at (0,-4.2) {K-factor: <1.2 | CAC: tendencia a cero};
+
+\end{tikzpicture}
+}
+\caption{Esquema 5. Bucle viral de adquisicion (5 pasos)}
+\label{fig:bucle-viral}
+\end{figure}
+
+\section{Roadmap 2026--2030}
+\subsection{Fase 1 (Anos 1--2): Dominio Peru}
+OCR de comprobantes Yape/Plin, lanzamiento de Premium y modulo de juntas.
+
+\subsection{Fase 2 (Ano 3): Motor B2B}
+Despliegue de Wayqui Score, alianzas con cajas municipales y productos de originacion.
+
+\subsection{Fase 3 (Anos 4--5): Expansion LatAm}
+Colombia (Nequi/DaviPlata) y Mexico (CoDi/Spin), con adaptacion a nuevos contextos de remesas y credito informal.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.98\textwidth}{!}{%
+\begin{tikzpicture}[x=0.68cm,y=0.85cm]
+	\draw[draw=wayquiSlate!40] (0,0) rectangle (14,4.2);
+	\foreach \x in {0,...,14} {\draw[wayquiLine] (\x,0) -- (\x,4.2);} 
+	\foreach \y/\label in {3.4/Herramienta P2P,2.2/SaaS Premium,1.0/Motor B2B Score,0.25/Expansion Regional} {
+		\node[anchor=east, text=wayquiInk, scale=0.88] at (-0.22,\y) {\label};
+	}
+
+	\fill[wayquiLimeDark!92] (0.1,3.0) rectangle (4.0,3.8);
+	\node[text=white, scale=0.85] at (2.05,3.4) {Q2-2026 a Q4-2027};
+
+	\fill[wayquiSky!85] (4.1,1.8) rectangle (7.7,2.6);
+	\node[text=white, scale=0.85] at (5.9,2.2) {2027-2028};
+
+	\fill[wayquiLime!85!black] (7.8,0.6) rectangle (10.9,1.4);
+	\node[text=white, scale=0.85] at (9.35,1.0) {2028-2029};
+
+	\fill[wayquiLimeDark!75!black] (11.0,0.1) rectangle (13.8,0.9);
+	\node[text=white, scale=0.83] at (12.4,0.5) {2029-2030};
+
+	\foreach \x/\q in {0/Q2-26,2/Q4-26,4/Q2-27,6/Q4-27,8/Q2-28,10/Q4-28,12/Q2-29,14/Q4-29} {
+		\node[anchor=north, text=wayquiSlate, scale=0.72] at (\x,-0.1) {\q};
+	}
+\end{tikzpicture}
+}
+\caption{Esquema 3. Diagrama de Gantt del roadmap a cinco anos}
+\label{fig:gantt-wayqui}
+\end{figure}
+
+\section{Proyecciones Financieras (Pre-Seed)}
+\begin{table}[htbp]
+\centering
+\caption{Proyeccion conservadora en PEN}
+\begin{tabularx}{\textwidth}{>{\bfseries}X r r r}
+\toprule
+Indicador & Ano 1 & Ano 2 & Ano 3 \\
+\midrule
+Usuarios registrados & 80,000 & 350,000 & 1,500,000 \\
+Prestamos gestionados (S/) & 10,000,000 & 60,000,000 & 350,000,000 \\
+Suscripciones activas (3\%) & 2,400 & 10,500 & 45,000 \\
+Ingresos suscripcion anual (S/) & 285,120 & 1,247,400 & 5,346,000 \\
+Ingresos B2B (S/) & 0 & 400,000 & 2,500,000 \\
+Gross revenue estimado (S/) & 285,120 & 1,647,400 & 7,846,000 \\
+OPEX (S/) & 650,000 & 1,100,000 & 2,800,000 \\
+EBITDA (S/) & -364,880 & 547,400 & 5,046,000 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.96\textwidth}{!}{%
+\begin{tikzpicture}[scale=1.0]
+\begin{axis}[
+	width=0.98\textwidth,
+	height=6.5cm,
+	ymin=-500,
+	ymax=5500,
+	xmin=0,
+	xmax=3.5,
+	grid=major,
+	grid style={draw=wayquiLine},
+	axis line style={draw=wayquiSlate, line width=0.7pt},
+	tick style={draw=wayquiSlate, line width=0.6pt},
+	ylabel={Monto (miles S/)},
+	xlabel={Anos},
+	symbolic x coords={Ano 1, Ano 2, Ano 3},
+	xtick=data,
+	legend style={at={(0.98,0.35)},anchor=east,legend columns=1,draw=wayquiLine,fill=wayquiLight, fill opacity=0.9}
+]
+
+\addplot[mark=*, mark size=3pt, line width=1.2pt, color=wayquiLimeDark] coordinates {
+	(1, -364.880)
+	(2, 547.4)
+	(3, 5046.0)
+};
+\addlegendentry{EBITDA};
+
+\addplot[mark=square, mark size=3pt, line width=1.2pt, color=wayquiSky] coordinates {
+	(1, 285.120)
+	(2, 1647.4)
+	(3, 7846.0)
+};
+\addlegendentry{Gross Revenue};
+
+\addplot[mark=triangle, mark size=3pt, line width=1.0pt, color=red!70!black, dashed] coordinates {
+	(1, 650.0)
+	(2, 1100.0)
+	(3, 2800.0)
+};
+\addlegendentry{OPEX};
+
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Esquema 8. Proyeccion financiera y trayectoria a rentabilidad}
+\label{fig:proyeccion-financiera}
+\end{figure}
+
+\section{Requerimiento de Capital y Uso de Fondos}
+Wayqui busca S/ 1,000,000 en instrumento SAFE (post-money valuation cap de S/ 10,000,000), con runway estimado de 18 a 20 meses.
+
+\begin{table}[htbp]
+\centering
+\caption{Asignacion de capital objetivo}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm}c X}
+\toprule
+Linea & Peso & Aplicacion \\
+\midrule
+Talento de ingenieria core & 45\% & 2 Senior Flutter Devs, 1 Data Scientist, 1 Backend Dev especializado en PostgreSQL y criptografia \\
+Growth y adquisicion & 30\% & Activaciones en universidades, institutos y mercados con alto uso de credito informal \\
+Infraestructura cloud & 15\% & Escalamiento de Supabase, redundancia y APIs de mensajeria \\
+Legal y compliance & 10\% & Propiedad intelectual, proteccion de datos y estructuracion corporativa \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Riesgos y Mitigacion}
+\begin{table}[htbp]
+\centering
+\caption{Matriz ejecutiva de riesgos}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.7cm}X X}
+\toprule
+Tipo & Riesgo principal & Mitigacion \\
+\midrule
+Adopcion & Resistencia inicial a formalizar deudas informales & UX empatica, recordatorios amigables y onboarding hiper simple \\
+Seguridad & Alteracion de registros o disputas de integridad & Checksum SHA-256, trazabilidad de eventos y alertas de inconsistencia \\
+Regulatorio & Cambios de criterio sobre alcance de plataformas fintech & Asesoria legal permanente y arquitectura sin custodia de fondos \\
+Competencia & Entrada de incumbentes con mayor presupuesto & Velocidad de ejecucion, foco en nicho y data comportamental propietaria \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Conclusiones}
+Wayqui convierte un problema culturalmente sensible en una categoria de software financiero de alta recurrencia. Su ventaja no depende de captar fondos, sino de orquestar confianza verificable sobre infraestructura de pago ya adoptada masivamente.
+
+Con ejecucion disciplinada y foco en data de comportamiento de pago, Wayqui tiene potencial de construir un activo estrategico para el sistema financiero de Peru y, en segunda fase, para toda Latinoamerica.
+
+\appendix
+
+\section{Stack Tecnologico Consolidado}
+\begin{longtable}{>{\bfseries}p{4.2cm}p{9.8cm}}
+\toprule
+Componente & Tecnologias \\
+\midrule
+Frontend movil & Flutter, Dart, Riverpod \\
+Arquitectura de app & Clean Architecture, feature-first \\
+Backend y base de datos & Supabase 2.8, PostgreSQL, funciones RPC \\
+Seguridad y acceso & RLS, autenticacion por UUID, validacion checksum SHA-256 \\
+Integracion de pagos & Deep links nativos a Yape y Plin (sin custodia) \\
+Mensajeria y notificaciones & Push notifications, canales de recordatorio automatizado \\
+Escalabilidad & Servicios desacoplados, consultas agregadas y optimizacion de latencia \\
+\bottomrule
+\end{longtable}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.96\textwidth}{!}{%
+\begin{tikzpicture}[
+	layer/.style={rectangle, rounded corners=1.5mm, draw=wayquiSlate, fill=wayquiLight, align=center, minimum height=1.2cm, minimum width=3.5cm, line width=0.6pt, font=\small},
+	service/.style={rectangle, rounded corners=1.2mm, draw=wayquiSky, fill=white, align=center, minimum height=0.95cm, minimum width=2.4cm, line width=0.5pt, font=\tiny},
+	arr/.style={-{Latex[length=2.0mm]}, draw=wayquiSlate, line width=0.6pt}
+]
+
+\node[layer] (frontend) {\textbf{Frontend}\\Flutter + Riverpod};
+\node[service, below=12mm of frontend.west, anchor=west] (clean) {Clean Arch};
+\node[service, right=8mm of clean] (state) {State Mgmt};
+
+\node[layer, below=18mm of frontend] (backend) {\textbf{Backend}\\Supabase PostgreSQL};
+\node[service, below=12mm of backend.west, anchor=west] (rpc) {RPC Queries};
+\node[service, right=8mm of rpc] (rls) {Row-Level Security};
+
+\node[layer, below=18mm of backend] (payments) {\textbf{Payment Bridge}\\Yape / Plin Deep Links};
+
+\node[service, below=12mm of payments.west, anchor=west] (security) {SHA-256};
+\node[service, right=8mm of security] (notif) {Push Notif};
+
+\draw[arr] (frontend) -- (backend);
+\draw[arr] (backend) -- (payments);
+
+\draw[arr, dashed] (payments) to[bend right=15] (frontend);
+
+\end{tikzpicture}
+}
+\caption{Esquema 9. Capas tecnologicas de Wayqui}
+\label{fig:stack-tech}
+\end{figure}
+
+\section{Nota de alcance}
+Las cifras de mercado y proyecciones financieras del presente documento son referenciales y deben recalibrarse con data operacional real durante la etapa de ejecucion.
+
+\end{document}

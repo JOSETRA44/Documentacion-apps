@@ -1,0 +1,313 @@
+WAYQUI: INSTITUCIONALIZANDO EL CRÉDITO INFORMAL EN LATAM
+
+Whitepaper de Inversión y Plan de Expansión (Ronda Pre-Seed Fintech)
+
+Clasificación: Documento Estrictamente Confidencial
+Preparado por: CEO & Founder
+Fecha: Marzo 2026
+Tecnología Base: Flutter, Supabase (PostgreSQL), Riverpod, SHA-256 Cryptography
+Métricas Core: Cero Custodia (Zero-Custody), Cero Fricción Regulatoria, Integración Yape/Plin, Criptografía Anti-Tampering.
+Mercado Objetivo Inicial: Perú (Proyecciones en PEN - Soles Peruanos)
+
+RESUMEN EJECUTIVO
+
+El ecosistema financiero en el Perú ha experimentado una revolución transaccional. Con más de 15 millones de usuarios combinados, el duopolio de billeteras digitales (Yape y Plin) ha resuelto la inmediatez del traslado de dinero. Sin embargo, estas plataformas han fracasado en resolver el problema del tiempo, la memoria financiera y la fricción social. Cuando un usuario transfiere S/ 500 como un préstamo personal a un amigo, familiar o colega, esa transacción se pierde en un mar de pagos de taxis, bodegas y servicios.
+
+Wayqui (del quechua "hermano") es la primera plataforma Fintech de Cero Custodia diseñada específicamente para gestionar, registrar y conciliar préstamos personales y deudas informales. No somos un banco ni una billetera; somos un libro mayor (Ledger) criptográficamente seguro acoplado a un motor de resolución social basado en economía del comportamiento.
+
+Al no custodiar fondos (los pagos se ejecutan vía Deep Links directos a Yape y Plin), Wayqui evade el 99% de la carga regulatoria de la Superintendencia de Banca y Seguros (SBS), operando con los altos márgenes de una empresa de software (SaaS), mientras resuelve un problema financiero que mueve miles de millones de soles en la sombra.
+
+Buscamos una inyección de capital de S/ 1,000,000 (Un Millón de Soles) para dominar el mercado peruano, escalar nuestra infraestructura de integridad de datos, y lanzar nuestra suite de monetización B2C y algoritmos de Credit Scoring alternativo B2B, con miras a una expansión regional a Colombia y México en los próximos 36 meses.
+
+1. ANÁLISIS DEL PROBLEMA: LA PSICOLOGÍA Y MAGNITUD DE LA DEUDA INFORMAL
+
+El mercado de préstamos P2P (Peer-to-Peer) informal en el Perú es gigantesco, invisible y altamente ineficiente. Según datos del INEI (2025), el 70% de la PEA labora en la informalidad, lo que empuja a millones a depender del crédito no institucionalizado.
+
+1.1. La Fricción Social de Cobrar (El Tabú Cultural)
+
+Prestar dinero a un círculo cercano es un acto de confianza; cobrarlo es un tabú cultural que destruye relaciones. Reclamar una deuda genera estrés y carece de un canal formal. El "cobrador" se siente culpable por exigir lo que es suyo, y el deudor utiliza la evasión pasiva. Wayqui actúa como un tercero neutral, despersonalizando el cobro mediante notificaciones automatizadas.
+
+1.2. La Fragmentación del Registro y la "Contabilidad Mental"
+
+Actualmente, las deudas informales se registran en la memoria, en libretas de papel o en chats perdidos. No existe un estado de cuenta unificado (Net Balance) que le diga a un individuo: "Te deben S/ 1,500 en total y tú debes S/ 300". Esta falta de consolidación reduce la liquidez real de las personas.
+
+1.3. La Inseguridad del Dato (Repudio de Deuda)
+
+En plataformas de mensajería como WhatsApp, los mensajes pueden ser editados o eliminados. Un deudor puede argumentar "yo te pagué S/ 100 en efectivo la semana pasada" sin que haya un rastro auditable, generando disputas insalvables.
+
+[NOTA PARA LATEX - Insertar Gráfico 1: "Mapa de Calor de la Informalidad Financiera".]
+Descripción del esquema (Usar pgfplots o TikZ):
+Un gráfico de barras apiladas comparando el volumen de préstamos del "Sistema Financiero Formal" vs "Préstamos Familiares/Informales" en Perú. Destacar que el segmento informal mueve aproximadamente S/ 15,000 Millones anuales sin ningún tipo de infraestructura de datos.
+
+2. LA SOLUCIÓN WAYQUI: CONFIANZA COMO SERVICIO (TaaS)
+
+Wayqui digitaliza el "cuaderno de fiado", elevándolo a un estándar de integridad criptográfica y experiencia de usuario (UX) impecable.
+
+2.1. Gestión de Préstamos "Zero-Custody"
+
+El acreedor crea el préstamo estableciendo monto (en PEN o USD), descripción y fecha de vencimiento. Wayqui actúa como la fuente de la verdad inmutable.
+
+2.2. Payment Bridge (Puente de Pago Nativo)
+
+No competimos con el BCP (Yape) o Interbank/BBVA/Scotiabank (Plin); nos apalancamos en su infraestructura. A través de nuestro servicio payment_bridge_service.dart, utilizamos Deep Links y manipulación segura del portapapeles del SO (iOS/Android) para redirigir al deudor directamente a su billetera digital con el monto exacto, eliminando el error de tipeo y reduciendo los pasos de pago de 7 a 2.
+
+2.3. Criptografía Anti-Tampering y Checksums SHA-256
+
+La innovación central de Wayqui es la integridad absoluta de los datos. Para evitar la manipulación directa de la base de datos o ataques de inyección, implementamos un candado criptográfico.
+
+Formulación Matemática de la Integridad (Para incluir en el documento):
+Sea un préstamo $L$ definido por el conjunto de atributos críticos $A = \{c, d, m, t, p\}$, donde:
+
+$c$: ID del Acreedor (UUID)
+
+$d$: ID del Deudor (UUID)
+
+$m$: Monto original ($numeric(12,2)$)
+
+$t$: Timestamp de creación (ISO 8601)
+
+$p$: Propósito o descripción (String)
+
+El Checksum de integridad $H(L)$ se calcula mediante la función de hash criptográfico SHA-256 sobre la concatenación estricta de estos valores:
+
+$$H(L) = \text{SHA-256}(c \parallel d \parallel m \parallel t \parallel p)$$
+
+Si un byte de información es alterado en el servidor, el hash validado en tiempo de lectura en el cliente no coincidirá, marcando el registro como disputed (corrompido) y alertando a ambas partes. Wayqui crea pagarés digitales irrefutables.
+
+[NOTA PARA LATEX - Insertar Esquema 2: "Arquitectura Zero-Custody & Criptografía".]
+Descripción del esquema (Diagrama de Flujo):
+
+Nodo 1: "Acreedor" genera la deuda.
+
+Flecha a Nodo 2: "Motor Wayqui (Generación Hash SHA-256)".
+
+Nodo 3 (Almacenamiento): "Supabase DB (Registro Inmutable)".
+
+Flecha de Cobro a Nodo 4: "Deudor recibe Push Notification".
+
+Ruta del Dinero (Punteada Verde): Flecha que va DIRECTO del Deudor al Acreedor a través de un puente etiquetado "API Deep Link Yape/Plin". Añadir un gran sello rojo: "Wayqui NUNCA toca el dinero".
+
+3. DISEÑO DE PRODUCTO Y ECONOMÍA DEL COMPORTAMIENTO
+
+El diseño de software financiero tradicional genera ansiedad: números en rojo, terminología legal compleja (TCEA, moras) y UI rígida.
+
+Hemos desarrollado el Comic Design System. Usamos tipografía expresiva (Bangers para títulos, Nunito para legibilidad), bordes gruesos (borderWidth: 2.0) y colores semánticos (positive, negative, pending).
+
+Economía del Comportamiento (Nudge Theory): Al hacer que la interfaz parezca amigable, casi lúdica, reducimos la fricción emocional tanto para el que registra la deuda como para el que debe pagarla. Las notificaciones de cobro están redactadas con Copywriting empático, pasando de ser "amenazas de cobranza" a "recordatorios de hermandad", mejorando la tasa de recuperación de deudas en un estimado del 40% frente al cobro manual.
+
+4. INGENIERÍA Y ARQUITECTURA TÉCNICA
+
+Wayqui es una obra de ingeniería de software construida para escalar a millones de transacciones simultáneas (High Concurrency) sin degradación de rendimiento.
+
+4.1. Clean Architecture y Feature-First
+
+El código fuente (Flutter 3.x) está rígidamente estructurado. Cada Feature es autónomo, con una estricta separación entre Presentación, Dominio (Casos de Uso) y Datos. La inyección de dependencias es orquestada por Riverpod, garantizando $0$ memory leaks.
+
+4.2. Diccionario de Datos y Funciones RPC (PostgreSQL)
+
+Nuestra base de datos relacional (Supabase 2.8) está altamente normalizada y asegurada.
+
+Tabla Principal: loans (Préstamos)
+| Columna | Tipo de Dato | Restricción / Nota |
+| :--- | :--- | :--- |
+| id | uuid | Primary Key, Auto-generado |
+| creditor_id | uuid | Foreign Key (auth.users) |
+| debtor_id | uuid | Foreign Key (auth.users), Nullable para contactos externos |
+| amount | numeric(12,2) | Precisión monetaria exacta (Soles/Dólares) |
+| remaining_amount| numeric(12,2) | Calculado dinámicamente vía DB Triggers |
+| checksum | text | Hash SHA-256 de validación |
+
+Las agregaciones complejas (como sumar todas las deudas activas) se ejecutan a nivel de base de datos usando Remote Procedure Calls (RPC: get_user_summary()), devolviendo la data al cliente móvil en $< 50$ milisegundos.
+
+4.3. Seguridad de Grado Bancario (Row Level Security - RLS)
+
+Nuestra seguridad no depende del cliente. Implementamos RLS estricto en el backend. Una política criptográfica en el servidor garantiza que un usuario (UUID) únicamente pueda hacer un SELECT o UPDATE de las filas donde su UUID sea explícitamente el acreedor o el deudor.
+
+5. TAMAÑO DEL MERCADO (TAM, SAM, SOM)
+
+Evaluamos el mercado basándonos en el volumen de transacciones informales y el poder adquisitivo de digitalización.
+
+TAM (Total Addressable Market LatAm): ~S/ 400 Billones. +200 millones de adultos económicamente activos en Latinoamérica con acceso a smartphones y excluidos parcialmente del crédito formal.
+
+SAM (Perú - Mercado Servible): ~S/ 20 Billones anuales. Volumen estimado de transferencias P2P no comerciales (préstamos familiares, juntas, adelantos) movilizados por los +15 millones de usuarios de Yape/Plin.
+
+SOM (Fase 1 - Jóvenes y Mypes): ~S/ 800 Millones transaccionados. Nuestro objetivo a 24 meses es capturar a 1.5 millones de usuarios (estudiantes universitarios, freelancers, y micro-comerciantes de mercados de abastos).
+
+6. MODELO DE NEGOCIO Y ESTRATEGIA DE MONETIZACIÓN
+
+¿Cómo genera ingresos millonarios una aplicación gratuita que no cobra comisiones por transacción? A través de un modelo SaaS B2C y un modelo de Monetización de Datos B2B.
+
+6.1. Wayqui Premium (Suscripción B2C: S/ 9.90 / mes)
+
+El registro de préstamos 1-a-1 es gratuito. La monetización se activa para "Power Users":
+
+Wayqui Collector (Cobranza Automatizada): Escalabilidad de recordatorios vía WhatsApp Business API y SMS. ("Hoy vence tu deuda de S/150 con Carlos").
+
+Modo Juntas y Grupos: Algoritmo de simplificación de deudas para viajes grupales o "juntas" (panderos) de dinero, muy populares en la cultura peruana.
+
+Contratos Digitales: Generación de PDFs con firmas digitales simples y marcas de tiempo, otorgando peso probatorio legal al acuerdo informal.
+
+6.2. El "Master Plan" B2B: Credit Scoring Alternativo
+
+El gran valor de Wayqui es la Data de Comportamiento de Pago Informal.
+Los bancos peruanos (BCP, Interbank, BBVA) ignoran al 50% de la población porque no tienen historial en el sistema formal (Central de Riesgos SBS/Equifax).
+
+El Modelo de Negocio (Lead Generation): Un usuario en Wayqui puede haber pagado 20 préstamos informales de S/ 200 a tiempo durante un año. Wayqui procesa esta data mediante Machine Learning y genera el Wayqui Score.
+
+Con el consentimiento explícito del usuario, vendemos esta calificación a financieras (Cajas Municipales, Mibanco). Si Mibanco emite una tarjeta de crédito o un préstamo de capital de trabajo basado en nuestro Score, Wayqui cobra un Costo por Adquisición (CPA) de S/ 100 a S/ 200 por cliente convertido.
+
+7. VENTAJAS REGULATORIAS: EL FOSO DEFENSIVO
+
+El cementerio de startups Fintech está lleno de empresas que colapsaron por intentar captar fondos del público sin el capital social mínimo requerido por la SBS.
+
+Wayqui opera en un "Oasis Regulatorio":
+De acuerdo a la Ley General del Sistema Financiero (Ley N° 26702), al ser una plataforma tecnológica (SaaS) que gestiona información y utiliza Deep Links para que las transferencias ocurran en las plataformas de terceros ya reguladas, Wayqui NO realiza intermediación financiera directa.
+
+Cero requerimientos de encaje bancario.
+
+Cero riesgo de liquidez institucional.
+
+Reducción del 90% en gastos de auditorías de lavado de activos (SPLAFT), ya que el monitoreo transaccional ocurre en los rieles de los bancos emisores (Yape/Plin).
+
+8. ESTRATEGIA DE CRECIMIENTO (GTM): EL BUCLE VIRAL
+
+Wayqui posee un coeficiente de viralidad (K-factor) inherentemente superior a > 1.2. Nuestro Costo de Adquisición de Clientes (CAC) tiende a cero.
+
+El Bucle (Network Effect de 5 pasos):
+
+El Usuario A (Acreedor) descarga Wayqui.
+
+El Usuario A registra un préstamo de S/ 200 a favor del Usuario B.
+
+El Usuario A envía un link vía WhatsApp: "Hermano, registré el préstamo aquí para no olvidarnos, descárgala para que subas la captura de Yape cuando me pagues".
+
+El Usuario B (Deudor) se ve forzado a descargar la app (Adquisición gratuita).
+
+El Usuario B experimenta la calidad del producto y comienza a registrar deudas donde él es el Acreedor.
+
+9. ROADMAP Y PLAN DE EXPANSIÓN A 5 AÑOS
+
+Nuestro plan de ejecución está meticulosamente estructurado para escalar desde un producto de nicho hasta una infraestructura regional.
+
+Fase 1: Dominio del Mercado Peruano (Años 1 - 2)
+
+Q3 2026: Lanzamiento de Conciliación Fotográfica (Lectura OCR de comprobantes de Yape/Plin).
+
+Q1 2027: Lanzamiento de Wayqui Premium (S/ 9.90/mes) y validación biométrica (local_auth).
+
+Q4 2027: Implementación de "Wayqui Juntas" (Panderos digitalizados).
+
+Fase 2: B2B Data & Open Banking (Año 3)
+
+Despliegue de modelos de Machine Learning para procesar la morosidad y generar el "Wayqui Score".
+
+Integración de APIs de Open Banking y alianzas con Cajas Municipales (Caja Arequipa, Caja Huancayo) para originación de créditos formales dentro de la app.
+
+Fase 3: Internacionalización LatAm (Años 4 - 5)
+
+Expansión a Colombia: Integración con Nequi y DaviPlata.
+
+Expansión a México: Integración con CoDi y Spin by OXXO. Adaptación del ecosistema al mercado de remesas informales.
+
+[NOTA PARA LATEX - Insertar Esquema 3: "Diagrama de Gantt - Roadmap a 5 Años".]
+Descripción del esquema: Una línea de tiempo que muestre la transición de "Herramienta P2P" -> "SaaS Premium" -> "Motor B2B de Credit Scoring" -> "Expansión Regional".
+
+10. PROYECCIONES FINANCIERAS (FASE PRE-SEED)
+
+Cifras proyectadas conservadoras en Soles (PEN).
+
+Indicador Clave
+
+Año 1 (Penetración)
+
+Año 2 (Monetización)
+
+Año 3 (Escalamiento B2B)
+
+Usuarios Registrados
+
+80,000
+
+350,000
+
+1,500,000
+
+Préstamos Gestionados (S/)
+
+S/ 10,000,000
+
+S/ 60,000,000
+
+S/ 350,000,000
+
+Suscripciones Activas (3%)
+
+2,400
+
+10,500
+
+45,000
+
+Ingresos Suscripción Anual
+
+S/ 285,120
+
+S/ 1,247,400
+
+S/ 5,346,000
+
+Ingresos B2B (CPA S/ 100)
+
+S/ 0
+
+S/ 400,000
+
+S/ 2,500,000
+
+Gross Revenue Estimado
+
+S/ 285,120
+
+S/ 1,647,400
+
+S/ 7,846,000
+
+OPEX (Nube, Equipo, Mkt)
+
+S/ 650,000
+
+S/ 1,100,000
+
+S/ 2,800,000
+
+EBITDA
+
+- S/ 364,880 (Burn)
+
++ S/ 547,400
+
++ S/ 5,046,000
+
+11. REQUERIMIENTO DE CAPITAL (EL "ASK") Y USO DE FONDOS
+
+Estamos levantando S/ 1,000,000 (Aprox. $265,000 USD) en una ronda Pre-Seed mediante un instrumento SAFE (Post-money Valuation Cap de S/ 10,000,000).
+
+Asignación del Capital (Runway de 18-20 meses):
+
+45% Talento de Ingeniería Core (S/ 450,000): Contratación de 2 Senior Flutter Devs, 1 Data Scientist (para el motor de Credit Scoring) y 1 Backend Dev especialista en PostgreSQL y Criptografía.
+
+30% Growth & Adquisición (S/ 300,000): Presupuesto táctico para viralidad. Activaciones BTL en universidades, institutos técnicos y mercados mayoristas (zonas núcleo del crédito informal).
+
+15% Infraestructura Cloud (S/ 150,000): Escalamiento de clusters de Supabase, redundancia de datos y costos de APIs de mensajería (WhatsApp/Twilio).
+
+10% Legal y Compliance (S/ 100,000): Registro de marcas en INDECOPI, cumplimiento estricto de la Ley de Protección de Datos Personales (Ley N° 29733) y estructuración corporativa.
+
+12. LA VISIÓN DEL CEO
+
+La industria Fintech tradicional ha gastado miles de millones intentando "bancarizar" a quienes desconfían de los bancos, forzando herramientas del primer mundo en comportamientos de economías emergentes.
+
+En Wayqui no intentamos cambiar cómo el peruano presta su dinero; simplemente le estamos dando la infraestructura tecnológica de nivel empresarial para hacerlo de forma segura, digna y sin fricciones. Wayqui es el puente definitivo entre la confianza del mundo informal y la trazabilidad de la modernidad tecnológica.
+
+Nuestro modelo es inherentemente viral, la tecnología criptográfica ya está construida, y el escudo regulatorio de "Cero Custodia" nos permite iterar y escalar más rápido que cualquier banco o billetera digital burocrática de la región. Quien domine la data del comportamiento de pago informal hoy, será el dueño absoluto del riesgo crediticio de Latinoamérica mañana.
+
+Ese es nuestro juego. El mercado nos está esperando. ¿Se unen a la ronda?
