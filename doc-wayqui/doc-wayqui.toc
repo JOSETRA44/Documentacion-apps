@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {2.1}Friccion social del cobro}{1}{subsection.3}%
 \contentsline {subsection}{\numberline {2.2}Contabilidad mental y fragmentacion}{1}{subsection.4}%
 \contentsline {subsection}{\numberline {2.3}Repudio y disputas}{1}{subsection.5}%
-\contentsline {section}{\numberline {3}Solucion Wayqui: Trust as a Service}{2}{section.7}%
+\contentsline {section}{\numberline {3}Solucion Wayqui: Trust as a Service}{1}{section.7}%
 \contentsline {subsection}{\numberline {3.1}Gestion de prestamos zero-custody}{2}{subsection.8}%
 \contentsline {subsection}{\numberline {3.2}Payment bridge nativo}{2}{subsection.9}%
 \contentsline {subsection}{\numberline {3.3}Integridad criptografica anti-tampering}{2}{subsection.10}%
@@ -16,18 +16,18 @@
 \contentsline {subsection}{\numberline {5.2}Persistencia y RPC}{3}{subsection.17}%
 \contentsline {subsection}{\numberline {5.3}RLS de grado bancario}{3}{subsection.18}%
 \contentsline {section}{\numberline {6}Mercado: TAM, SAM y SOM}{3}{section.21}%
-\contentsline {section}{\numberline {7}Modelo de Negocio}{5}{section.24}%
+\contentsline {section}{\numberline {7}Modelo de Negocio}{3}{section.24}%
 \contentsline {subsection}{\numberline {7.1}B2C -- Wayqui Premium}{5}{subsection.25}%
 \contentsline {subsection}{\numberline {7.2}B2B -- Wayqui Score}{5}{subsection.26}%
 \contentsline {section}{\numberline {8}Ventaja Regulatoria y Foso Defensivo}{5}{section.29}%
 \contentsline {section}{\numberline {9}Go-To-Market y Bucle Viral}{5}{section.30}%
-\contentsline {section}{\numberline {10}Roadmap 2026--2030}{5}{section.32}%
-\contentsline {subsection}{\numberline {10.1}Fase 1 (Anos 1--2): Dominio Peru}{5}{subsection.33}%
-\contentsline {subsection}{\numberline {10.2}Fase 2 (Ano 3): Motor B2B}{5}{subsection.34}%
-\contentsline {subsection}{\numberline {10.3}Fase 3 (Anos 4--5): Expansion LatAm}{7}{subsection.35}%
-\contentsline {section}{\numberline {11}Proyecciones Financieras (Pre-Seed)}{7}{section.37}%
-\contentsline {section}{\numberline {12}Requerimiento de Capital y Uso de Fondos}{7}{section.40}%
-\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{7}{section.42}%
-\contentsline {section}{\numberline {14}Conclusiones}{7}{section.44}%
-\contentsline {section}{\numberline {A}Stack Tecnologico Consolidado}{9}{appendix.45}%
-\contentsline {section}{\numberline {B}Nota de alcance}{9}{appendix.48}%
+\contentsline {section}{\numberline {10}Roadmap 2026--2030}{6}{section.32}%
+\contentsline {subsection}{\numberline {10.1}Fase 1 (Anos 1--2): Dominio Peru}{6}{subsection.33}%
+\contentsline {subsection}{\numberline {10.2}Fase 2 (Ano 3): Motor B2B}{6}{subsection.34}%
+\contentsline {subsection}{\numberline {10.3}Fase 3 (Anos 4--5): Expansion LatAm}{6}{subsection.35}%
+\contentsline {section}{\numberline {11}Proyecciones Financieras (Pre-Seed)}{6}{section.37}%
+\contentsline {section}{\numberline {12}Requerimiento de Capital y Uso de Fondos}{6}{section.40}%
+\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{8}{section.42}%
+\contentsline {section}{\numberline {14}Conclusiones}{8}{section.44}%
+\contentsline {section}{\numberline {A}Stack Tecnologico Consolidado}{8}{appendix.45}%
+\contentsline {section}{\numberline {B}Nota de alcance}{8}{appendix.47}%

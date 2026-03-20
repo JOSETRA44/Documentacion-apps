@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774047428.16967 "c:/Users/USER/source/Documentacion-apps/doc-wayqui/doc-wayqui.tex" "doc-wayqui.pdf" "doc-wayqui" 1774047430.68405 2
+["pdflatex"] 1774047899.13674 "c:/Users/USER/source/Documentacion-apps/doc-wayqui/doc-wayqui.tex" "doc-wayqui.pdf" "doc-wayqui" 1774047901.70693 2
   "C:/Program Files/MiKTeX/tex/latex/listings/lstpatch.sty" 1741168182 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "C:/Users/USER/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1774039747 338208 012d198c3b15f5862bb38172a30f03d1 ""
   "C:/Users/USER/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1767102962 24224815 a3539c966ff461e53e6aa6efca746119 ""
@@ -264,12 +264,12 @@
   "C:/Users/USER/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/USER/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/USER/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/USER/source/Documentacion-apps/doc-wayqui/doc-wayqui.tex" 1774047419 27549 16f93d58527fbcee851f11896770cbe8 ""
-  "doc-wayqui.aux" 1774047430 20314 5a229d93316d4f59cec26faa6a698b62 "pdflatex"
-  "doc-wayqui.lof" 1774047430 1105 2f4764d5ab39aa9eac252bb85adf1d16 "pdflatex"
-  "doc-wayqui.lot" 1774047430 683 e56ceeff58bbd8c16e3f4a4d67ae6daf "pdflatex"
-  "doc-wayqui.tex" 1774047419 27549 16f93d58527fbcee851f11896770cbe8 ""
-  "doc-wayqui.toc" 1774047430 2878 b32bd03d3f527fe1bb0be3189f5cd98e "pdflatex"
+  "c:/Users/USER/source/Documentacion-apps/doc-wayqui/doc-wayqui.tex" 1774047894 24211 ceb5caa16cc5e7b0e86ef7c1bf134679 ""
+  "doc-wayqui.aux" 1774047901 19979 e3826d695066bca5636dfcd4f90fd65b "pdflatex"
+  "doc-wayqui.lof" 1774047901 1005 c459e7731f7485ad0ecb3c480783ac7f "pdflatex"
+  "doc-wayqui.lot" 1774047901 683 6a52470f71e0a0a2af52fd5a809841f3 "pdflatex"
+  "doc-wayqui.tex" 1774047894 24211 ceb5caa16cc5e7b0e86ef7c1bf134679 ""
+  "doc-wayqui.toc" 1774047901 2878 e519ba398a2e749c8b9c6e5e6edc97e4 "pdflatex"
   "qr-wayqui.png" 1774047223 7799 405323c5d1d8f86b4b6835e0519cbfe3 ""
   (generated)
   "doc-wayqui.aux"

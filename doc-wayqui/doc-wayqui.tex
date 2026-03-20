@@ -184,27 +184,26 @@ En mensajeria, los mensajes se pueden editar o borrar. Sin rastro auditable, la 
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-	width=0.9\textwidth,
-	height=6cm,
-	ybar stacked,
-	bar width=30pt,
+	width=0.88\textwidth,
+	height=5.5cm,
 	ymin=0,
 	ymax=22000,
 	grid=major,
 	grid style={draw=wayquiLine},
-	axis line style={draw=wayquiSlate},
-	tick style={draw=wayquiSlate},
-	ylabel={Volumen anual estimado (Millones S/)},
-	symbolic x coords={Peru 2026},
-	xtick=data,
-	legend style={at={(0.5,1.1)},anchor=south,legend columns=2,draw=none,fill=none}
+	ylabel={Volumen anual (Millones S/)},
+	bar width=40pt,
+	ybar stacked,
+	xtick={1},
+	xticklabel={Peru},
+	xmin=0.5,
+	xmax=1.5
 ]
-\addplot[fill=wayquiSky!70, draw=wayquiSky] coordinates {(Peru 2026,5000)};
-\addplot[fill=wayquiLime!80, draw=wayquiLimeDark] coordinates {(Peru 2026,15000)};
-\legend{Sistema financiero formal, Prestamos familiares/informales}
+\addplot[fill=wayquiSky!70] coordinates {(1,5000)};
+\addplot[fill=wayquiLime!85] coordinates {(1,15000)};
+\legend{Formal, Informal}
 \end{axis}
 \end{tikzpicture}
-\caption{Esquema 1. Mapa de calor de la informalidad financiera (estimado referencial)}
+\caption{Esquema 1. Informalidad financiera en Peru}
 \label{fig:mapa-informalidad}
 \end{figure}
 
@@ -228,34 +227,30 @@ Sea un prestamo $L$ con atributos criticos $A=\{c,d,m,t,p\}$:
 El checksum se calcula como:
 $$
 H(L)=\text{SHA-256}(c \parallel d \parallel m \parallel t \parallel p)
-$$
 Si cualquier atributo cambia, el hash deja de coincidir y la app marca el registro como \textit{disputed}.
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.98\textwidth}{!}{%
-\begin{tikzpicture}[
-	node distance=12mm,
-	boxA/.style={rectangle, rounded corners=1.8mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.35cm, minimum width=3.6cm, line width=0.55pt},
-	boxB/.style={rectangle, rounded corners=1.8mm, draw=wayquiSky, fill=white, align=center, minimum height=1.35cm, minimum width=4.2cm, line width=0.55pt},
-	arr/.style={-{Latex[length=2.3mm]}, draw=wayquiSlate, line width=0.7pt},
-	money/.style={-{Latex[length=2.7mm]}, draw=wayquiLimeDark, line width=1.0pt, dashed}
+\begin{tikzpicture}[scale=0.9,
+	boxA/.style={rectangle, rounded corners=1.8mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.3cm, minimum width=3.4cm, line width=0.55pt, font=\small},
+	boxB/.style={rectangle, rounded corners=1.8mm, draw=wayquiSky, fill=white, align=center, minimum height=1.3cm, minimum width=3.8cm, line width=0.55pt, font=\small},
+	arr/.style={-{Latex[length=2.2mm]}, draw=wayquiSlate, line width=0.7pt},
+	money/.style={-{Latex[length=2.5mm]}, draw=wayquiLimeDark, line width=1.0pt, dashed}
 ]
-\node[boxA] (acreedor) {\textbf{Acreedor}\\Genera deuda};
-\node[boxB, right=13mm of acreedor] (motor) {\textbf{Motor Wayqui}\\Genera hash SHA-256\\y registra evento};
-\node[boxA, right=13mm of motor] (db) {\textbf{Supabase DB}\\Ledger inmutable};
 
-\node[boxB, below=13mm of db] (deudor) {\textbf{Deudor}\\Recibe push y paga};
+\node[boxA] (acreedor) {Acreedor\\Genera deuda};
+\node[boxB, right=12mm of acreedor] (motor) {Motor Wayqui\\SHA-256};
+\node[boxA, right=12mm of motor] (db) {Supabase DB\\Inmutable};
+\node[boxB, below=12mm of db] (deudor) {Deudor\\Paga};
 
 \draw[arr] (acreedor) -- (motor);
 \draw[arr] (motor) -- (db);
 \draw[arr] (db) -- (deudor);
-\draw[money] (deudor.west) to[bend right=20] node[midway, below, text=wayquiLimeDark] {API Deep Link Yape/Plin} (acreedor.south);
+\draw[money] (deudor.west) to[bend right=18] (acreedor.south);
 
-\node[draw=red!80!black, rounded corners=1.1mm, line width=0.7pt, text=red!80!black, fill=white, anchor=north] at ($(motor.south)!0.5!(deudor.north)+(0,-0.25)$) {\textbf{Wayqui NUNCA toca el dinero}};
+\node[draw=red!75!black, rounded corners=0.8mm, line width=0.6pt, text=red!75!black, fill=white, font=\tiny, inner sep=2pt] at ($(motor.south)+(0,-0.5)$) {Wayqui nunca custodia fondos};
 \end{tikzpicture}
-}
-\caption{Esquema 2. Arquitectura zero-custody e integridad criptografica}
+\caption{Esquema 2. Arquitectura zero-custody}
 \label{fig:arquitectura-zero-custody}
 \end{figure}
 
@@ -295,29 +290,22 @@ checksum & text & Hash SHA-256 de validacion de integridad \\
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.94\textwidth}{!}{%
-\begin{tikzpicture}[
-	node distance=11mm,
-	user/.style={rectangle, rounded corners=1.6mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.3cm, minimum width=2.8cm, line width=0.6pt, font=\small},
-	db/.style={rectangle, rounded corners=1.6mm, draw=wayquiSky, fill=white, align=center, minimum height=2.8cm, minimum width=3.5cm, line width=0.7pt, font=\small},
-	rls/.style={double, double distance=1.5pt, draw=red!70!black, line width=0.8pt},
-	allow/.style={-{Latex[length=2.3mm]}, draw=wayquiLimeDark, line width=0.75pt},
-	block/.style={-{Latex[length=2.3mm]}, draw=red!70!black, line width=1.0pt}
+\begin{tikzpicture}[scale=0.85,
+	user/.style={rectangle, rounded corners=1.5mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.1cm, minimum width=2.4cm, font=\small},
+	db/.style={rectangle, rounded corners=1.5mm, draw=wayquiSky, fill=white, align=center, minimum height=2.2cm, minimum width=3cm, font=\small},
+	allow/.style={-{Latex[length=2.0mm]}, draw=wayquiLimeDark, line width=0.7pt}
 ]
 
-\node[user] (acreedor) {Acreedor\\UUID: 1};
-\node[user, right=2.2cm of acreedor] (deudor) {Deudor\\UUID: 2};
+\node[user] (cred) {Acreedor};
+\node[user, right=16mm of cred] (deb) {Deudor};
+\node[db, below=14mm of cred] (tbl) {Loans DB};
 
-\node[db, below=1.5cm of acreedor] (loans) {Tabla loans\\\\  id, creditor\_id,\\debtor\_id, amount,\\checksum};
+\draw[allow] (cred) -- (tbl);
+\draw[allow] (deb) -- (tbl);
 
-\draw[allow] (acreedor) -- (loans) node[midway, left, scale=0.8]{SELECT/UPDATE\\donde creditor\_id = 1};
-\draw[allow] (deudor) -- (loans) node[midway, right, scale=0.8]{SELECT/UPDATE\\donde debtor\_id = 2};
-
-\node[rectangle, rounded corners=1.2mm, draw=red!70!black, fill=white, line width=0.6pt, text=red!70!black, anchor=north] at ($(loans.south)+(0,-0.35)$) {\small\textbf{RLS: Acceso segregado por fila}};
-
+\node[draw=red!70!black, rounded corners=0.7mm, fill=white, line width=0.5pt, font=\tiny, text=red!70!black, inner sep=2pt] at ($(tbl.south)+(0,-0.4)$) {RLS: Acceso segregado por UUID};
 \end{tikzpicture}
-}
-\caption{Esquema 7. Seguridad Row-Level Security (RLS) en PostgreSQL}
+\caption{Esquema 7. Row-Level Security (RLS)}
 \label{fig:rls-seguridad}
 \end{figure}
 
@@ -338,9 +326,7 @@ SOM & Fase 1: estudiantes, freelancers y microcomerciantes (objetivo 1.5 millone
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-	scale=1.0,
+\begin{tikzpicture}[scale=0.9,
 	axis/.style={-{Latex[length=2.0mm]}, draw=wayquiSlate, line width=0.8pt},
 	comp/.style={circle, line width=0.6pt, minimum size=1.2cm, font=\small\bfseries, align=center},
 	wayqui/.style={fill=wayquiLime!80, draw=wayquiLimeDark},
@@ -360,7 +346,6 @@ SOM & Fase 1: estudiantes, freelancers y microcomerciantes (objetivo 1.5 millone
 \draw[dashed, wayquiLine] (0,4.5) -- (2,4.5);
 
 \end{tikzpicture}
-}
 \caption{Esquema 6. Posicionamiento competitivo de Wayqui}
 \label{fig:posicionamiento}
 \end{figure}
@@ -388,29 +373,20 @@ Datos e insights & Inteligencia agregada para entidades financieras (cumplimient
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-	node distance=14mm,
-	boxUser/.style={rectangle, rounded corners=2.0mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum height=1.8cm, minimum width=3.2cm, line width=0.6pt, font=\small},
-	boxRev/.style={rectangle, rounded corners=1.8mm, draw=wayquiSky, fill=white, align=center, minimum height=1.5cm, minimum width=3.8cm, line width=0.6pt, font=\small},
-	arr/.style={-{Latex[length=2.3mm]}, draw=wayquiSlate, line width=0.8pt},
-	arrmoney/.style={-{Latex[length=2.3mm]}, draw=wayquiLimeDark, line width=1.1pt, dashed}
+\begin{tikzpicture}[scale=0.85,
+	user/.style={circle, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum width=2.2cm, font=\small\bfseries},
+	revenue/.style={rectangle, rounded corners=1.2mm, draw=wayquiSky, fill=white, align=center, minimum height=0.9cm, minimum width=3.0cm, font=\small},
+	arrow/.style={-{Latex[length=2.0mm]}, draw=wayquiSlate, line width=0.7pt, dashed}
 ]
 
-\node[boxUser] (estudiante) {Estudiante\\Freelancer\\Comerciante};
-\node[boxRev, right=16mm of estudiante] (premium) {Wayqui\\Premium\\S/ 9.90/mes};
-\node[boxRev, below=16mm of premium] (score) {Wayqui Score\\CPA Lead\\S/ 100-200};
-\node[boxUser, below left=16mm and 8mm of score] (banco) {Caja Municipal\\Banco Fintech};
+\node[user] (usuario) at (0,0) {Usuario};
+\node[revenue, above right=8mm and 16mm of usuario] (b2c) {Premium B2C\\S/ 9.90/mes};
+\node[revenue, below right=8mm and 16mm of usuario] (b2b) {Score B2B\\CPA};
 
-\draw[arr] (estudiante) -- (premium);
-\draw[arrmoney] (premium.east) to[bend left=10] +(1.6cm,0) node[midway, above, text=wayquiLimeDark, scale=0.9]{Ingreso B2C};
-
-\draw[arr] (estudiante) -- (score);
-\draw[arrmoney] (score.south) to[bend right=15] node[midway, right, text=wayquiLimeDark, scale=0.9]{Ingreso B2B} (banco.north east);
-
+\draw[arrow] (usuario) -- (b2c);
+\draw[arrow] (usuario) -- (b2b);
 \end{tikzpicture}
-}
-\caption{Esquema 4. Modelo de negocio dual B2C + B2B}
+\caption{Esquema 4. Modelo dual B2C + B2B}
 \label{fig:modelo-negocio}
 \end{figure}
 
@@ -427,31 +403,29 @@ La adquisicion ocurre por obligacion funcional en cada prestamo: el acreedor inv
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.92\textwidth}{!}{%
-\begin{tikzpicture}[
-	every node/.style={font=\small},
-	ring/.style={circle, draw=wayquiLimeDark, line width=0.7pt, minimum width=2.8cm, align=center, fill=wayquiLight},
-	arr/.style={-{Latex[length=2.5mm]}, draw=wayquiSlate, line width=0.9pt},
-	label/.style={text=wayquiSlate, scale=0.85}
-]
+\resizebox{0.9\textwidth}{!}{%
+\begin{tikzpicture}[scale=0.95]
+\tikzstyle{ring}=[circle, draw=wayquiLimeDark, line width=0.7pt, minimum width=2.6cm, fill=wayquiLight, font=\small\bfseries]
+\tikzstyle{arr}=[-{Latex[length=2.2mm]}, draw=wayquiSlate, line width=0.85pt]
+\tikzstyle{lbl}=[text=wayquiSlate, scale=0.8, font=\small]
 
-\node[ring] (trigger) at (0,3.0) {\textbf{Acreedor}\\crea prestamo};
-\node[ring] (convite) at (3.8,1.0) {\textbf{Convite}\\por WhatsApp\\link Wayqui};
-\node[ring] (adoption) at (2.2,-2.4) {\textbf{Deudor}\\descarga app};
-\node[ring] (pago) at (-2.2,-2.4) {\textbf{Pago}\\via Yape/Plin};
-\node[ring] (viral) at (-3.8,1.0) {\textbf{Nuevo}\\acreedor};
+\node[ring] (trigger) at (0,2.8) {Acreedor\\crea};
+\node[ring] (convite) at (3.6,0.8) {Convite\\WhatsApp};
+\node[ring] (adoption) at (2.0,-2.2) {Deudor\\descarga};
+\node[ring] (pago) at (-2.0,-2.2) {Pago};
+\node[ring] (viral) at (-3.6,0.8) {Nuevo\\acreedor};
 
-\draw[arr] (trigger) -- node[label, above]{Paso 1} (convite);
-\draw[arr] (convite) -- node[label, right]{Paso 2} (adoption);
-\draw[arr] (adoption) -- node[label, below]{Paso 3} (pago);
-\draw[arr] (pago) -- node[label, left]{Paso 4} (viral);
-\draw[arr] (viral) -- node[label, above, scale=0.8]{Vuelta 1+}{white, text=wayquiInk} (trigger);
+\draw[arr] (trigger) -- node[lbl, above]{1} (convite);
+\draw[arr] (convite) -- node[lbl, right]{2} (adoption);
+\draw[arr] (adoption) -- node[lbl, below]{3} (pago);
+\draw[arr] (pago) -- node[lbl, left]{4} (viral);
+\draw[arr, dashed] (viral) -- node[lbl, above]{Vuelta 1+} (trigger);
 
-\node[draw=wayquiSky!80, rounded corners=1.0mm, line width=0.7pt, text=wayquiInk, fill=white, anchor=center, minimum width=4.5cm] at (0,-4.2) {K-factor: <1.2 | CAC: tendencia a cero};
+\node[draw=wayquiSky!75, rounded corners=0.8mm, line width=0.6pt, fill=white, font=\small, text=wayquiInk, inner sep=3pt] at (0,-3.8) {K-factor > 1.2 | CAC: tendencia a cero};
 
 \end{tikzpicture}
 }
-\caption{Esquema 5. Bucle viral de adquisicion (5 pasos)}
+\caption{Esquema 5. Bucle viral de adquisicion}
 \label{fig:bucle-viral}
 \end{figure}
 
@@ -467,8 +441,7 @@ Colombia (Nequi/DaviPlata) y Mexico (CoDi/Spin), con adaptacion a nuevos context
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.98\textwidth}{!}{%
-\begin{tikzpicture}[x=0.68cm,y=0.85cm]
+\begin{tikzpicture}[scale=0.85, x=0.68cm,y=0.85cm]
 	\draw[draw=wayquiSlate!40] (0,0) rectangle (14,4.2);
 	\foreach \x in {0,...,14} {\draw[wayquiLine] (\x,0) -- (\x,4.2);} 
 	\foreach \y/\label in {3.4/Herramienta P2P,2.2/SaaS Premium,1.0/Motor B2B Score,0.25/Expansion Regional} {
@@ -491,7 +464,6 @@ Colombia (Nequi/DaviPlata) y Mexico (CoDi/Spin), con adaptacion a nuevos context
 		\node[anchor=north, text=wayquiSlate, scale=0.72] at (\x,-0.1) {\q};
 	}
 \end{tikzpicture}
-}
 \caption{Esquema 3. Diagrama de Gantt del roadmap a cinco anos}
 \label{fig:gantt-wayqui}
 \end{figure}
@@ -525,16 +497,13 @@ EBITDA (S/) & -364,880 & 547,400 & 5,046,000 \\
 	height=6.5cm,
 	ymin=-500,
 	ymax=5500,
-	xmin=0,
-	xmax=3.5,
 	grid=major,
 	grid style={draw=wayquiLine},
 	axis line style={draw=wayquiSlate, line width=0.7pt},
 	tick style={draw=wayquiSlate, line width=0.6pt},
 	ylabel={Monto (miles S/)},
 	xlabel={Anos},
-	symbolic x coords={Ano 1, Ano 2, Ano 3},
-	xtick=data,
+	xticklabel={\pgfmathparse{int(\tick)}\pgfmathresult},
 	legend style={at={(0.98,0.35)},anchor=east,legend columns=1,draw=wayquiLine,fill=wayquiLight, fill opacity=0.9}
 ]
 
@@ -621,39 +590,6 @@ Mensajeria y notificaciones & Push notifications, canales de recordatorio automa
 Escalabilidad & Servicios desacoplados, consultas agregadas y optimizacion de latencia \\
 \bottomrule
 \end{longtable}
-
-\begin{figure}[htbp]
-\centering
-\resizebox{0.96\textwidth}{!}{%
-\begin{tikzpicture}[
-	layer/.style={rectangle, rounded corners=1.5mm, draw=wayquiSlate, fill=wayquiLight, align=center, minimum height=1.2cm, minimum width=3.5cm, line width=0.6pt, font=\small},
-	service/.style={rectangle, rounded corners=1.2mm, draw=wayquiSky, fill=white, align=center, minimum height=0.95cm, minimum width=2.4cm, line width=0.5pt, font=\tiny},
-	arr/.style={-{Latex[length=2.0mm]}, draw=wayquiSlate, line width=0.6pt}
-]
-
-\node[layer] (frontend) {\textbf{Frontend}\\Flutter + Riverpod};
-\node[service, below=12mm of frontend.west, anchor=west] (clean) {Clean Arch};
-\node[service, right=8mm of clean] (state) {State Mgmt};
-
-\node[layer, below=18mm of frontend] (backend) {\textbf{Backend}\\Supabase PostgreSQL};
-\node[service, below=12mm of backend.west, anchor=west] (rpc) {RPC Queries};
-\node[service, right=8mm of rpc] (rls) {Row-Level Security};
-
-\node[layer, below=18mm of backend] (payments) {\textbf{Payment Bridge}\\Yape / Plin Deep Links};
-
-\node[service, below=12mm of payments.west, anchor=west] (security) {SHA-256};
-\node[service, right=8mm of security] (notif) {Push Notif};
-
-\draw[arr] (frontend) -- (backend);
-\draw[arr] (backend) -- (payments);
-
-\draw[arr, dashed] (payments) to[bend right=15] (frontend);
-
-\end{tikzpicture}
-}
-\caption{Esquema 9. Capas tecnologicas de Wayqui}
-\label{fig:stack-tech}
-\end{figure}
 
 \section{Nota de alcance}
 Las cifras de mercado y proyecciones financieras del presente documento son referenciales y deben recalibrarse con data operacional real durante la etapa de ejecucion.
