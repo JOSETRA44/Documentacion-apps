@@ -193,10 +193,11 @@ En mensajeria, los mensajes se pueden editar o borrar. Sin rastro auditable, la 
 	ylabel={Volumen anual (Millones S/)},
 	bar width=40pt,
 	ybar stacked,
+	enlarge x limits=0.6,
 	xtick={1},
 	xticklabel={Peru},
-	xmin=0.5,
-	xmax=1.5
+	xmin=0,
+	xmax=2
 ]
 \addplot[fill=wayquiSky!70] coordinates {(1,5000)};
 \addplot[fill=wayquiLime!85] coordinates {(1,15000)};
@@ -225,8 +226,9 @@ Sea un prestamo $L$ con atributos criticos $A=\{c,d,m,t,p\}$:
 \end{itemize}
 
 El checksum se calcula como:
-$$
+\[
 H(L)=\text{SHA-256}(c \parallel d \parallel m \parallel t \parallel p)
+\]
 Si cualquier atributo cambia, el hash deja de coincidir y la app marca el registro como \textit{disputed}.
 
 \begin{figure}[htbp]
@@ -403,28 +405,26 @@ La adquisicion ocurre por obligacion funcional en cada prestamo: el acreedor inv
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.9\textwidth}{!}{%
-\begin{tikzpicture}[scale=0.95]
-\tikzstyle{ring}=[circle, draw=wayquiLimeDark, line width=0.7pt, minimum width=2.6cm, fill=wayquiLight, font=\small\bfseries]
-\tikzstyle{arr}=[-{Latex[length=2.2mm]}, draw=wayquiSlate, line width=0.85pt]
-\tikzstyle{lbl}=[text=wayquiSlate, scale=0.8, font=\small]
+\begin{tikzpicture}[scale=0.9,
+	stepnode/.style={rectangle, rounded corners=1.2mm, draw=wayquiLimeDark, fill=wayquiLight, align=center, minimum width=2.9cm, minimum height=1.1cm, font=\small\bfseries},
+	link/.style={-{Latex[length=2.2mm]}, draw=wayquiSlate, line width=0.85pt}
+]
 
-\node[ring] (trigger) at (0,2.8) {Acreedor\\crea};
-\node[ring] (convite) at (3.6,0.8) {Convite\\WhatsApp};
-\node[ring] (adoption) at (2.0,-2.2) {Deudor\\descarga};
-\node[ring] (pago) at (-2.0,-2.2) {Pago};
-\node[ring] (viral) at (-3.6,0.8) {Nuevo\\acreedor};
+\node[stepnode] (s1) at (-5.0,0) {1. Acreedor\\crea deuda};
+\node[stepnode] (s2) at (-1.7,0) {2. Envio por\\WhatsApp};
+\node[stepnode] (s3) at (1.6,0) {3. Deudor\\se registra};
+\node[stepnode] (s4) at (4.9,0) {4. Pago y\\cierre};
+\node[stepnode, fill=white, draw=wayquiSky] (s5) at (1.6,-2.1) {5. Nuevo\\acreedor};
 
-\draw[arr] (trigger) -- node[lbl, above]{1} (convite);
-\draw[arr] (convite) -- node[lbl, right]{2} (adoption);
-\draw[arr] (adoption) -- node[lbl, below]{3} (pago);
-\draw[arr] (pago) -- node[lbl, left]{4} (viral);
-\draw[arr, dashed] (viral) -- node[lbl, above]{Vuelta 1+} (trigger);
+\draw[link] (s1) -- (s2);
+\draw[link] (s2) -- (s3);
+\draw[link] (s3) -- (s4);
+\draw[link, dashed] (s4.south) to[bend right=20] node[below, text=wayquiSlate, font=\small]{Vuelta 1+} (s5.east);
+\draw[link, dashed] (s5.west) to[bend right=18] (s1.south);
 
-\node[draw=wayquiSky!75, rounded corners=0.8mm, line width=0.6pt, fill=white, font=\small, text=wayquiInk, inner sep=3pt] at (0,-3.8) {K-factor > 1.2 | CAC: tendencia a cero};
+\node[draw=wayquiSky!75, rounded corners=0.8mm, line width=0.6pt, fill=white, font=\small, text=wayquiInk, inner sep=3pt] at (0,-3.5) {K-factor > 1.2 | CAC en descenso};
 
 \end{tikzpicture}
-}
 \caption{Esquema 5. Bucle viral de adquisicion}
 \label{fig:bucle-viral}
 \end{figure}

@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {10.3}Fase 3 (Anos 4--5): Expansion LatAm}{6}{subsection.35}%
 \contentsline {section}{\numberline {11}Proyecciones Financieras (Pre-Seed)}{6}{section.37}%
 \contentsline {section}{\numberline {12}Requerimiento de Capital y Uso de Fondos}{6}{section.40}%
-\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{8}{section.42}%
+\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{6}{section.42}%
 \contentsline {section}{\numberline {14}Conclusiones}{8}{section.44}%
 \contentsline {section}{\numberline {A}Stack Tecnologico Consolidado}{8}{appendix.45}%
 \contentsline {section}{\numberline {B}Nota de alcance}{8}{appendix.47}%
