@@ -20,14 +20,14 @@
 \contentsline {subsection}{\numberline {7.1}B2C -- Wayqui Premium}{5}{subsection.25}%
 \contentsline {subsection}{\numberline {7.2}B2B -- Wayqui Score}{5}{subsection.26}%
 \contentsline {section}{\numberline {8}Ventaja Regulatoria y Foso Defensivo}{5}{section.29}%
-\contentsline {section}{\numberline {9}Go-To-Market y Bucle Viral}{5}{section.30}%
+\contentsline {section}{\numberline {9}Go-To-Market y Bucle Viral}{6}{section.30}%
 \contentsline {section}{\numberline {10}Roadmap 2026--2030}{6}{section.32}%
 \contentsline {subsection}{\numberline {10.1}Fase 1 (Anos 1--2): Dominio Peru}{6}{subsection.33}%
 \contentsline {subsection}{\numberline {10.2}Fase 2 (Ano 3): Motor B2B}{6}{subsection.34}%
 \contentsline {subsection}{\numberline {10.3}Fase 3 (Anos 4--5): Expansion LatAm}{6}{subsection.35}%
 \contentsline {section}{\numberline {11}Proyecciones Financieras (Pre-Seed)}{6}{section.37}%
 \contentsline {section}{\numberline {12}Requerimiento de Capital y Uso de Fondos}{6}{section.40}%
-\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{6}{section.42}%
+\contentsline {section}{\numberline {13}Riesgos y Mitigacion}{8}{section.42}%
 \contentsline {section}{\numberline {14}Conclusiones}{8}{section.44}%
 \contentsline {section}{\numberline {A}Stack Tecnologico Consolidado}{8}{appendix.45}%
 \contentsline {section}{\numberline {B}Nota de alcance}{8}{appendix.47}%
