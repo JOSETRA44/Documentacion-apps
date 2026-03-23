@@ -17,5 +17,5 @@
 \contentsline {subsection}{\numberline {7.2}Marketplace B2C (Cashflow Transaccional)}{3}{subsection.21}%
 \contentsline {section}{\numberline {8}ESG: Inclusión, Ecología \& Transparencia Operativa}{3}{section.22}%
 \contentsline {section}{\numberline {9}Estructura Base de Datos}{3}{section.23}%
-\contentsline {section}{\numberline {10}Proyección de Rentabilidad Exponencial (S/)}{4}{section.25}%
+\contentsline {section}{\numberline {10}Proyección de Rentabilidad Exponencial (S/)}{3}{section.25}%
 \contentsline {section}{\numberline {11}El ``ASK'': Uso Estratégico de Capital}{4}{section.27}%

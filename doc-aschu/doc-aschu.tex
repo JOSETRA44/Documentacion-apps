@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper,table]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -135,6 +135,9 @@
         % Footer
         \node[anchor=south west, text=qwSlate, font=\small] at ([xshift=5.8cm, yshift=1.5cm]current page.south west) {Revisión 1.0.0-production-ready | Documento Confidencial | Marzo 2026};
     \end{tikzpicture}
+    
+    % Se asegura el tamaño en blanco para el overlay evitando desbordes a la pag 2
+    \null\vfill\vspace*{20cm}
 \end{titlepage}
 
 \pagenumbering{roman}
