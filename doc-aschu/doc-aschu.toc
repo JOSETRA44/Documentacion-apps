@@ -1,26 +1,21 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Resumen Ejecutivo}{1}{section.1}%
-\contentsline {section}{\numberline {2}El "Agujero Negro" de la Logística Rural y Minera}{1}{section.2}%
+\contentsline {section}{\numberline {2}El ``Agujero Negro'' de la Logística Rural y Minera}{1}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Ceguera Operativa y Costos Ocultos}{1}{subsection.3}%
-\contentsline {subsection}{\numberline {2.2}Intermitencia de Red: El Problema del Ping}{1}{subsection.4}%
-\contentsline {subsection}{\numberline {2.3}Inseguridad e Informalidad}{1}{subsection.5}%
-\contentsline {section}{\numberline {3}Solución Qawaqawa: Infraestructura para Condiciones Extremas}{1}{section.7}%
-\contentsline {subsection}{\numberline {3.1}Arquitectura "Offline-First" y Degradación Elegante}{2}{subsection.8}%
-\contentsline {subsection}{\numberline {3.2}Dark "GTA-Style" Map y UX de Alta Fatiga}{2}{subsection.9}%
-\contentsline {subsection}{\numberline {3.3}Auditoría y Desempeño en Memoria: Legacy Renderer}{2}{subsection.10}%
-\contentsline {section}{\numberline {4}Fundamentos Físicos y Matemáticos de Cobertura}{2}{section.12}%
-\contentsline {subsection}{\numberline {4.1}Cálculo de Distancia (Haversine Isolate)}{3}{subsection.13}%
-\contentsline {subsection}{\numberline {4.2}Algoritmo ETA Modificado por Gradiente}{3}{subsection.17}%
-\contentsline {section}{\numberline {5}Auditoría de Clean Architecture y Código Corporativo}{3}{section.19}%
-\contentsline {section}{\numberline {6}Mercado y Matriz Competitiva (El Océano Azul)}{3}{section.21}%
-\contentsline {section}{\numberline {7}Modelo de Negocio: La Doble Hélice (B2B + B2C)}{5}{section.24}%
-\contentsline {subsection}{\numberline {7.1}B2B Enterprise SaaS (El Muro de Retención)}{5}{subsection.25}%
-\contentsline {subsection}{\numberline {7.2}B2C / C2C Marketplace (El Crecimiento Agresivo)}{5}{subsection.26}%
-\contentsline {subsection}{\numberline {7.3}Flywheel Effect Integral}{5}{subsection.27}%
-\contentsline {section}{\numberline {8}Impacto ESG Profundo}{5}{section.28}%
-\contentsline {section}{\numberline {9}Estrategia Go-to-Market (GTM) e Hitos}{5}{section.29}%
-\contentsline {section}{\numberline {10}Diseño de Base de Datos Sub-Métrica}{6}{section.31}%
-\contentsline {section}{\numberline {11}Punto de Equilibrio (Break-even) y Proyecciones}{6}{section.33}%
-\contentsline {section}{\numberline {12}El ASK y Uso Estratégico de Fondos}{6}{section.35}%
-\contentsline {section}{\numberline {13}Carta de Visión al Inversor: Dominando el Perú Profundo}{7}{section.36}%
-\contentsline {section}{\numberline {A}Detalles Técnicos para Due Diligence: Supabase Schema y Migraciones}{7}{appendix.37}%
+\contentsline {subsection}{\numberline {2.2}Intermitencia de Red: El Defecto Sistémico del Software Tradicional}{1}{subsection.4}%
+\contentsline {section}{\numberline {3}Solución Qawaqawa: Code-Base para Condiciones Extremas}{1}{section.5}%
+\contentsline {subsection}{\numberline {3.1}Arquitectura ``Offline-First'' con Colas GZIP}{1}{subsection.6}%
+\contentsline {subsection}{\numberline {3.2}Ergonomía Dark Map (Zero-Fatigue)}{1}{subsection.7}%
+\contentsline {subsection}{\numberline {3.3}Auditoría de Renderizado y Tolerancia (Legacy Renderer)}{2}{subsection.8}%
+\contentsline {section}{\numberline {4}Fundamentos Telemáticos Aislados}{2}{section.10}%
+\contentsline {subsection}{\numberline {4.1}Haversine Interpolado (Fijador de Precios)}{2}{subsection.11}%
+\contentsline {subsection}{\numberline {4.2}Modelo Predictivo ETA según Gradiente Andino}{2}{subsection.13}%
+\contentsline {section}{\numberline {5}Clean Architecture y Calidad de Código}{2}{section.15}%
+\contentsline {section}{\numberline {6}Mercado Océano Azul (TAM, SAM, SOM)}{2}{section.17}%
+\contentsline {section}{\numberline {7}Doble Hélice: Modelo de Negocio Predictivo}{3}{section.19}%
+\contentsline {subsection}{\numberline {7.1}B2B (Predictibilidad y Bloqueo de Competencia)}{3}{subsection.20}%
+\contentsline {subsection}{\numberline {7.2}Marketplace B2C (Cashflow Transaccional)}{3}{subsection.21}%
+\contentsline {section}{\numberline {8}ESG: Inclusión, Ecología \& Transparencia Operativa}{3}{section.22}%
+\contentsline {section}{\numberline {9}Estructura Base de Datos}{3}{section.23}%
+\contentsline {section}{\numberline {10}Proyección de Rentabilidad Exponencial (S/)}{4}{section.25}%
+\contentsline {section}{\numberline {11}El ``ASK'': Uso Estratégico de Capital}{4}{section.27}%

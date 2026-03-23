@@ -41,9 +41,9 @@
 \definecolor{qwAmberDark}{HTML}{CC8F00}
 \definecolor{qwInk}{HTML}{121212}
 \definecolor{qwSlate}{HTML}{4A5568}
-\definecolor{qwLight}{HTML}{FFFDF5}
+\definecolor{qwLight}{HTML}{FFFDF8}
 \definecolor{qwRed}{HTML}{DC143C}
-\definecolor{qwLine}{HTML}{EDF2F7}
+\definecolor{qwLine}{HTML}{CBD5E1}
 
 % Semantic Colors
 \definecolor{info}{HTML}{2563EB}
@@ -71,29 +71,12 @@
 % Headers / Footers
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{qwSlate}{\small QAWAQAWA | Whitepaper de Inversión}}
-\fancyhead[R]{\textcolor{qwSlate}{\small \thepage\ de \pageref{LastPage}}}
+\fancyhead[L]{\textcolor{qwSlate}{\small QAWAQAWA | Logística de Precisión Andina}}
+\fancyhead[R]{\textcolor{qwSlate}{\small \thepage\ / \pageref{LastPage}}}
 \renewcommand{\headrulewidth}{0pt} 
 \setlength{\headheight}{14pt}
 
 % Professional Callouts
-\newtcolorbox{keybox}{
-    colback=qwLight,
-    colframe=qwAmberDark,
-    boxrule=0.5pt,
-    arc=3pt,
-    left=1em,
-    right=1em,
-    top=1ex,
-    bottom=1ex,
-    title=\faLightbulb\ Propuesta de valor,
-    fonttitle=\small\bfseries\color{qwAmberDark},
-    coltitle=qwAmberDark,
-    attach title to upper,
-    after title={:\enskip},
-    titlerule=0pt
-}
-
 \newtcolorbox{signalbox}{
     colback=info!5,
     colframe=info,
@@ -114,59 +97,44 @@
 \begin{document}
 
 \begin{titlepage}
-    \thispagestyle{empty}
-    
-    \vspace*{2cm}
-    \begin{flushleft}
-        {\fontsize{48}{52}\selectfont\bfseries\color{qwInk} QAWAQAWA}\\[0.5cm]
-        {\Large\color{qwSlate} El Sistema Nervioso Central de la Logística Andina}
-    \end{flushleft}
-
-    \vspace{2.5cm}
-    \begin{flushleft}
-        {\fontsize{32}{36}\selectfont\bfseries\color{qwAmberDark}Whitepaper}\\[0.2cm]
-        {\fontsize{18}{22}\selectfont\color{qwSlate}de Inversión y Expansión Estratégica 2026}
-    \end{flushleft}
-
-    \vspace{2cm}
-    \begin{flushleft}
-        \textcolor{qwLine}{\rule{8cm}{1pt}}\\[0.6cm]
-        {\normalsize\color{qwSlate}Ronda Seed | SaaS B2B + Marketplace | Logística Offline-First}\\[0.4cm]
-        \textcolor{qwLine}{\rule{8cm}{1pt}}
-    \end{flushleft}
-    
-    \vspace{1.5cm}
-    \begin{flushleft}
-        \begin{minipage}{0.9\textwidth}
-            \begin{keybox}
-            {\bfseries\color{qwAmberDark}Ingeniería para condiciones extremas.} Qawaqawa es una infraestructura de datos geoespaciales resiliente, diseñada específicamente para zonas sin cobertura móvil usando arquitecturas \textit{Offline-First}, WebSockets y telemetría de alta precisión.
-            \end{keybox}
-        \end{minipage}
-    \end{flushleft}
-
-    \vfill
-    
-    \begin{flushleft}
-        \begin{tabular}{@{}p{0.6\textwidth} p{0.35\textwidth}@{}}
-            \begin{tabular}{@{}ll@{}}
-                \textbf{\color{qwInk}CEO} & CEO \& Founder \\[0.15cm]
-                \textbf{\color{qwInk}Tech} & Flutter (Clean Arch), Supabase Real-time \\[0.15cm]
-                \textbf{\color{qwInk}Mercado} & Perú (Corredor Minero) $\rightarrow$ LatAm \\[0.15cm]
-                \textbf{\color{qwInk}Capital} & S/ 1,500,000 (\$400,000 USD) \\
-            \end{tabular}
-            &
-            \begin{flushright}
-                \vspace{-2cm}
-                %\fbox{\includegraphics[width=3cm]{qr-qawaqawa.png}}\\[0.2cm]
-                {\tiny\color{qwSlate}qawaqawa.rural.io}
-            \end{flushright}
-        \end{tabular}
-    \end{flushleft}
-    
-    \vspace{1.5cm}
-    \begin{flushleft}
-        {\tiny\color{qwSlate}Documento estrictamente confidencial | Propósito: Evaluación de inversión | Marzo 2026}
-    \end{flushleft}
+    \begin{tikzpicture}[remember picture,overlay]
+        % Dark minimalist sidebar
+        \fill[qwInk] (current page.south west) rectangle ([xshift=5cm]current page.north west);
+        % Amber accent line
+        \fill[qwAmberDark] ([xshift=5cm]current page.south west) rectangle ([xshift=5.2cm]current page.north west);
+        
+        % Vertical text on the edge for design
+        \node[rotate=90, text=qwSlate!30, font=\Huge\bfseries\sffamily, opacity=0.3] at ([xshift=2.5cm, yshift=-14cm]current page.north west) {INFRAESTRUCTURA RURAL};
+        
+        % Massive title
+        \node[anchor=north west, text=qwInk, font=\fontsize{55}{60}\selectfont\bfseries] at ([xshift=6.5cm, yshift=-4cm]current page.north west) {QAWAQAWA};
+        
+        % Subtitle
+        \node[anchor=north west, text=qwSlate, font=\huge\bfseries] at ([xshift=6.7cm, yshift=-6.5cm]current page.north west) {El Sistema Nervioso Central};
+        \node[anchor=north west, text=qwSlate, font=\huge\bfseries] at ([xshift=6.7cm, yshift=-7.5cm]current page.north west) {de la Logística Andina};
+        
+        % Divider
+        \draw[thick, qwLine] ([xshift=6.5cm, yshift=-9cm]current page.north west) -- ([xshift=18cm, yshift=-9cm]current page.north west);
+        
+        % Document details
+        \node[anchor=north west, text=qwInk, font=\Large\bfseries] at ([xshift=6.5cm, yshift=-10cm]current page.north west) {Whitepaper de Inversión Estratégica};
+        \node[anchor=north west, text=qwSlate, font=\normalsize] at ([xshift=6.5cm, yshift=-10.8cm]current page.north west) {Ronda Seed | SaaS B2B + Marketplace | Escalabilidad Offline-First};
+        
+        % Document Purpose block
+        \node[anchor=north west, text=qwInk, font=\normalsize\bfseries] at ([xshift=6.5cm, yshift=-13cm]current page.north west) {PROPUESTA DE VALOR:};
+        \node[anchor=north west, text=qwSlate, font=\normalsize, text width=12cm, align=justify] at ([xshift=6.5cm, yshift=-13.8cm]current page.north west) {Qawaqawa Rural Logistics es una plataforma SaaS de monitoreo y conectividad B2B/B2C, diseñada expresamente para condiciones hostiles (GPUs de gama baja y carencia de conectividad), consolidando un monopolio tecnológico en los yacimientos del Corredor Minero Sur mediante colas de telemetría inyectadas tras reconexión (Offline-First).};
+        
+        % Credentials
+        \node[anchor=north west, text=qwInk, font=\normalsize\bfseries] at ([xshift=6.5cm, yshift=-18cm]current page.north west) {PREPARACIÓN \& TECNOLOGÍA:};
+        \node[anchor=north west, text=qwSlate, font=\normalsize, text width=6cm] at ([xshift=6.5cm, yshift=-18.7cm]current page.north west) {CEO \& Founder\\Senior Mobile Architect\\Flutter, Supabase, Data-Queue};
+        
+        % Target
+        \node[anchor=north west, text=qwInk, font=\normalsize\bfseries] at ([xshift=13.5cm, yshift=-18cm]current page.north west) {MERCADO Y CAPITAL:};
+        \node[anchor=north west, text=qwSlate, font=\normalsize, text width=6cm] at ([xshift=13.5cm, yshift=-18.7cm]current page.north west) {Corredor Minero $\rightarrow$ LatAm\\Target: S/ 1,500,000\\(\$400,000 USD aprox.)};
+        
+        % Footer
+        \node[anchor=south west, text=qwSlate, font=\small] at ([xshift=5.8cm, yshift=1.5cm]current page.south west) {Revisión 1.0.0-production-ready | Documento Confidencial | Marzo 2026};
+    \end{tikzpicture}
 \end{titlepage}
 
 \pagenumbering{roman}
@@ -180,66 +148,38 @@
 \pagenumbering{arabic}
 
 \section{Resumen Ejecutivo}
-Mientras las grandes startups de movilidad internacional (Uber, Cabify, InDrive) compiten agresivamente por márgenes ínfimos en capitales altamente digitalizadas, el Perú profundo moviliza \textbf{S/ 18,000 Millones anuales} en absoluta informalidad y ceguera de datos.
+Mientras las grandes startups de movilidad internacional compiten agresivamente por márgenes ínfimos en capitales metropolitanas, el Perú profundo moviliza \textbf{S/ 18,000 Millones anuales} en transporte interprovincial y logística minera bajo total ceguera digital e informalidad.
 
-Qawaqawa Rural Logistics es la primera plataforma \textit{Enterprise-grade} para rastreo y gestión de flotas mineras y de última milla andina, nacida en Challhuahuacho (centro de gravedad de Las Bambas). Conectamos contratistas, conductores, carga y pasajeros bajo un hub digital invulnerable a las pésimas condiciones de conectividad gracias a una arquitectura \textbf{Offline-First}.
+Qawaqawa Rural Logistics es la primera plataforma \textit{Enterprise-grade} para rastreo y gestión de flotas, nacida en Challhuahuacho, Apurímac. Conectamos contratistas, conductores, y carga logística bajo una arquitectura \textbf{Offline-First} resiliente ante la desconexión total.
 
 \begin{signalbox}
-\textbf{Status Técnico:} El proyecto ha sido auditado y validado estructuralmente por un Senior Mobile Architect, certificando \textit{Zero Crashes} en dispositivos de gama baja (GPUs Mali), garantizando estabilidad total y operaciones fluidas incluso en entornos sub-óptimos.
+\textbf{Status Técnico:} El proyecto ha sido auditado estructuralmente por un Senior Mobile Architect, certificando la eliminación del 100\% de crashes en dispositivos rurales (GPUs Mali G52/57) garantizando estabilidad militar en la travesía.
 \end{signalbox}
 
-\section{El "Agujero Negro" de la Logística Rural y Minera}
-El transporte interprovincial y rural no representa un problema de comodidad, sino de supervivencia económica y seguridad corporativa. Hemos identificado ineficiencias críticas que el software tradicional no resuelve por enfocarse exclusivamente en topologías urbanas.
+\section{El ``Agujero Negro'' de la Logística Rural y Minera}
+Hemos identificado vulnerabilidades críticas en el transporte andino que el software tradicional internacional ignora por enfocarse exclusivamente en topologías urbanas.
 
 \subsection{Ceguera Operativa y Costos Ocultos}
-En zonas como Challhuahuacho, Cotabambas y Espinar operan más de 800 empresas contratistas sub-mineras. Una vez que las minivans o camionetas 4x4 cruzan las zonas iluminadas del campamento, los gerentes de flota enfrentan total ceguera. Esto genera un desvío del \textbf{15\% del OPEX logístico} por robos de combustible y usos no autorizados de la maquinaria en rutas alternas.
+Más de 800 empresas contratistas operan en la travesía Challhuahuacho-Cusco. Una vez que las flotas 4x4 y las minivans abandonan las zonas iluminadas por torres de 4G, los gerentes de flota enfrentan total ceguera. Esto resulta en el desvío silencioso del \textbf{15\% del OPEX logístico} entre contrabando de combustible e ineficiencia de ruta.
 
-\subsection{Intermitencia de Red: El Problema del Ping}
-Aplicaciones como Google Maps o inDrive asumen una conexión de banda ancha 4G constante. Cuándo un vehículo ingresa a una subida a 4,000 m.s.n.m, o experimenta el "Efecto Sombra" andino, la aplicación pierde sesión, detiene los cobros, colapsa en \textit{timeouts} y provoca el abandono (Churn) del conductor.
+\subsection{Intermitencia de Red: El Defecto Sistémico del Software Tradicional}
+Toda aplicación global de movilidad asume la conectividad como una garantía. Al penetrar las altas laderas (efecto sombra), los requerimientos HTTP sufren timeout. Esto causa que el modelo \textit{hybrid composition} colapse o arroje excepciones, perdiendo el rastreo y abortando la integridad del viaje para el contratista pasivo y el chófer rural.
 
-\subsection{Inseguridad e Informalidad}
-Más del 60\% de accidentes fatales peruanos ocurren en vías interprovinciales andinas (SUTRAN, 2025). Abordar un vehículo en estos puntos constituye enfrentarse a una "caja negra": sin trazabilidad del conductor, sin manifiesto digital, ni un ETA de confiabilidad.
+\section{Solución Qawaqawa: Code-Base para Condiciones Extremas}
+Construimos un Centro de Datos distribuido a través de teléfonos móviles.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[scale=0.9,
-    zone/.style={ellipse, draw=qwRed, fill=qwRed!20, minimum width=3cm, minimum height=1.5cm, align=center, thick},
-    nodept/.style={circle, draw=qwInk, fill=qwAmber, minimum size=0.6cm, inner sep=0pt, font=\small\bfseries},
-    road/.style={color=qwAmberDark, line width=2pt}
-]
+\subsection{Arquitectura ``Offline-First'' con Colas GZIP}
+Nuestro factor defensivo definitivo: \textbf{Zero Data Loss}. Si cae la red, la telemetría del sensor GPS se consolida asíncronamente en SQLite (\textit{Hive}). A través del servicio inyectado \texttt{NetworkInfo}, al reconectar la señal (Ej. llegando a un pueblo), el \textit{Background Service} dispara y comprime toda la trayectoria histórica hacia nuestro clúster PostgreSQL en Supabase, ahorrando KB al transportista y consumiendo mínimos recursos.
 
-% Base Road
-\draw[road] (0,2) .. controls (3,4) and (6,0) .. (10,3);
-
-\node[nodept] (challu) at (0,2) {CH};
-\node[below, text=qwSlate] at (challu.south) {Challhuahuacho};
-
-\node[nodept] (cusco) at (10,3) {CU};
-\node[below, text=qwSlate] at (cusco.south) {Cusco};
-
-\node[zone] at (2.5,3.3) {Sombra 1\\(Abra)};
-\node[zone] at (7.5,1.2) {Sombra 2\\(Cañón)};
-
-\end{tikzpicture}
-\caption{Mapa conceptual del Corredor Minero y puntos críticos de falla (Sombras Celulares 0\% Cobertura).}
-\label{fig:corredor-minero}
-\end{figure}
-
-\section{Solución Qawaqawa: Infraestructura para Condiciones Extremas}
-No construimos una aplicación de taxis; construimos el \textbf{Sistema de Control SCADA} de las subcontratas andinas a través de la red celular.
-
-\subsection{Arquitectura "Offline-First" y Degradación Elegante}
-Es nuestra mayor ventaja competitiva (\textit{Moat}). Usamos SQLite (\textit{Hive}/\textit{SharedPreferences}) para albergar un registro inmutable (\textit{Event Queue}) de waypoints GPS. Si se cae la red, Qawaqawa almacena datos y verifica permanentemente con el servicio \texttt{NetworkInfo}. Al detectar que los paquetes regresan (Ej. al cruzar la ladera de una montaña), lanza un proceso asíncrono con compresión GZIP hacia los túneles TCP en Supabase.
-
-\subsection{Dark "GTA-Style" Map y UX de Alta Fatiga}
-Los choferes en estas rutas operan sin alumbrado público durante 10 horas seguidas. El renderizado utiliza colores de alto contraste:
+\subsection{Ergonomía Dark Map (Zero-Fatigue)}
+Operar durante la noche a más de 3,500 m.s.n.m exige interfaces inmersivas y sin deslumbramiento (\textit{miosis pupilar protectora}).
 \begin{itemize}
-    \item \textbf{Eficiencia Energética:} Paga los pixeles OLED negros, ahorrando un \textbf{38\%} vital en batería en lugares de difícil recarga.
-    \item \textbf{Ergonomía Visual:} Marcadores en "Electric Amber" (\texttt{\#FFB300}) evitan accidentes por deslumbramiento súbito protegiendo la miosis pupilar de cabina.
+    \item \textbf{High Contrast Alerts:} Tonos ambarinos y rojo crítico.
+    \item \textbf{Batería Crítica:} Apagar los pixeles en pantallas OLED andinas (Ej. Infinix, Xiaomi) incrementa el uptime de la app en \textbf{38\%}, crucial para choferes sin puertos de carga operativos.
 \end{itemize}
 
-\subsection{Auditoría y Desempeño en Memoria: Legacy Renderer}
-Certificado por Arquitectura Mobile: Implementar Hybrid Composition en Flutter fallaba sistemáticamente en las extendidas GPUs Mali de celulares gamas medias de los Andes (Ej. Infinix, Tecno). El cambio hacia \texttt{Renderer.LEGACY} antes de compilar eliminó el 100\% de crashes de mapa gris.
+\subsection{Auditoría de Renderizado y Tolerancia (Legacy Renderer)}
+Se corrigió y certificó la inyección de \texttt{Google Maps LEGACY Renderer} en la clase nativa \texttt{MainActivity.kt}, desactivando \textit{SurfaceView} problemáticos mitigando el temido "Mapa Gris" de las GPUs Mali-G de gama de entrada, capturando así a cientos de conductores de las zonas más alejadas.
 
 \begin{figure}[htbp]
 \centering
@@ -255,239 +195,129 @@ Certificado por Arquitectura Mobile: Implementar Hybrid Composition en Flutter f
 \node[boxA, right=12mm of localdb] (network) {NetworkInfo\\Check Conexión};
 \node[boxB, below=12mm of network] (supabase) {Supabase\\PostgreSQL Cloud};
 
-\draw[arr] (gps) -- (localdb) node[midway, above, text=qwSlate, font=\scriptsize] {1. Push};
-\draw[arr] (localdb) -- (network) node[midway, above, text=qwSlate, font=\scriptsize] {2. Try Sync};
-\draw[arrdash] (network) -- (supabase) node[midway, right, text=info, font=\scriptsize] {3. Batch GZIP};
-\draw[arrdash] (network.west) to[bend right=20] node[left, text=qwRed, font=\scriptsize] {Fallo: Retener} (localdb.south);
+\draw[arr] (gps) -- (localdb) node[midway, above, text=qwSlate, font=\scriptsize] {1. Push offline};
+\draw[arr] (localdb) -- (network) node[midway, above, text=qwSlate, font=\scriptsize] {2. Sync Check};
+\draw[arrdash] (network) -- (supabase) node[midway, right, text=info, font=\scriptsize] {3. Batch GZIP TCP};
+\draw[arrdash] (network.west) to[bend right=20] node[left, text=qwRed, font=\scriptsize] {Fallo temporal: Retener} (localdb.south);
 
-\node[draw=qwRed, rounded corners=0.8mm, line width=0.6pt, text=qwRed, fill=white, font=\tiny, inner sep=2pt] at ($(localdb.south)+(0,-0.5)$) {Zero Data Loss};
+\node[draw=qwRed, rounded corners=0.8mm, line width=0.6pt, text=qwRed, fill=white, font=\tiny, inner sep=2pt] at ($(localdb.south)+(0,-0.5)$) {Persistencia Invulnerable};
 \end{tikzpicture}
-\caption{Esquema 2. Cadena de custodia de datos Offline-First}
+\caption{Ciclo de telemetría y retención de información Offline-First.}
 \label{fig:arquitectura-offline}
 \end{figure}
 
-\section{Fundamentos Físicos y Matemáticos de Cobertura}
-La competencia terceriza en servicios web y APIS el cobro y la distancia geocéntrica de la travesía. Qawaqawa computa la cinemática \textbf{localmente}.
+\section{Fundamentos Telemáticos Aislados}
+Para resolver trayectos ciegos dependemos de fórmulas astronómicas precargadas.
+\subsection{Haversine Interpolado (Fijador de Precios)}
+La distancia real acumulada ($d$) cobrada a fin de mes por contratista, es obtenida con la fórmula matricial local que compensa la caída del túnel TCP:
+\begin{equation}
+d = 6371 \times 2 \cdot \text{atan2}\left(\sqrt{a}, \sqrt{1-a}\right)
+\end{equation}
+A base de esto, nuestro servidor solo suma agregados certeros, evitando fraudes corporativos.
 
-\subsection{Cálculo de Distancia (Haversine Isolate)}
-Para zonas muertas, calculamos la curvatura geoide terrestre sin llamar al servidor:
+\subsection{Modelo Predictivo ETA según Gradiente Andino}
+Usando la diferencia de altitud calculamos retenciones en ascensos andinos, perfeccionando en un 94\% nuestra eficiencia prediciendo ETAs:
 \begin{equation}
-a = \sin^2\left(\frac{\Delta\phi}{2}\right) + \cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta\lambda}{2}\right)
+v_{est} = v_{base} \cdot \exp\left(-3.5 \cdot \left| \frac{\Delta h}{d} \right| \right)
 \end{equation}
-\begin{equation}
-c = 2 \cdot \text{atan2}\left(\sqrt{a}, \sqrt{1-a}\right)
-\end{equation}
-\begin{equation}
-d = R \cdot c
-\end{equation}
-Con $R = \text{6371 km}$. Esta función localiza y totaliza la tarifa con precisión peritada.
 
-\subsection{Algoritmo ETA Modificado por Gradiente}
-A diferencia de Google Maps que asume planicies norteamericanas, introdujimos la variable del terreno a partir de la métrica barométrica de altitud ($\Delta h$):
-\begin{equation}
-v_{est} = v_{base} \cdot \exp\left(-k \cdot \left| \frac{\Delta h}{d} \right| \right)
-\end{equation}
-Aplicando una fricción andina real ($k \approx 3.5$), alcanzamos el 94\% de SLA de exactitud en ETAs montañosos con neblina.
-
-\section{Auditoría de Clean Architecture y Código Corporativo}
-Tras la extensa evaluación del Senior Architecture Chapter, Qawaqawa se fundamenta en rigurosos principios \textit{SOLID}.
-\begin{itemize}
-    \item \textbf{Capa de Dominio Inyectada:} Uso estricto de \textit{Dartz Either} (\texttt{Either<Failure, Unit>}) para control absoluto de fallos sin enmascarar excepciones en interfaces inyectadas vía Riverpod.
-    \item \textbf{Segregación de Entidades:} Separation of Concerns absoluto. El perfil comercial \textit{DriverLocation} se independizó del telemétrico \textit{VehicleLocation}. Esta modularidad permite que un conductor cambie de Minivan en pleno corredor sin romper la integridad relacional transaccional.
-\end{itemize}
+\section{Clean Architecture y Calidad de Código}
+Se implementó un estándar corporativo usando clases abstractas con inversión de control de la capa Domain (Manejo de \textit{Dartz}) y separando analíticamente al Conductor de la Máquina.
 
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[scale=0.85,
-    layer/.style={rectangle, rounded corners=1.5mm, draw=qwAmberDark, fill=qwLight, align=center, minimum height=1.1cm, minimum width=10cm, font=\small},
+    layer/.style={rectangle, rounded corners=1.5mm, draw=qwAmberDark, fill=qwLight, align=center, minimum height=1.1cm, minimum width=10.5cm, font=\small},
     arrow/.style={-{Latex[length=2.0mm]}, draw=qwSlate, line width=0.7pt}
 ]
 
-\node[layer, fill=qwLine, draw=qwSlate] (pres) {\textbf{Presentation Layer}: flutter\_bloc + Material 3 + MapView Optimizado};
-\node[layer, below=0.5cm of pres] (domain) {\textbf{Domain Layer}: Entities (Driver, Vehicle), UseCases (Dartz)};
-\node[layer, below=0.5cm of domain] (data) {\textbf{Data Layer}: DataSources, Supabase Clients, Local Hive, Models};
-\node[layer, fill=info!10, draw=info, below=0.5cm of data] (core) {\textbf{Core Services}: Connectivity (NetworkInfo), DI (GetIt)};
+\node[layer, fill=qwLine!50, draw=qwSlate] (pres) {\textbf{Presentation}: Bloc/Cubit + MapView Render (Legacy Support)};
+\node[layer, below=0.5cm of pres] (domain) {\textbf{Domain Layer}: \texttt{DriverLocation} Entity + UseCases (\textit{Dartz}) };
+\node[layer, below=0.5cm of domain] (data) {\textbf{Data Layer}: DataSources Remotos/Locales, Supabase Real-Time};
+\node[layer, fill=info!10, draw=info, below=0.5cm of data] (core) {\textbf{Core}: DI (GetIt) e inyección de capa agnóstica de conectividad};
 
 \draw[arrow] (pres) -- (domain);
 \draw[arrow] (data) -- (domain);
 \draw[arrow] (core) -- (data);
 
 \end{tikzpicture}
-\caption{Esquema 3. Clean Architecture (Mobile-Scale)}
+\caption{Clean Architecture inyectada y auditada a lo largo del stack.}
 \label{fig:clean-architecture}
 \end{figure}
 
-\section{Mercado y Matriz Competitiva (El Océano Azul)}
+\section{Mercado Océano Azul (TAM, SAM, SOM)}
+Las Bambas representa solo una arteria. El corredor completo moviliza presupuestos masivos.
 
 \begin{table}[htbp]
 \centering
-\caption{Dimensionamiento Macroeconómico de Mercado (Perú + Andes)}
+\caption{Análisis de Captura Económica}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
 \toprule
-Segmento & Valor Estimado & Descripción de Enfoque \\
+Vector & Mercado Valuado & Contexto Táctico \\
 \midrule
-TAM & S/ 18,000 Millones & Logística de transporte interprovincial y rural informal (pasajeros/carga) \\
-SAM & S/ 2,500 Millones & Huella de transporte hacia mega-yacimientos mineros (Las Bambas, Antapaccay) \\
-SOM & S/ 150 Millones (Fase 1) & 20\% del volumen transaccional en Challhuahuacho y rutas auxiliares de la zona \\
+TAM Perú & S/ 18,000 M & Escenario nacional andino sin infraestructura digital especializada. \\
+SAM Minero & S/ 2,500 M & Macro-contratos de corporaciones sub-extractivas interprovinciales. \\
+ SOM Fase 1 & S/ 150 M & Captura temprana (Target = 24 meses) en Challhuahuacho y Cusco. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Qawaqawa compite en un ambiente hostil, desterrando a soluciones globales a la obsolescencia técnica:
+\section{Doble Hélice: Modelo de Negocio Predictivo}
+\subsection{B2B (Predictibilidad y Bloqueo de Competencia)}
+Módulo `Fleet Manager` entregado a asociaciones andinas que alquilan Pickups a corporativas con tarifa \textit{SaaS} (S/ 120 mensual / unidad). La métrica LTV:CAC oscila el \textbf{12x}.
+
+\subsection{Marketplace B2C (Cashflow Transaccional)}
+Permisos y logística comunitaria. `Take-rate` (10\%) por carga empaquetada o pasajes en unidades asociadas con automatizaciones.
+
+\section{ESG: Inclusión, Ecología \& Transparencia Operativa}
+Los camiones de regreso desocupados (Empty Return) caen un 40\% gracias al matching en \texttt{driver\_locations}. A nivel gubernamental y social el chofer es dotado de \textit{historial fiduciario} y un botón de pánico en rutas desoladas.
+
+\section{Estructura Base de Datos}
+La ingesta asíncrona exige índices ultra precisos.
 
 \begin{table}[htbp]
 \centering
-\caption{Matriz Competitiva y Resiliencia}
-\begin{tabularx}{\textwidth}{>{\bfseries}X p{3.2cm} p{2.5cm} p{3.2cm}}
-\toprule
-Característica & \cellcolor{qwAmber!15}\textbf{Qawaqawa} & Uber / inDrive & Sistemas Físicos GPS \\
-\midrule
-\cellcolor{qwAmber!15}Conectividad & \cellcolor{qwAmber!15}\textbf{Intermitente} (Offline DB)& \color{red}4G Obligatorio & GPRS Físico \\
-\cellcolor{qwAmber!15}Hardware Req. & \cellcolor{qwAmber!15}Smartphone regular & Smartphone & \color{qwRed}Tracker Caro (\$200+) \\
-\cellcolor{qwAmber!15}Ecosistema B2C & \cellcolor{qwAmber!15}Integrado Carga+Pax & Solo Pasajeros & Nulo (Solo monitoreo) \\
-\cellcolor{qwAmber!15}Enterprise Dash. & \cellcolor{qwAmber!15}\textbf{Fleet Manager} & Básico & Friccionado/Legacy UI \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-
-\section{Modelo de Negocio: La Doble Hélice (B2B + B2C)}
-Operamos bajo \textit{Dual-sided Revenue}, uniendo ingresos recurrentes estabilizadores corporativos (MRR) con métricas agresivas transaccionales (GMV).
-
-\subsection{B2B Enterprise SaaS (El Muro de Retención)}
-Minimizamos el \textit{churn} aliándonos con flotillas de proveedores y asociaciones que arriendan vehículos a operaciones mineras.
-\begin{itemize}
-    \item \textbf{Pricing B2B:} S/ 120 mensuales por vehículo en el Qawaqawa Fleet Manager.
-    \item \textbf{LTV a 3 años:} $\approx$ S/ 4,320. Con CAC B2B de apenas S/ 350. (Ratio $LTV/CAC > 12x$).
-\end{itemize}
-
-\subsection{B2C / C2C Marketplace (El Crecimiento Agresivo)}
-\begin{itemize}
-    \item \textbf{Monetización:} \textit{Take-rate} de 10\% mediante recaudo transaccional (Billeteras Digitales, Yape, Plin puenteados).
-    \item \textbf{Ticket promedio (AOV):} S/ 100/viaje rural o \textit{cargo-box}. Muy por encima de un ticket urbano tradicional.
-\end{itemize}
-
-\subsection{Flywheel Effect Integral}
-Adquirir a un contratista inyecta oferta liquida (Asientos y espacio de Minivan) cautiva en nuestra red; la oferta atrae a mercaderes pasivos (B2C), y la demanda empuja a más flotas a migrar a \textit{SaaS}.
-
-\section{Impacto ESG Profundo}
-Qawaqawa digitaliza procesos de alto riesgo, alineándose rigurosamente a los mandatos ESG internacionales de capital riesgo:
-\begin{itemize}
-    \item \textbf{[E] Medioambiental:} El \textbf{Routing matching} algorítmico satura el uso logístico y destruye los trayectos ``fantasmas" interprovinciales, deprimindo severamente la huella de GEI andina.
-    \item \textbf{[S] Social:} El chofer sub-empleado y rural obtiene un score de "Digital Trust". Se empodera el historial crediticio originado en la \textit{App}. El botón de pánico en rutas desoladas reduce mortalidades operativas y previene asaltos piratas logísticos.
-    \item \textbf{[G] Gobernanza Táctica:} Transparencia auditable a nivel Sunat (SUNAT) obligando indirectamente la formalización de asociaciones de transportistas históricamente "caja negra".
-\end{itemize}
-
-\section{Estrategia Go-to-Market (GTM) e Hitos}
-
-No despilfarraremos capital en pauta metropolitana. Nuestro GTM es quirúrgico, B2B-Led e híper localizado: "Botas en los Andes".
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[scale=0.85, x=0.68cm,y=0.85cm]
-    \draw[draw=qwSlate!40] (0,0) rectangle (14,3.2);
-    \foreach \x in {0,...,14} {\draw[qwLine] (\x,0) -- (\x,3.2);} 
-    \foreach \y/\label in {2.4/F1: Dominio Data (Chall), 1.2/F2: Cusco y Arequipa, 0.4/F3: IA Predictiva} {
-        \node[anchor=east, text=qwInk, scale=0.88] at (-0.22,\y) {\textbf{\label}};
-    }
-
-    \fill[qwAmberDark!92] (0.1,2.0) rectangle (4.5,2.8);
-    \node[text=white, scale=0.85] at (2.3,2.4) {Suscripción Subsidiada Flotas M1-9};
-
-    \fill[info!85] (4.6,0.8) rectangle (9.5,1.6);
-    \node[text=white, scale=0.85] at (7.0,1.2) {Expansión Escaneo QR M10-24};
-
-    \fill[qwInk!85] (9.6,0.05) rectangle (13.8,0.73);
-    \node[text=white, scale=0.85] at (11.7,0.4) {Machine Learning (SaaS Data) M25+};
-
-    \foreach \x/\q in {0/Mes 0,3/Mes 6,6/Mes 12,9/Mes 18,12/Mes 24,14/Mes 30+} {
-        \node[anchor=north, text=qwSlate, scale=0.72] at (\x,-0.1) {\q};
-    }
-\end{tikzpicture}
-\caption{Cronograma de escalamiento táctico acelerado}
-\label{fig:gantt-qawaqawa}
-\end{figure}
-
-
-\section{Diseño de Base de Datos Sub-Métrica}
-Respaldado en migraciones certificadas usando \texttt{supabase-js}. La ingestión masiva de \textit{payloads} UDP/WS debe ser perfecta.
-
-\begin{table}[htbp]
-\centering
-\caption{Diccionario Categórico (PostgreSQL + GIS) -- Tabla \texttt{driver\_locations}}
+\caption{Auditoría Relacional \texttt{driver\_locations} (PostgreSQL + GIS)}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}p{3cm} X}
 \toprule
-Columna & Tipo de Dato & Rol e Indexación \\
+Schema C/D & Tipo & Propósito Operacional (Supabase) \\
 \midrule
-id & UUID & PK Criptográfico (Localmente Creado) \\
-driver\_id & Text & FK. Llave indexada de B2B. \\
-latitude, lng & Double & Coordenadas en alta frecuencia. B-Tree geo \\
-heading & Double & Vector direccional e interpolación \\
-timestamp & Timestamptz & Sort and batching index para \textit{Cold Storage Backup} \\
-is\_online & Boolean & Control de sesiones de turnos mineros \\
+id & UUID & PK. Optimización ante colisión remota. \\
+driver\_id & Text & Llave para cruces B2B y perfiles comerciales. \\
+latitude, lng & Double (GIS) & Geoposición telemétrica indizada B-Tree. \\
+timestamp & Timestamptz & Sort y Cold Storage via \textit{PGCron} mensual. \\
+is\_online & Boolean & Filtro masivo e indicador de fin de turno. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Para mitigar lentitud por sobreescritura, automatizamos particiones PGCron aislando la data transaccional fresca (\textit{Hot data}) de los registros predictivos de meses cerrados (\textit{Cold data}).
-
-\section{Punto de Equilibrio (Break-even) y Proyecciones}
-
-Operar en nube con un modelo automatizado reduce el CAPEX al límite físico de la empresa. Asumimos gastos de nómina directivos y servidores como ancla (S/ 120,000 mensuales aprox). 
+\section{Proyección de Rentabilidad Exponencial (S/)}
 
 \begin{table}[htbp]
 \centering
-\caption{Resumen Financiero Consolidado (En PEN)}
+\caption{Modelación Financiera Multianual Hacia Posición Monopólica}
 \begin{tabularx}{\textwidth}{>{\bfseries}X r r r}
 \toprule
-Indicador de Tracción & Año 1 (Challhuahuacho) & Año 2 (Cusco Sur) & Año 3 (LatAm Minera) \\
+Métrica de Valor & Meses 1 a 12 & Meses 13 a 24 & Meses 25 a 36 \\
 \midrule
-Vehículos B2B Flota & 350 & 1,800 & 6,500 \\
-Viajes Mensuales GMV & 20,000 & 110,000 & 450,000 \\
-Ingreso SaaS B2B (S/) & 504,000 & 2,592,000 & 9,360,000 \\
-Ingreso Marketplace (S/)& 1,800,000 & 9,900,000 & 40,500,000 \\
-\textbf{Gross Revenue (S/)} & \textbf{2,304,000} & \textbf{12,492,000} & \textbf{49,860,000} \\
+Unidades B2B & 350 & 1,800 & 6,500 \\
+Viajes Mensuales B2C & 20,000 & 110,000 & 450,000 \\
+Revenue Combinado & 2,304,000 & 12,492,000 & 49,860,000 \\
+OPEX Total (AWS+Cloud)& 1,450,000 & 4,200,000 & 12,500,000 \\
 \midrule
-OPEX Operativo (S/) & 1,450,000 & 4,200,000 & 12,500,000 \\
-\textbf{EBITDA Core (S/)} & \textbf{+ 854,000} & \textbf{+ 8,292,000} & \textbf{+ 37,360,000} \\
+\textbf{EBITDA Táctico}&\cellcolor{qwAmber!20}\textbf{854,000} & \cellcolor{info!20}\textbf{8,292,000} & \cellcolor{success!20}\textbf{37,360,000} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{El ASK y Uso Estratégico de Fondos}
-Inyección objetivo: \textbf{S/ 1,500,000} (Aprox. \$400K USD) mediante un SAFEs en Cap de S/ 15 Millones o 10\%-12\% en Equity.
-
-\textbf{Alocación:}
-\begin{itemize}[leftmargin=1.1cm]
-    \setlength\itemsep{0.5em}
-    \item \textbf{45\% Ingeniería I+D:} Migración cloud elástica y Data Scientist (Machine Learning de obstrucción montañosa).
-    \item \textbf{30\% Expansión Comercial (GTM):} Fichaje de equipos ``Cazadores B2B" en terreno con sede satélite en Cusco.
-    \item \textbf{15\% Compliance Minero Corporativo:} Homologación ISO IT y auditoría de cibersguridad externa para proveedores AA+.
-    \item \textbf{10\% Buffer de Liquidez Operativa.}
+\section{El ``ASK'': Uso Estratégico de Capital}
+Levantamiento de Ronda Seed: \textbf{S/ 1,500,000 (Aprox. \$400K USD)} por SAFE (Cap. S/ 15M) o 10\% de equity directo, garantizando oxígeno por veinticuatro meses y financiamiento de:
+\begin{itemize}
+    \item \textbf{45\% Ingeniería Pesada:} Elásticos cloud, Isolates y Data Science (Machine Learning).
+    \item \textbf{30\% Go-To-Market B2B:} Hub satelital de ventas en Cusco.
+    \item \textbf{15\% Legal/ISO:} Cyber-compliance para pactar con transnacionales.
 \end{itemize}
 
-\section{Carta de Visión al Inversor: Dominando el Perú Profundo}
-
-Las grandes fortunas y retornos multiplicativos no se gestan financiando a startups que emulan confort en metrópolis sobrepobladas. Se cultivan desplegando logística donde el mercado carece de la pericia y el sudor para ejecutar software táctico real. 
-
-Silicon Valley no va a digitalizar Chumbivilcas, tampoco Espinar o Las Bambas. Tratarán de venderles infraestructura inútil con presuposiciones urbanas (\textit{Ping=10ms}). Qawaqawa ha domesticado esa hostilidad construyendo código a la medida de los Andes. Tenemos la herramienta transaccional que fusiona la rentabilidad macroeconómica de los minerales peruanos, con el micro-transporte de carga de un minivan informal elevándolo al hiper-monitoreo corporativo. 
-
-Ese vacío masivo, de \textbf{S/ 18,000 Millones anuales}, nos pertenece digitalmente por derecho técnico. 
-
-Bienvenidos a la Logística Cognitiva de Montaña.
-
-\appendix
-
-\section{Detalles Técnicos para Due Diligence: Supabase Schema y Migraciones}
-\begin{longtable}{>{\bfseries}p{4.2cm}p{9.8cm}}
-\toprule
-Área de Auditoría & Implementación Validada \\
-\midrule
-Performance Rendering & Empleo de \texttt{Google Maps LEGACY Renderer} para eliminar cuellos de botella Vulkan/Compositor en GPU Mali G52/57 y hardware sub-óptimo. \\
-Conectividad Segregada & \texttt{NetworkInfo} layer agnóstica bloqueando interacciones nulas hacia capas HTTP y almacenando estados temporalmente en Caché. \\
-Real-Time Delivery & Túneles Websocket con \textit{Supabase Pub/Sub} inyectando notificaciones en tiempo real (\textit{60 FPS}) garantizados por \texttt{driver\_locations}. \\
-Validación Funcional & 100\% de cobertura en Capa Domain y Data cumpliendo principios \textit{SOLID}. Repositorios mapeados contra \textit{Dartz Either} reduciendo errores sistémicos y controlando excepciones a nivel granular. \\
-\bottomrule
-\end{longtable}
+Bienvenidos a Qawaqawa Rural Logistics.
 
 \end{document}
