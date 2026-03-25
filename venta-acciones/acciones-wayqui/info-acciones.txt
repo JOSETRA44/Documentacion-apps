@@ -1,0 +1,54 @@
+ACUERDO MARCO DE INVERSIÓN SEMILLA Y CESIÓN DE DERECHOS FUNDACIONALES EN EXPECTATIVA (S.A.F.E.)
+Conste por el presente documento privado, el Acuerdo de Inversión Semilla y Derechos Expectaticios, que celebran de mutuo acuerdo, de una parte, el Desarrollador Fundador, y de la otra, el Inversor Ángel, bajo los términos y condiciones estipulados en las siguientes cláusulas:
+
+I. COMPARECENCIA DE LAS PARTES
+EL FUNDADOR (PARTE RECEPTORA Y DESARROLLADORA):
+
+Nombre Completo: José Gabriel Huanaco Muñoz
+
+Documento de Identidad (DNI): ________________________
+
+Domicilio Legal: __________________________________________________, ciudad de Arequipa, Perú.
+
+Rol: Creador, Desarrollador Principal y Titular de los Derechos de Propiedad Intelectual del Proyecto Tecnológico denominado "WAYQUI".
+
+EL INVERSOR ÁNGEL (PARTE EMISORA DEL CAPITAL):
+
+Nombre Completo: __________________________________________________
+
+Documento de Identidad (DNI): ________________________
+
+Domicilio Legal: __________________________________________________, ciudad de ________________.
+
+II. ANTECEDENTES DEL PROYECTO
+SEGUNDA. EL FUNDADOR es el creador intelectual, arquitecto de software y único propietario actual del código fuente, bases de datos y marca en desarrollo del producto de software financiero "WAYQUI" (en adelante, "EL PROYECTO").
+TERCERA. EL PROYECTO se encuentra actualmente en fase de desarrollo temprano (Bootstrapping / Fase Beta) y su capitalización fundacional ha sido dividida de manera simbólica y administrativa en diez (10) Participaciones Fundacionales, representando cada una un diez por ciento (10%) del valor patrimonial futuro.
+
+III. OBJETO DEL CONTRATO Y VALORACIÓN
+CUARTA. Por virtud del presente instrumento, EL INVERSOR acuerda inyectar capital semilla por la suma total y definitiva de S/ 100.00 (Cien y 00/100 Soles) a favor de EL FUNDADOR, destinados exclusivamente a la operatividad, infraestructura tecnológica y escalabilidad de EL PROYECTO.
+QUINTA. En contraprestación directa a esta inyección de liquidez, EL FUNDADOR cede a EL INVERSOR una (1) Participación Fundacional, lo que representa el diez por ciento (10%) de los derechos económicos expectaticios sobre EL PROYECTO.
+
+IV. NATURALEZA JURÍDICA Y DECLARACIÓN DE RIESGO
+SEXTA. Ambas partes reconocen expresamente que EL PROYECTO no se encuentra constituido como una sociedad mercantil formal en los Registros Públicos al momento de esta firma. Por lo tanto, esta inversión representa un Acuerdo Simple para Capital Futuro (S.A.F.E. por sus siglas en inglés).
+SÉPTIMA (ALTO RIESGO). EL INVERSOR declara comprender plenamente la naturaleza de alto riesgo y la volatilidad inherente al desarrollo de startups tecnológicas. El retorno de inversión no está garantizado a corto plazo y está sujeto a la tracción del mercado, rendimientos marginales y validación del modelo de negocio de WAYQUI.
+
+V. DERECHOS EXPECTATICIOS Y PROPIEDAD INTELECTUAL
+OCTAVA. En el evento futuro en que EL PROYECTO se constituya legalmente como una persona jurídica (S.A.C., S.R.L., u otra), el presente contrato otorga a EL INVERSOR el derecho irrenunciable a que su participación simbólica sea convertida en acciones formales de la nueva empresa, manteniendo su cuota del 10% de la valoración inicial, libre de dilución en la primera ronda formal.
+NOVENA. La Propiedad Intelectual del código base, repositorios de GitHub, esquemas de bases de datos y secretos comerciales de WAYQUI seguirán siendo propiedad exclusiva e intransferible de EL FUNDADOR hasta la constitución legal de la sociedad comercial. EL INVERSOR no adquiere derechos de intervención sobre la arquitectura de software o decisiones técnicas del producto.
+
+VI. JURISDICCIÓN Y BUENA FE
+DÉCIMA. Ambas partes se someten a la jurisdicción de los jueces y tribunales de la ciudad de Arequipa para resolver cualquier controversia derivada del presente acuerdo, renunciando expresamente al fuero de sus domicilios.
+
+Estando en total acuerdo con las cláusulas precedentes, leen, ratifican y firman el presente documento en dos (2) copias de igual tenor y valor legal.
+
+Suscrito en la ciudad de __________________, a los ____ días del mes de ___________ del año 2026.
+
+JOSÉ GABRIEL HUANACO MUÑOZ
+El Fundador / CEO
+DNI: _________________
+Huella Digital: [ Espacio para huella ]
+
+[NOMBRE DEL INVERSOR A LA IMPRESIÓN]
+El Inversor Ángel
+DNI: _________________
+Huella Digital: [ Espacio para huella ]
