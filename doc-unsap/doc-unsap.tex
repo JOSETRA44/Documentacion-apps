@@ -1,389 +1,818 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10.5pt,a4paper]{article}
 
+%% ────────────────────────────────────────────────────────────────────────────
+%%  ENCODING & LANGUAGE
+%% ────────────────────────────────────────────────────────────────────────────
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
-\usepackage[margin=2.4cm]{geometry}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  FUENTE: Helvetica / sans-serif limpia
+%% ────────────────────────────────────────────────────────────────────────────
+\usepackage{helvet}
+\usepackage{lmodern}
 \usepackage{microtype}
+\renewcommand{\familydefault}{\sfdefault}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  LAYOUT
+%% ────────────────────────────────────────────────────────────────────────────
+\usepackage[left=2.6cm, right=2.6cm, top=2.6cm, bottom=3cm]{geometry}
 \usepackage{setspace}
+\usepackage{parskip}
+\setstretch{1.18}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  PAQUETES VISUALES
+%% ────────────────────────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc,backgrounds}
+\usepackage[most]{tcolorbox}
 \usepackage{graphicx}
+\usepackage{caption}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  TABLAS
+%% ────────────────────────────────────────────────────────────────────────────
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{colortbl}
+\renewcommand{\arraystretch}{1.28}
+\setlength{\tabcolsep}{8pt}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  LISTAS
+%% ────────────────────────────────────────────────────────────────────────────
 \usepackage{enumitem}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  SECCIONES Y ENCABEZADOS
+%% ────────────────────────────────────────────────────────────────────────────
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{tikz}
-\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc}
-\usepackage[most]{tcolorbox}
-\usepackage[hypertexnames=false]{hyperref}
+
+%% ────────────────────────────────────────────────────────────────────────────
+%%  HIPERVÍNCULOS
+%% ────────────────────────────────────────────────────────────────────────────
+\usepackage[hypertexnames=false, hidelinks]{hyperref}
 \usepackage{bookmark}
-\usepackage{helvet}
-\usepackage{xcolor}
-\usepackage{caption}
 
-\renewcommand{\familydefault}{\sfdefault}
-\setstretch{1.11}
-\setlist[itemize]{itemsep=2pt, topsep=3pt}
-\setlist[enumerate]{itemsep=2pt, topsep=3pt}
-\renewcommand{\arraystretch}{1.16}
-\setlength{\tabcolsep}{6pt}
-\captionsetup{font=small,labelfont=bf,labelsep=period}
 
-\definecolor{unsaMaroon}{HTML}{7A0018}
-\definecolor{unsaInk}{HTML}{232323}
-\definecolor{unsaSlate}{HTML}{5C6470}
-\definecolor{unsaLight}{HTML}{F5F6F8}
-\definecolor{unsaBlue}{HTML}{0B5CAD}
-\definecolor{unsaGreen}{HTML}{1B7F4E}
-\definecolor{unsaGold}{HTML}{B88400}
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SISTEMA DE COLORES  (design token layer)
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  Brand
+\definecolor{unsaMaroon} {HTML}{7A0018}
+\definecolor{unsaMaroonL}{HTML}{F9EFF1}   % maroon 5%
+\definecolor{unsaBlue}   {HTML}{1D4ED8}
+\definecolor{unsaBlueL}  {HTML}{EFF6FF}   % blue 5%
+\definecolor{unsaGold}   {HTML}{D97706}
+\definecolor{unsaGoldL}  {HTML}{FFFBEB}   % gold 5%
+\definecolor{unsaGreen}  {HTML}{059669}
+\definecolor{unsaGreenL} {HTML}{ECFDF5}
+%%  Neutral scale
+\definecolor{unsaInk}    {HTML}{1E293B}   % headings
+\definecolor{unsaBody}   {HTML}{374151}   % body text
+\definecolor{unsaSlate}  {HTML}{64748B}   % secondary
+\definecolor{unsaMuted}  {HTML}{94A3B8}   % captions
+\definecolor{unsaBorder} {HTML}{E2E8F0}   % dividers
+\definecolor{unsaLight}  {HTML}{F8FAFC}   % surface
+\definecolor{unsaWhite}  {HTML}{FFFFFF}
+%%  Cover dark
+\definecolor{coverBg}    {HTML}{0F172A}   % slate-900
+\definecolor{coverBg2}   {HTML}{1E293B}   % slate-800
 
+%% ─ Configuración de caption y listas (después de definir colores) ──────────
+\captionsetup{font=small, labelfont=bf, labelsep=period, skip=6pt}
+\setlist[itemize]{leftmargin=1.2cm, itemsep=3pt, topsep=4pt,
+  label={\color{unsaMaroon}\rule[0.2ex]{5pt}{5pt}}}
+\setlist[enumerate]{leftmargin=1.2cm, itemsep=3pt, topsep=4pt}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  HYPERSETUP
+%% ═══════════════════════════════════════════════════════════════════════════
 \hypersetup{
-	colorlinks=true,
-	linkcolor=unsaMaroon,
-	urlcolor=unsaBlue,
-	citecolor=unsaMaroon,
-	pdftitle={UNSAP - Whitepaper de Inversion y Plan de Expansion},
-	pdfauthor={Equipo UNSAP},
-	pdfsubject={EdTech, SuperApp universitaria, estrategia de inversion},
-	pdfkeywords={UNSAP, EdTech, Flutter, Supabase, Whitepaper, Inversion}
+  colorlinks=true,
+  linkcolor=unsaMaroon,
+  urlcolor=unsaBlue,
+  citecolor=unsaMaroon,
+  pdftitle={UNSAP — Whitepaper de Inversión 2026},
+  pdfauthor={Equipo UNSAP},
+  pdfsubject={EdTech SuperApp universitaria — estrategia de inversión},
+  pdfkeywords={UNSAP, EdTech, Flutter, Supabase, Whitepaper, Inversión}
 }
 
-\titleformat{\section}{\Large\bfseries\color{unsaMaroon}}{\thesection.}{0.55em}{}
-\titleformat{\subsection}{\large\bfseries\color{unsaInk}}{\thesubsection}{0.45em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{unsaInk}}{\thesubsubsection}{0.45em}{}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  FORMATO DE SECCIONES
+%% ═══════════════════════════════════════════════════════════════════════════
+
+%% Section — badge numerado + línea inferior
+\titleformat{\section}
+  {\Large\bfseries\color{unsaInk}}
+  {\colorbox{unsaMaroon}{\color{white}\hspace{4pt}\thesection\hspace{4pt}}}
+  {0.75em}{}
+  [{\color{unsaBorder}\titlerule[0.5pt]}]
+\titlespacing*{\section}{0pt}{3ex}{1.5ex}
+
+%% Subsection — número en maroon, texto en ink
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{unsaInk}}
+  {\color{unsaMaroon}\thesubsection.}
+  {0.5em}{}[]
+\titlespacing*{\subsection}{0pt}{2ex}{0.8ex}
+
+%% Subsubsection
+\titleformat{\subsubsection}
+  {\small\bfseries\color{unsaSlate}}
+  {}
+  {0em}{}[]
+\titlespacing*{\subsubsection}{0pt}{1.4ex}{0.4ex}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  CABECERA / PIE DE PÁGINA
+%% ═══════════════════════════════════════════════════════════════════════════
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{unsaSlate}{UNSAP | Whitepaper de Inversion}}
-\fancyhead[R]{\textcolor{unsaSlate}{\thepage\ de \pageref{LastPage}}}
-\renewcommand{\headrulewidth}{0.25pt}
-\setlength{\headheight}{14pt}
+\setlength{\headheight}{16pt}
 
+\fancyhead[L]{%
+  {\footnotesize\bfseries\color{unsaMaroon}UNSAP}%
+  \enspace{\color{unsaBorder}\textbar}\enspace
+  {\footnotesize\color{unsaSlate}Whitepaper de Inversión 2026}%
+}
+\fancyhead[R]{%
+  {\footnotesize\color{unsaSlate}\thepage\ \textsl{de}\ \pageref{LastPage}}%
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{\color{unsaBorder}\leaders\hrule height\headrulewidth\hfill}%
+}
+\renewcommand{\footrulewidth}{0pt}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  COMPONENTES TCOLORBOX
+%% ═══════════════════════════════════════════════════════════════════════════
+
+%% ─ keybox: alerta / nota clave con borde izquierdo maroon ──────────────────
 \newtcolorbox{keybox}{
-	colback=unsaLight,
-	colframe=unsaMaroon,
-	boxrule=0.55pt,
-	arc=1.2mm,
-	left=2.2mm,
-	right=2.2mm,
-	top=1.1mm,
-	bottom=1.1mm
+  enhanced, breakable,
+  colback=unsaMaroonL,
+  colframe=unsaMaroon,
+  boxrule=0pt,
+  borderline west={3pt}{0pt}{unsaMaroon},
+  arc=0pt, sharp corners,
+  left=10pt, right=10pt, top=7pt, bottom=7pt
 }
 
+%% ─ signalbox: hipótesis / insight con borde blue ───────────────────────────
 \newtcolorbox{signalbox}{
-	colback=white,
-	colframe=unsaBlue,
-	boxrule=0.5pt,
-	arc=1.0mm,
-	left=2mm,
-	right=2mm,
-	top=1mm,
-	bottom=1mm
+  enhanced, breakable,
+  colback=unsaBlueL,
+  colframe=unsaBlue,
+  boxrule=0pt,
+  borderline west={3pt}{0pt}{unsaBlue},
+  arc=0pt, sharp corners,
+  left=10pt, right=10pt, top=7pt, bottom=7pt
 }
 
+%% ─ successbox: hito positivo ───────────────────────────────────────────────
+\newtcolorbox{successbox}{
+  enhanced, breakable,
+  colback=unsaGreenL,
+  colframe=unsaGreen,
+  boxrule=0pt,
+  borderline west={3pt}{0pt}{unsaGreen},
+  arc=0pt, sharp corners,
+  left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+
+%% ─ darkbox: caja oscura para datos de inversión ────────────────────────────
+\newtcolorbox{darkbox}{
+  colback=coverBg2,
+  colframe=coverBg2,
+  boxrule=0pt,
+  arc=4pt,
+  left=14pt, right=14pt, top=12pt, bottom=12pt,
+  fontupper=\color{white}
+}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  COMANDO TABLA — header coloreado
+%% ═══════════════════════════════════════════════════════════════════════════
+\newcommand{\tableheadrow}{\rowcolor{unsaMaroon}}
+\newcommand{\tablehead}[1]{\color{white}\bfseries #1}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  DOCUMENTO
+%% ═══════════════════════════════════════════════════════════════════════════
 \begin{document}
 
+%% ┌──────────────────────────────────────────────────────────────────────────┐
+%% │  PORTADA                                                                 │
+%% └──────────────────────────────────────────────────────────────────────────┘
 \begin{titlepage}
-	\thispagestyle{empty}
-	\begin{tikzpicture}[remember picture,overlay]
-		\fill[unsaMaroon] (current page.north west) rectangle ([yshift=-3.8cm]current page.north east);
-		\fill[unsaLight] ([yshift=-4.5cm]current page.north west) rectangle ([yshift=-5.1cm]current page.north east);
-	\end{tikzpicture}
+\thispagestyle{empty}
 
-	\vspace*{0.8cm}
-	{\color{white}\Large\bfseries UNIVERSIDAD NACIONAL DE SAN AGUSTIN}\par
-	\vspace{0.2cm}
-	{\color{white}\normalsize Propuesta de Transformacion Digital Academica}\par
+%% Fondo oscuro completo + decoración geométrica
+\begin{tikzpicture}[remember picture, overlay]
+  %% Background
+  \fill[coverBg] (current page.north west) rectangle (current page.south east);
+  %% Círculos decorativos sutiles
+  \fill[unsaMaroon, opacity=0.18]
+    ([xshift=15cm, yshift=-6cm]current page.north west) circle (9cm);
+  \fill[unsaBlue, opacity=0.08]
+    ([xshift=-2cm, yshift=-20cm]current page.north west) circle (8cm);
+  \fill[white, opacity=0.02]
+    ([xshift=18cm, yshift=-24cm]current page.north west) circle (10cm);
+  %% Barra lateral izquierda maroon
+  \fill[unsaMaroon]
+    (current page.north west)
+    rectangle ([xshift=0.45cm]current page.south west);
+  %% Línea dorada separadora (inferior)
+  \fill[unsaGold]
+    ([yshift=5.8cm]current page.south west)
+    rectangle ([yshift=6.1cm]current page.south east);
+  %% Banda inferior oscura para metadatos
+  \fill[coverBg2]
+    (current page.south west)
+    rectangle ([yshift=5.8cm]current page.south east);
+\end{tikzpicture}
 
-	\vspace{2.5cm}
-	\begin{center}
-		{\Huge\bfseries\color{unsaMaroon}UNSAP}\\[0.2cm]
-		{\Large\color{unsaInk}Sistema Operativo de la Vida Universitaria}\\[0.9cm]
+%% ── Institución (zona superior) ────────────────────────────────────────────
+\vspace*{1.4cm}
+\hspace{0.4cm}
+{\color{unsaMuted}\footnotesize\bfseries\uppercase{Universidad Nacional de San Agustín}}
+\hspace{0.25cm}
+{\color{unsaMaroon!60}\textbar}
+\hspace{0.25cm}
+{\color{unsaMuted}\footnotesize Arequipa, Perú · 2026}
 
-		\rule{0.88\textwidth}{0.4pt}\\[0.35cm]
-		{\large\bfseries Whitepaper de Inversion y Plan de Expansion Estrategica}\\[0.25cm]
-		{\normalsize Ronda Pre-Seed / Seed}\\[0.35cm]
-		\rule{0.88\textwidth}{0.4pt}
+\vspace{3.5cm}
 
-		\vspace{1.2cm}
-		\begin{minipage}{0.9\textwidth}
-			\begin{keybox}
-			\textbf{Clasificacion:} Documento estrictamente confidencial.\\
-			\textbf{Proposito:} Evaluacion tecnica, estrategica y financiera para entidades de financiamiento e inversion.
-			\end{keybox}
-		\end{minipage}
+%% ── Logotipo principal ─────────────────────────────────────────────────────
+\begin{center}
+  {\fontsize{72}{80}\selectfont\bfseries\color{white}UNSAP}\\[0.35cm]
+  {\color{unsaGold}\rule{8cm}{1.2pt}}\\[0.5cm]
+  {\large\color{white!80!coverBg}Sistema Operativo de la Vida Universitaria}\\[0.25cm]
+  {\normalsize\color{unsaMuted}SuperApp EdTech · Flutter · Supabase · AI-Powered}
+\end{center}
 
-		\vspace{1.1cm}
-		\begin{tabular}{>{\bfseries}p{0.32\textwidth}p{0.5\textwidth}}
-			Version del producto: & 1.4.0 \\
-			Preparado por: & CEO \& Founder \\
-			Base tecnologica: & Flutter, Supabase, Dart Isolates, arquitectura local-first \\
-			Fecha: & Marzo 2026 \\
-		\end{tabular}
-	\end{center}
+\vspace{1.4cm}
 
-	\vfill
-	{\small\color{unsaSlate}UNSAP plantea una plataforma escalable para productividad, comunidad y analitica academica con estrategia de monetizacion multicapas.}\par
+%% ── Badge tipo de documento ────────────────────────────────────────────────
+\begin{center}
+  \begin{tikzpicture}
+    \node[fill=unsaMaroon, text=white, inner xsep=14pt, inner ysep=6pt,
+          rounded corners=3pt, font=\small\bfseries] {
+      WHITEPAPER DE INVERSIÓN
+      \enspace\textbar\enspace
+      RONDA PRE-SEED / SEED
+    };
+  \end{tikzpicture}
+\end{center}
+
+\vspace{2cm}
+
+%% ── KPI Cards (3 métricas clave) ───────────────────────────────────────────
+\begin{center}
+\begin{tikzpicture}
+  %% Card 1
+  \node[fill=white, opacity=0.06, rounded corners=4pt,
+        minimum width=4.6cm, minimum height=2.5cm] at (-5.2,0) {};
+  \node[text=unsaMuted, font=\footnotesize\bfseries] at (-5.2, 0.6)
+        {TAM GLOBAL};
+  \node[text=white, font=\fontsize{26}{28}\selectfont\bfseries] at (-5.2, 0)
+        {32M};
+  \node[text=unsaMuted, font=\scriptsize] at (-5.2,-0.65)
+        {estudiantes universitarios · LATAM};
+  \draw[unsaMaroon!60, line width=0.5pt, rounded corners=4pt]
+        (-7.5,-1.3) rectangle (-2.9,1.3);
+
+  %% Card 2
+  \node[fill=unsaMaroon, opacity=0.25, rounded corners=4pt,
+        minimum width=4.6cm, minimum height=2.5cm] at (0,0) {};
+  \node[text=unsaMuted, font=\footnotesize\bfseries] at (0, 0.6)
+        {SOM INICIAL};
+  \node[text=white, font=\fontsize{26}{28}\selectfont\bfseries] at (0, 0)
+        {70K};
+  \node[text=unsaMuted, font=\scriptsize] at (0,-0.65)
+        {usuarios · UNSA + Arequipa};
+  \draw[unsaMaroon, line width=1pt, rounded corners=4pt]
+        (-2.3,-1.3) rectangle (2.3,1.3);
+
+  %% Card 3
+  \node[fill=white, opacity=0.06, rounded corners=4pt,
+        minimum width=4.6cm, minimum height=2.5cm] at (5.2,0) {};
+  \node[text=unsaMuted, font=\footnotesize\bfseries] at (5.2, 0.6)
+        {RONDA SEED};
+  \node[text=white, font=\fontsize{26}{28}\selectfont\bfseries] at (5.2, 0)
+        {\$200K};
+  \node[text=unsaMuted, font=\scriptsize] at (5.2,-0.65)
+        {USD · runway 18 meses};
+  \draw[unsaBlue!60, line width=0.5pt, rounded corners=4pt]
+        (2.9,-1.3) rectangle (7.5,1.3);
+\end{tikzpicture}
+\end{center}
+
+%% ── Metadatos (zona inferior) ──────────────────────────────────────────────
+\vspace*{\fill}
+
+\begin{minipage}[b]{0.5\textwidth}
+  {\color{unsaMuted}\scriptsize
+    \textbf{\color{white!70!coverBg}Versión del producto} \hfill 1.4.0\\[3pt]
+    \textbf{\color{white!70!coverBg}Preparado por} \hfill CEO \& Founder\\[3pt]
+    \textbf{\color{white!70!coverBg}Stack} \hfill Flutter · Supabase · Dart Isolates\\[3pt]
+    \textbf{\color{white!70!coverBg}Fecha} \hfill Marzo 2026
+  }
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.44\textwidth}
+  \begin{tikzpicture}
+    \node[fill=unsaMaroon!80, text=white, inner xsep=10pt, inner ysep=7pt,
+          rounded corners=3pt, font=\scriptsize, align=center] {
+      \textbf{DOCUMENTO CONFIDENCIAL}\\[2pt]
+      Uso exclusivo para evaluación\\de inversión y due diligence.
+    };
+  \end{tikzpicture}
+\end{minipage}
+
+\vspace{0.8cm}
+
 \end{titlepage}
 
+
+%% ┌──────────────────────────────────────────────────────────────────────────┐
+%% │  ÍNDICES                                                                 │
+%% └──────────────────────────────────────────────────────────────────────────┘
 \pagenumbering{roman}
-\tableofcontents
+
+{
+  \hypersetup{linkcolor=unsaInk}
+  \tableofcontents
+}
 \newpage
+
 \listoftables
-\newpage
 \listoffigures
 \newpage
 
 \pagenumbering{arabic}
 
-\section{Resumen Ejecutivo}
-La educacion superior en Latinoamerica presenta una brecha visible entre la calidad de las experiencias digitales de consumo masivo y la experiencia de uso de portales academicos institucionales. UNSAP responde a esta brecha con una \textbf{SuperApp universitaria} que integra informacion academica, analitica de rendimiento, red social contextual y gamificacion.
 
-El valor diferencial del producto radica en una combinacion tecnica y de producto:
-\begin{itemize}[leftmargin=1.1cm]
-	\item experiencia \textbf{offline-first} con consulta inmediata de informacion;
-	\item arquitectura \textbf{agnostica al backend institucional} mediante scraping estructurado;
-	\item modulo social y gamificado para \textbf{retencion recurrente};
-	\item camino claro de monetizacion B2C, B2B2C y B2B.
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Resumen Ejecutivo}
+%% ════════════════════════════════════════════════════════════════════════════
+
+La educación superior en Latinoamérica presenta una brecha visible entre la calidad de las experiencias digitales de consumo masivo y la experiencia de uso de portales académicos institucionales. UNSAP responde a esta brecha con una \textbf{SuperApp universitaria} que integra información académica, analítica de rendimiento, red social contextual y gamificación.
+
+El valor diferencial del producto radica en cuatro pilares técnicos y de producto:
+
+\begin{itemize}
+  \item Experiencia \textbf{offline-first} con consulta inmediata de información académica.
+  \item Arquitectura \textbf{agnóstica al backend institucional} mediante scraping estructurado.
+  \item Módulo social y gamificado para \textbf{retención recurrente} del usuario.
+  \item Camino claro de monetización \textbf{B2C, B2B2C y B2B} desde el primer año.
 \end{itemize}
 
 \begin{signalbox}
-\textbf{Hipotesis de inversion:} consolidar UNSAP en el mercado inicial (UNSA), acelerar modulos de IA y marketplace, y empaquetar la arquitectura para expansion regional y licenciamiento white-label.
+\textbf{Hipótesis de inversión:} consolidar UNSAP en el mercado inicial (UNSA), acelerar módulos de IA y marketplace, y empaquetar la arquitectura para expansión regional y licenciamiento white-label a universidades de la región.
 \end{signalbox}
 
+\vspace{0.4cm}
+
+%% ── Strip de métricas del resumen ───────────────────────────────────────────
+\begin{darkbox}
+\begin{tabular}{@{} p{3.5cm} p{3.5cm} p{3.5cm} p{3.5cm} @{}}
+  {\color{unsaGold}\footnotesize\bfseries AÑO 1 MAU}  &
+  {\color{unsaGold}\footnotesize\bfseries INGRESOS AÑO 3} &
+  {\color{unsaGold}\footnotesize\bfseries EBITDA AÑO 3} &
+  {\color{unsaGold}\footnotesize\bfseries MODELOS} \\[4pt]
+  {\large\bfseries 25,000}    &
+  {\large\bfseries \$1.02M}   &
+  {\large\bfseries \$624K}    &
+  {\large\bfseries 3} \\[2pt]
+  {\scriptsize\color{unsaMuted}usuarios activos} &
+  {\scriptsize\color{unsaMuted}ingresos brutos USD} &
+  {\scriptsize\color{unsaMuted}referencial USD} &
+  {\scriptsize\color{unsaMuted}B2C · B2B2C · B2B}
+\end{tabular}
+\end{darkbox}
+
+
+%% ════════════════════════════════════════════════════════════════════════════
 \section{Problema Estructural y Oportunidad}
-\subsection{Friccion digital actual}
-Los sistemas academicos tradicionales presentan latencias altas en picos de uso, interfaces de baja usabilidad y dependencia fuerte de conectividad. Esto genera ansiedad operativa y bajo compromiso de uso.
+%% ════════════════════════════════════════════════════════════════════════════
 
-\subsection{Fragmentacion del ciclo de vida estudiantil}
-La informacion academica, la colaboracion entre pares y la vida social estudiantil se distribuyen en plataformas no integradas. La consecuencia es perdida de contexto, baja productividad y escasa trazabilidad de decisiones academicas.
+\subsection{Fricción digital actual}
 
-\subsection{Carga cognitiva y ausencia de prediccion}
-Sin herramientas predictivas integradas, el estudiante realiza calculos manuales para tomar decisiones criticas sobre su rendimiento. Esta friccion representa una oportunidad para soluciones con analitica accionable en tiempo real.
+Los sistemas académicos tradicionales presentan latencias altas en picos de uso, interfaces de baja usabilidad y dependencia fuerte de conectividad. Esto genera ansiedad operativa y bajo compromiso de uso entre los estudiantes.
 
-\section{Solucion UNSAP y Ventaja Competitiva}
-\subsection{Arquitectura offline-first y experiencia de cero friccion}
-UNSAP persiste informacion en almacenamiento local (Hive), permitiendo consulta instantanea de notas, horario y estadisticas, incluso sin red o ante degradacion de servicios externos.
+\subsection{Fragmentación del ciclo de vida estudiantil}
 
-\subsection{Motor de extraccion agnostico}
+La información académica, la colaboración entre pares y la vida social estudiantil se distribuyen en plataformas no integradas. La consecuencia es pérdida de contexto, baja productividad y escasa trazabilidad de decisiones académicas.
+
+\subsection{Carga cognitiva y ausencia de predicción}
+
+Sin herramientas predictivas integradas, el estudiante realiza cálculos manuales para tomar decisiones críticas sobre su rendimiento. Esta fricción representa una oportunidad para soluciones con analítica accionable en tiempo real.
+
+
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Solución UNSAP y Ventaja Competitiva}
+%% ════════════════════════════════════════════════════════════════════════════
+
+\subsection{Arquitectura offline-first y experiencia de cero fricción}
+
+UNSAP persiste información en almacenamiento local (Hive), permitiendo consulta instantánea de notas, horario y estadísticas, incluso sin red o ante degradación de servicios externos.
+
+\subsection{Motor de extracción agnóstico}
+
 El sistema utiliza un motor de scraping en isolates para capturar y estructurar datos desde portales legacy sin bloquear la interfaz de usuario.
 
-\subsection{Simulador academico O(1)}
-Se incorporan calculos de proyeccion de notas y ponderados con operaciones optimizadas para respuestas inmediatas, mejorando la toma de decisiones del estudiante.
+\subsection{Simulador académico O(1)}
+
+Se incorporan cálculos de proyección de notas y ponderados con operaciones optimizadas para respuestas inmediatas, mejorando la toma de decisiones del estudiante.
 
 \begin{figure}[htbp]
 \centering
 \resizebox{0.98\textwidth}{!}{%
 \begin{tikzpicture}[
-	node distance=12mm,
-	boxA/.style={rectangle, rounded corners=1.8mm, draw=unsaMaroon, fill=unsaLight, align=center, minimum height=1.35cm, minimum width=3.5cm, line width=0.55pt},
-	boxB/.style={rectangle, rounded corners=1.8mm, draw=unsaBlue, fill=white, align=center, minimum height=1.35cm, minimum width=4.6cm, line width=0.55pt},
-	arr/.style={-{Latex[length=2.3mm]}, draw=unsaSlate, line width=0.7pt}
+  node distance=14mm,
+  source/.style={rectangle, rounded corners=3mm, draw=unsaMaroon,
+    fill=unsaMaroonL, align=center, minimum height=1.5cm,
+    minimum width=3.8cm, line width=0.7pt, font=\small},
+  process/.style={rectangle, rounded corners=3mm, draw=unsaBlue,
+    fill=unsaBlueL, align=center, minimum height=1.5cm,
+    minimum width=4.8cm, line width=0.7pt, font=\small},
+  output/.style={rectangle, rounded corners=3mm, draw=unsaGreen,
+    fill=unsaGreenL, align=center, minimum height=1.4cm,
+    minimum width=3.6cm, line width=0.7pt, font=\small},
+  arr/.style={-{Latex[length=2.8mm, width=2mm]}, draw=unsaSlate, line width=1pt}
 ]
-\node[boxA] (legacy) {\textbf{Portal Universitario Legacy}\\HTML / flujo tradicional};
-\node[boxB, right=13mm of legacy] (scraper) {\textbf{Isolate Scraper Engine}\\Parsing en background\\normalizacion JSON};
-\node[boxA, right=13mm of scraper] (hive) {\textbf{Capa de Datos UNSAP}\\Hive Local Storage};
+  \node[source] (legacy)  {\textbf{Portal Universitario}\\\textit{HTML legacy}};
+  \node[process, right=16mm of legacy] (scraper)
+        {\textbf{Isolate Scraper Engine}\\parsing background\\normalización JSON};
+  \node[source, right=16mm of scraper] (hive)
+        {\textbf{Capa UNSAP}\\Hive Local Storage};
 
-\node[boxB, below left=10mm and -4mm of hive] (sim) {\textbf{Modulo Simulador}};
-\node[boxB, below=10mm of hive] (chart) {\textbf{Modulo Analitica Fl\_Chart}};
-\node[boxB, below right=10mm and -4mm of hive] (panel) {\textbf{Panel de Notas}};
+  \node[output, below left=14mm and -5mm of hive]   (sim)   {\textbf{Simulador}\\\textit{Proyección notas}};
+  \node[output, below=14mm of hive]                  (chart) {\textbf{Analítica}\\\textit{fl\_Chart}};
+  \node[output, below right=14mm and -5mm of hive]   (panel) {\textbf{Panel de Notas}\\\textit{Dashboard}};
 
-\draw[arr] (legacy) -- (scraper);
-\draw[arr] (scraper) -- (hive);
-\draw[arr] (hive) -- (sim);
-\draw[arr] (hive) -- (chart);
-\draw[arr] (hive) -- (panel);
+  \draw[arr] (legacy)  -- (scraper);
+  \draw[arr] (scraper) -- (hive);
+  \draw[arr] (hive) -- (sim);
+  \draw[arr] (hive) -- (chart);
+  \draw[arr] (hive) -- (panel);
 \end{tikzpicture}
 }
-\caption{Esquema 1. Flujo de arquitectura de datos}
+\caption{Flujo de arquitectura de datos}
 \label{fig:flujo-datos}
 \end{figure}
 
-\section{Motor de Retencion: Comunidad y Gamificacion}
-\subsection{Campus social institucional}
-UNSAP integra un feed en tiempo real sobre Supabase para publicaciones estudiantiles, interacciones y notificaciones. El anonimato controlado incrementa participacion sin perder trazabilidad de calidad de comunidad.
 
-\subsection{Identidad verificada y reputacion}
-El uso de correo institucional permite elevar niveles de confianza del ecosistema y habilita segmentacion de alto valor para futuras verticales de monetizacion.
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Motor de Retención: Comunidad y Gamificación}
+%% ════════════════════════════════════════════════════════════════════════════
+
+\subsection{Campus social institucional}
+
+UNSAP integra un feed en tiempo real sobre Supabase para publicaciones estudiantiles, interacciones y notificaciones. El anonimato controlado incrementa participación sin perder trazabilidad de calidad de comunidad.
+
+\subsection{Identidad verificada y reputación}
+
+El uso de correo institucional permite elevar niveles de confianza del ecosistema y habilita segmentación de alto valor para futuras verticales de monetización.
 
 \subsection{Medallas local-first y actualizaciones optimistas}
-El sistema de medallas con respuesta visual instantanea (0ms percibidos en UI) mejora la motivacion y la recurrencia de uso, mientras la sincronizacion ocurre en segundo plano con manejo de rollback.
+
+El sistema de medallas con respuesta visual instantánea (0\,ms percibidos en UI) mejora la motivación y recurrencia de uso, mientras la sincronización ocurre en segundo plano con manejo de rollback.
 
 \begin{figure}[htbp]
 \centering
-\resizebox{0.92\textwidth}{!}{%
+\resizebox{0.8\textwidth}{!}{%
 \begin{tikzpicture}[
-	every node/.style={font=\small},
-	ring/.style={circle, draw=unsaMaroon, line width=0.6pt, minimum width=3.1cm, align=center, fill=unsaLight},
-	arr/.style={-{Latex[length=2.3mm]}, draw=unsaSlate, line width=0.75pt}
+  every node/.style={font=\small},
+  ring/.style={circle, draw=unsaMaroon, line width=0.8pt,
+               minimum width=3.4cm, align=center,
+               fill=unsaLight, inner sep=4pt},
+  arr/.style={-{Latex[length=2.8mm, width=2mm]}, draw=unsaSlate, line width=1pt, bend left=20}
 ]
-\node[ring] (trigger) at (0,2.8) {\textbf{Trigger Externo}\\Push, nueva nota,\\actividad social};
-\node[ring] (accion) at (3.6,0) {\textbf{Accion}\\Apertura de app\\(carga instantanea)};
-\node[ring] (recompensa) at (0,-2.8) {\textbf{Recompensa Variable}\\insights, contenido,\\medallas};
-\node[ring] (inversion) at (-3.6,0) {\textbf{Inversion}\\perfil, vinculacion,\\publicacion};
+  \node[ring, fill=unsaMaroonL] (trigger) at (0,3.2)
+        {\textbf{Trigger}\\Push · nueva nota\\actividad social};
+  \node[ring, fill=unsaBlueL]   (accion)  at (3.6,0)
+        {\textbf{Acción}\\Apertura de app\\carga instantánea};
+  \node[ring, fill=unsaGoldL]   (reward)  at (0,-3.2)
+        {\textbf{Recompensa}\\insights · contenido\\medallas};
+  \node[ring, fill=unsaGreenL]  (invest)  at (-3.6,0)
+        {\textbf{Inversión}\\perfil · vínculos\\publicación};
 
-\draw[arr] (trigger) -- (accion);
-\draw[arr] (accion) -- (recompensa);
-\draw[arr] (recompensa) -- (inversion);
-\draw[arr] (inversion) -- (trigger);
+  \draw[arr] (trigger) to (accion);
+  \draw[arr] (accion)  to (reward);
+  \draw[arr] (reward)  to (invest);
+  \draw[arr] (invest)  to (trigger);
 \end{tikzpicture}
 }
-\caption{Esquema 2. Bucle de retencion basado en comportamiento}
+\caption{Bucle de retención basado en comportamiento (Hook Model)}
 \label{fig:retencion-hook}
 \end{figure}
 
+
+%% ════════════════════════════════════════════════════════════════════════════
 \section{Mercado, Posicionamiento y Competencia}
+%% ════════════════════════════════════════════════════════════════════════════
+
 \subsection{Dimensionamiento TAM, SAM y SOM}
+
 \begin{table}[htbp]
 \centering
-\caption{Estimacion de mercado objetivo (referencial)}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{2.6cm}X X}
-\toprule
-Segmento & Alcance & Potencial de valor \\
+\caption{Estimación de mercado objetivo (referencial)}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.2cm} X X}
+\tableheadrow
+  \tablehead{Segmento} & \tablehead{Alcance} & \tablehead{Potencial de valor} \\
 \midrule
-TAM & Estudiantes universitarios en Latinoamerica (aprox. 32 millones) & Mercado amplio de suscripcion, servicios y publicidad educativa \\
-SAM & Estudiantes universitarios en Peru (aprox. 1.5 millones) & Escala nacional para crecimiento progresivo y alianzas \\
-SOM & Fase inicial en UNSA y expansion Arequipa (aprox. 70,000) & Validacion temprana, iteracion rapida y evidencia de PMF \\
+\rowcolor{unsaMaroonL}
+TAM & 32 millones de estudiantes universitarios en Latinoamérica &
+  Mercado amplio de suscripción, servicios y publicidad educativa \\
+\rowcolor{white}
+SAM & $\approx$\,1.5 millones en Perú &
+  Escala nacional para crecimiento progresivo y alianzas \\
+\rowcolor{unsaLight}
+SOM & $\approx$\,70,000 en UNSA y Arequipa &
+  Validación temprana, iteración rápida y evidencia de PMF \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Tesis competitiva}
-Las plataformas tradicionales (LMS/ERP institucionales) operan bajo logica B2B. UNSAP adopta un enfoque bottom-up, centrado en el estudiante, con mayor velocidad de iteracion y diferenciacion en comunidad + gamificacion.
 
-\section{Modelo de Negocio y Monetizacion}
+Las plataformas tradicionales (LMS/ERP institucionales) operan bajo lógica B2B. UNSAP adopta un enfoque \textbf{bottom-up}, centrado en el estudiante, con mayor velocidad de iteración y diferenciación en comunidad + gamificación.
+
+
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Modelo de Negocio y Monetización}
+%% ════════════════════════════════════════════════════════════════════════════
+
 \begin{table}[htbp]
 \centering
 \caption{Arquitectura de ingresos propuesta}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm}X X}
-\toprule
-Canal & Mecanica de monetizacion & Valor estrategico \\
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.2cm} X X}
+\tableheadrow
+  \tablehead{Canal} & \tablehead{Mecánica de monetización} & \tablehead{Valor estratégico} \\
 \midrule
-B2C & Suscripcion UNSAP PRO con funciones avanzadas de analitica, personalizacion e IA & Ingreso recurrente y relacion directa con usuario final \\
-B2B2C & Publicidad nativa y lead generation de alto contexto academico & Margen superior por segmentacion y precision de audiencia \\
-B2B & Licenciamiento white-label para universidades (setup + fee anual por estudiante) & Escalamiento institucional con contratos recurrentes \\
+\rowcolor{white}
+B2C &
+  Suscripción \textbf{UNSAP PRO} con funciones avanzadas de analítica, personalización e IA &
+  Ingreso recurrente y relación directa con el usuario final \\
+\rowcolor{unsaLight}
+B2B2C &
+  Publicidad nativa y lead generation de alto contexto académico &
+  Margen superior por segmentación y precisión de audiencia \\
+\rowcolor{white}
+B2B &
+  Licenciamiento white-label para universidades (setup + fee anual por estudiante) &
+  Escalamiento institucional con contratos recurrentes \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Roadmap Tecnologico 2026--2028}
-\subsection{Fase 1: Dominio local y robustez (Meses 1--6)}
-Enfoque en penetracion de mercado inicial, hardening tecnico, observabilidad y resiliencia operativa.
 
-\subsection{Fase 2: Servicios de valor (Meses 7--18)}
-Integracion de UNSAP GPT para consultas academicas, despliegue de marketplace C2C y capa de transacciones.
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Roadmap Tecnológico 2026--2028}
+%% ════════════════════════════════════════════════════════════════════════════
 
-\subsection{Fase 3: Escala regional y B2B (Meses 19--36)}
-Expasion multiuniversidad y consolidacion del producto como plataforma modular para nuevas instituciones.
+\subsection{Fase 1 — Dominio local y robustez \normalfont\small(Meses 1–6)}
+Enfoque en penetración de mercado inicial, hardening técnico, observabilidad y resiliencia operativa.
+
+\subsection{Fase 2 — Servicios de valor \normalfont\small(Meses 7–18)}
+Integración de UNSAP GPT para consultas académicas, despliegue de marketplace C2C y capa de transacciones.
+
+\subsection{Fase 3 — Escala regional y B2B \normalfont\small(Meses 19–36)}
+Expansión multiuniversidad y consolidación del producto como plataforma modular para nuevas instituciones.
 
 \begin{figure}[htbp]
 \centering
 \resizebox{0.98\textwidth}{!}{%
-\begin{tikzpicture}[x=0.65cm,y=0.8cm]
-	\draw[draw=unsaSlate!40] (0,0) rectangle (14,4);
-	\foreach \x in {0,...,14} {\draw[unsaSlate!25] (\x,0) -- (\x,4);} 
-	\foreach \y/\label in {3.3/Fase 1,2.1/Fase 2,0.9/Fase 3} {
-		\node[anchor=east, text=unsaInk] at (-0.2,\y) {\label};
-	}
+\begin{tikzpicture}[x=0.66cm, y=0.9cm]
+  %% Grid de fondo
+  \fill[unsaLight] (0,0) rectangle (14,4.5);
+  \foreach \x in {0,2,...,14}
+    {\draw[unsaBorder, line width=0.4pt] (\x,0) -- (\x,4.5);}
+  \draw[unsaBorder, line width=0.5pt] (0,0) rectangle (14,4.5);
 
-	\fill[unsaMaroon!75] (0.1,2.9) rectangle (3.8,3.7);
-	\node[text=white] at (1.95,3.3) {Q3 2026 -- Q4 2026};
+  %% Etiquetas de fases
+  \node[anchor=east, font=\footnotesize\bfseries, text=unsaMaroon] at (-0.3,3.7) {Fase 1};
+  \node[anchor=east, font=\footnotesize\bfseries, text=unsaBlue]   at (-0.3,2.3) {Fase 2};
+  \node[anchor=east, font=\footnotesize\bfseries, text=unsaGreen]  at (-0.3,0.9) {Fase 3};
 
-	\fill[unsaBlue!75] (3.9,1.7) rectangle (9.6,2.5);
-	\node[text=white] at (6.75,2.1) {Q1 2027 -- Q4 2027};
+  %% Barra Fase 1
+  \fill[unsaMaroon, rounded corners=3pt] (0.12,3.2) rectangle (3.88,4.2);
+  \node[text=white, font=\footnotesize\bfseries] at (2,3.7) {Q3 2026 — Q4 2026};
 
-	\fill[unsaGreen!78] (9.7,0.5) rectangle (13.8,1.3);
-	\node[text=white] at (11.75,0.9) {Q1 2028 -- Q4 2028};
+  %% Barra Fase 2
+  \fill[unsaBlue, rounded corners=3pt] (3.95,1.8) rectangle (9.65,2.8);
+  \node[text=white, font=\footnotesize\bfseries] at (6.8,2.3) {Q1 2027 — Q4 2027};
 
-	\foreach \x/\q in {0/Q3-26,2/Q1-27,4/Q3-27,6/Q1-28,8/Q3-28,10/Q1-29,12/Q3-29,14/Q1-30} {
-		\node[anchor=north, text=unsaSlate, scale=0.72] at (\x,-0.1) {\q};
-	}
+  %% Barra Fase 3
+  \fill[unsaGreen, rounded corners=3pt] (9.72,0.4) rectangle (13.88,1.4);
+  \node[text=white, font=\footnotesize\bfseries] at (11.8,0.9) {Q1 2028 — Q4 2028};
+
+  %% Línea de tiempo (eje X)
+  \foreach \x/\q in {0/Q3'26, 2/Q1'27, 4/Q3'27, 6/Q1'28, 8/Q3'28, 10/Q1'29, 12/Q3'29, 14/Q1'30}
+    {\node[anchor=north, font=\scriptsize, text=unsaSlate] at (\x,-0.15) {\q};}
 \end{tikzpicture}
 }
-\caption{Esquema 3. Roadmap tipo Gantt por fases de crecimiento}
+\caption{Roadmap por fases de crecimiento (Gantt referencial)}
 \label{fig:gantt}
 \end{figure}
 
-\section{Proyecciones de Desempeno y Finanzas (Escenario Referencial)}
+
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Proyecciones Financieras — Escenario Referencial}
+%% ════════════════════════════════════════════════════════════════════════════
+
 \begin{table}[htbp]
 \centering
-\caption{Proyeccion financiera referencial a 36 meses (USD)}
+\caption{Proyección financiera a 36 meses (USD)}
 \begin{tabularx}{\textwidth}{>{\bfseries}X r r r}
-\toprule
-Metrica & Ano 1 & Ano 2 & Ano 3 \\
+\tableheadrow
+  \tablehead{Métrica} & \tablehead{Año 1} & \tablehead{Año 2} & \tablehead{Año 3} \\
 \midrule
-MAU estimado & 25,000 & 120,000 & 450,000 \\
-Ingresos suscripcion PRO & 18,000 & 86,400 & 324,000 \\
-Ingresos Ad-Tech \& Lead Gen & 15,000 & 110,000 & 450,000 \\
-Ingresos SaaS white-label & 0 & 40,000 & 250,000 \\
-Ingresos brutos estimados & 33,000 & 236,400 & 1,024,000 \\
-OPEX estimado & 80,000 & 150,000 & 400,000 \\
-EBITDA estimado & -47,000 & 86,400 & 624,000 \\
+\rowcolor{white}
+MAU estimado            & 25,000   & 120,000   & 450,000 \\
+\rowcolor{unsaLight}
+Ingresos suscripción PRO& \$18,000  & \$86,400  & \$324,000 \\
+\rowcolor{white}
+Ingresos Ad-Tech \& Lead Gen & \$15,000 & \$110,000 & \$450,000 \\
+\rowcolor{unsaLight}
+Ingresos SaaS white-label    & —        & \$40,000  & \$250,000 \\
+\midrule
+\rowcolor{unsaMaroonL}
+\bfseries Ingresos brutos estimados  &
+  \bfseries\$33,000 & \bfseries\$236,400 & \bfseries\$1,024,000 \\
+\rowcolor{white}
+OPEX estimado           & \$80,000  & \$150,000 & \$400,000 \\
+\rowcolor{unsaGreenL}
+\bfseries EBITDA estimado &
+  \bfseries\color{unsaMaroon}(\$47,000) & \bfseries\$86,400 & \bfseries\color{unsaGreen}\$624,000 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
+\begin{successbox}
+El modelo proyecta \textbf{break-even operativo en el Año 2} y un EBITDA positivo de \$624K al cierre del Año 3, con una base de 450K usuarios activos en tres países.
+\end{successbox}
+
+
+%% ════════════════════════════════════════════════════════════════════════════
 \section{Requerimiento de Capital y Uso de Fondos}
-Se propone una ronda pre-seed/seed de referencia en torno a \$200,000 USD, orientada a extender runway operativo y ejecutar roadmap de 18 meses.
+%% ════════════════════════════════════════════════════════════════════════════
+
+Se propone una ronda pre-seed/seed de referencia en torno a \textbf{\$200,000 USD}, orientada a extender runway operativo y ejecutar roadmap de 18 meses.
 
 \begin{table}[htbp]
 \centering
-\caption{Asignacion objetivo de capital}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm}c X}
-\toprule
-Linea de inversion & Peso & Aplicacion \\
+\caption{Asignación objetivo de capital}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm} c X}
+\tableheadrow
+  \tablehead{Línea de inversión} & \tablehead{Peso} & \tablehead{Aplicación} \\
 \midrule
-Ingenieria y producto & 50\% & Equipo tecnico senior para arquitectura, desarrollo y calidad \\
-Adquisicion y growth & 25\% & Embajadores, marketing de performance y expansion de base \\
-Infraestructura tecnica & 15\% & Escalamiento cloud, observabilidad y servicios de soporte \\
-Legal y estructuracion & 10\% & Gobierno corporativo, propiedad intelectual y cumplimiento \\
+\rowcolor{white}
+Ingeniería y producto   & 50\% &
+  Equipo técnico senior para arquitectura, desarrollo y calidad \\
+\rowcolor{unsaLight}
+Adquisición y growth    & 25\% &
+  Embajadores, marketing de performance y expansión de base \\
+\rowcolor{white}
+Infraestructura técnica & 15\% &
+  Escalamiento cloud, observabilidad y servicios de soporte \\
+\rowcolor{unsaLight}
+Legal y estructuración  & 10\% &
+  Gobierno corporativo, propiedad intelectual y cumplimiento \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Riesgos y Mitigacion}
+
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Riesgos y Mitigación}
+%% ════════════════════════════════════════════════════════════════════════════
+
 \begin{table}[htbp]
 \centering
 \caption{Matriz ejecutiva de riesgos}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{2.8cm}X X}
-\toprule
-Tipo & Riesgo principal & Mitigacion y foso defensivo \\
+\begin{tabularx}{\textwidth}{>{\bfseries}p{2.4cm} X X}
+\tableheadrow
+  \tablehead{Tipo} & \tablehead{Riesgo principal} & \tablehead{Mitigación y foso defensivo} \\
 \midrule
-Tecnico & Cambios de estructura en portales fuente afectan scraping & Arquitectura de adaptadores, alertas tempranas y estrategia de hot-fix \\
-Operativo & Bloqueo por politicas de red o limites institucionales & Rate limiting, ventanas de sincronizacion y resiliencia offline-first \\
-Competitivo & Aparicion de app oficial institucional & Ventaja en velocidad de iteracion, comunidad y gamificacion persistente \\
-Regulatorio & Exigencias de proteccion de datos y cumplimiento & Gobierno de datos, politicas de consentimiento y trazabilidad de acceso \\
+\rowcolor{white}
+Técnico &
+  Cambios de estructura en portales fuente afectan scraping &
+  Arquitectura de adaptadores, alertas tempranas y estrategia de hot-fix \\
+\rowcolor{unsaLight}
+Operativo &
+  Bloqueo por políticas de red o límites institucionales &
+  Rate limiting, ventanas de sincronización y resiliencia offline-first \\
+\rowcolor{white}
+Competitivo &
+  Aparición de app oficial institucional &
+  Ventaja en velocidad de iteración, comunidad y gamificación persistente \\
+\rowcolor{unsaLight}
+Regulatorio &
+  Exigencias de protección de datos y cumplimiento &
+  Gobierno de datos, políticas de consentimiento y trazabilidad de acceso \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Conclusiones y Tesis de Inversion}
-UNSAP combina un problema real de alta frecuencia con una solucion tecnicamente madura y un modelo de ingresos escalable. La plataforma no solo optimiza la experiencia academica, sino que construye un activo digital de relacion continua con el estudiante.
 
-Bajo una ejecucion disciplinada del roadmap y una gobernanza adecuada de datos y crecimiento, el proyecto presenta condiciones solidas para financiamiento de etapa temprana con potencial de expansion regional y salida estrategica de mediano plazo.
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Conclusiones y Tesis de Inversión}
+%% ════════════════════════════════════════════════════════════════════════════
 
+UNSAP combina un problema real de alta frecuencia con una solución técnicamente madura y un modelo de ingresos escalable. La plataforma no solo optimiza la experiencia académica, sino que construye un \textbf{activo digital de relación continua} con el estudiante.
+
+\begin{keybox}
+\textbf{Bajo una ejecución disciplinada del roadmap} y una gobernanza adecuada de datos y crecimiento, el proyecto presenta condiciones sólidas para financiamiento de etapa temprana con potencial de \textbf{expansión regional y salida estratégica} de mediano plazo.
+\end{keybox}
+
+\vspace{0.5cm}
+
+%% ── Resumen visual de tesis ─────────────────────────────────────────────────
+\begin{darkbox}
+\begin{center}
+  {\color{unsaGold}\bfseries POR QUÉ UNSAP AHORA}\\[0.6cm]
+  \begin{tabular}{@{} p{4.5cm} p{4.5cm} p{4.5cm} @{}}
+    {\color{unsaGold}\small\bfseries PROBLEMA REAL} &
+    {\color{unsaGold}\small\bfseries TECH MADURA} &
+    {\color{unsaGold}\small\bfseries MERCADO CLARO} \\[4pt]
+    {\scriptsize\color{white!80!coverBg}
+      Millones de estudiantes con portales deficientes y sin herramientas de decisión académica.} &
+    {\scriptsize\color{white!80!coverBg}
+      Flutter, Supabase y arquitectura offline-first probada en producción.} &
+    {\scriptsize\color{white!80!coverBg}
+      TAM de 32M en LATAM con punto de entrada validado en UNSA (70K usuarios).}
+  \end{tabular}
+\end{center}
+\end{darkbox}
+
+
+%% ════════════════════════════════════════════════════════════════════════════
 \appendix
+\section{Stack Tecnológico Consolidado}
+%% ════════════════════════════════════════════════════════════════════════════
 
-\section{Stack Tecnologico Consolidado}
-\begin{longtable}{>{\bfseries}p{4.2cm}p{9.8cm}}
-\toprule
-Componente & Tecnologias \\
+\begin{longtable}{>{\bfseries\color{unsaMaroon}}p{4cm} p{10cm}}
+\tableheadrow
+  \tablehead{Componente} & \tablehead{Tecnologías} \\
 \midrule
-Frontend movil & Flutter 3.9.2, Dart 3.9.2 \\
-Arquitectura de app & MVVM, Provider, Clean Architecture \\
-Persistencia local & Hive, flutter\_secure\_storage \\
-Backend y tiempo real & Supabase, PostgreSQL, canales Realtime \\
-Analitica visual & fl\_chart y modulos de simulacion academica \\
-Red y parsing & http, parser HTML, isolates para procesos asincornos \\
-Cache y media & cached\_network\_image, share\_plus \\
-Configuracion & flutter\_dotenv y gestion de entorno \\
+\endhead
+Frontend móvil          & Flutter 3.9.2, Dart 3.9.2 \\
+\rowcolor{unsaLight}
+Arquitectura de app     & MVVM, Provider, Clean Architecture \\
+Persistencia local      & Hive, flutter\_secure\_storage \\
+\rowcolor{unsaLight}
+Backend y tiempo real   & Supabase, PostgreSQL, canales Realtime \\
+Analítica visual        & fl\_chart y módulos de simulación académica \\
+\rowcolor{unsaLight}
+Red y parsing           & http, parser HTML, isolates para procesos asíncronos \\
+Caché y media           & cached\_network\_image, share\_plus \\
+\rowcolor{unsaLight}
+Configuración           & flutter\_dotenv y gestión de entorno \\
 \bottomrule
 \end{longtable}
 
-\section{Notas de alcance y uso}
-Las cifras de mercado y proyecciones de este documento se presentan como escenario referencial para modelado y decision de inversion. Se recomienda validacion continua con datos operativos reales a medida que avance la implementacion del roadmap.
+
+%% ════════════════════════════════════════════════════════════════════════════
+\section{Notas de Alcance y Uso}
+%% ════════════════════════════════════════════════════════════════════════════
+
+Las cifras de mercado y proyecciones de este documento se presentan como escenario referencial para modelado y decisión de inversión. Se recomienda validación continua con datos operativos reales a medida que avance la implementación del roadmap.
+
+\vspace{1cm}
+
+\begin{center}
+  {\color{unsaBorder}\rule{0.6\textwidth}{0.5pt}}\\[0.4cm]
+  {\scriptsize\color{unsaMuted}
+    \textbf{UNSAP} — Documento Confidencial de Inversión
+    \enspace·\enspace
+    Versión 1.4.0
+    \enspace·\enspace
+    Marzo 2026
+    \enspace·\enspace
+    Arequipa, Perú
+  }
+\end{center}
 
 \end{document}

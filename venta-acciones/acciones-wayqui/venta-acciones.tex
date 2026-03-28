@@ -1,126 +1,332 @@
 \documentclass[11pt,a4paper]{article}
 
+% ─── Codificación y Lenguaje ──────────────────────────────────────────────────
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
-\usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
+
+% ─── Fuentes ──────────────────────────────────────────────────────────────────
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ─── Geometría ────────────────────────────────────────────────────────────────
+\usepackage[left=2.8cm, right=2.8cm, top=2.8cm, bottom=3cm]{geometry}
+
+% ─── Gráficos y Color ─────────────────────────────────────────────────────────
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+
+% ─── Cabeceras y Pies ─────────────────────────────────────────────────────────
 \usepackage{fancyhdr}
+
+% ─── Tipografía de Secciones ──────────────────────────────────────────────────
 \usepackage{titlesec}
 \usepackage{parskip}
-\usepackage{microtype}
-\usepackage{tikz}
+
+% ─── Tablas y Cajas ───────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage[most]{tcolorbox}
+\usepackage{enumitem}
 
-% Paleta de colores Corporativos
-\definecolor{wayquiDark}{HTML}{121212}
-\definecolor{wayquiSlate}{HTML}{4A5568}
-\definecolor{wayquiBlue}{HTML}{1A365D}
-\definecolor{wayquiGold}{HTML}{D4AF37}
+% ─── Hipervínculos ────────────────────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
 
-% Comando de línea irrompible sólida para campos vacíos (garantizado en todos los visores PDF)
-\newcommand{\fillbox}[1]{\rule[-2pt]{#1}{0.8pt}}
 
-% Cabeceras
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  PALETA CORPORATIVA
+%% ═══════════════════════════════════════════════════════════════════════════
+\definecolor{WDark}  {HTML}{0D0D0D}   % Negro sofisticado
+\definecolor{WNavy}  {HTML}{0F2044}   % Azul marino profundo
+\definecolor{WGold}  {HTML}{C9A84C}   % Oro refinado
+\definecolor{WSlate} {HTML}{5A6A7E}   % Gris azulado
+\definecolor{WLight} {HTML}{F7F8FA}   % Fondo casi blanco
+\definecolor{WRule}  {HTML}{E2E6EB}   % Separadores sutiles
+\definecolor{WRed}   {HTML}{8B1A1A}   % Alerta discreta
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  HELPERS
+%% ═══════════════════════════════════════════════════════════════════════════
+\newcommand{\fillbox}[1]{\rule[-2pt]{#1}{0.6pt}}
+
+%% Línea dorada delgada
+\newcommand{\goldrule}{%
+  {\color{WGold}\rule{\textwidth}{0.8pt}}%
+}
+
+%% Línea de sección minimal
+\newcommand{\sectionrule}{%
+  {\color{WRule}\rule{\textwidth}{0.5pt}}%
+}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  CABECERAS
+%% ═══════════════════════════════════════════════════════════════════════════
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textbf{\large\color{wayquiBlue} WAYQUI \color{wayquiGold} \textbar \color{wayquiSlate}\normalsize Contrato de Inversión Semilla}}
-\fancyhead[R]{\color{wayquiSlate}\small ACUERDO S.A.F.E.}
-\fancyfoot[C]{\color{wayquiSlate}\small Página \thepage}
-\renewcommand{\headrulewidth}{1.2pt}
-\renewcommand{\headrule}{\hbox to\headwidth{\color{wayquiBlue}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{%
+  {\small\bfseries\color{WNavy}WAYQUI}%
+  {\color{WGold}\,\textbar\,}%
+  {\small\color{WSlate}Instrumento S.A.F.E.}%
+}
+\fancyhead[R]{\small\color{WSlate}Acuerdo de Inversión Semilla}
+\fancyfoot[C]{\small\color{WSlate}— \thepage\ —}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{WRule}\leaders\hrule height\headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0pt}
 
-% Secciones
-\titleformat{\section}{\large\bfseries\color{wayquiBlue}}{}{0em}{}[\vspace{-0.2em}\rule{\textwidth}{0.5pt}]
-\titlespacing*{\section}{0pt}{3ex}{1.5ex}
 
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  SECCIONES
+%% ═══════════════════════════════════════════════════════════════════════════
+\titleformat{\section}
+  {\normalsize\bfseries\color{WNavy}\uppercase\expandafter}
+  {}
+  {0em}
+  {}
+  [\vspace{2pt}\sectionrule]
+
+\titlespacing*{\section}{0pt}{2.4ex}{1.2ex}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  CAJAS PERSONALIZADAS
+%% ═══════════════════════════════════════════════════════════════════════════
+
+%% Caja de métricas (deal terms)
+\tcbset{dealbox/.style={
+  colback=WLight,
+  colframe=WNavy,
+  boxrule=0.6pt,
+  arc=2pt,
+  left=10pt, right=10pt,
+  top=8pt, bottom=8pt,
+  fontupper=\small
+}}
+
+%% Caja de alerta de riesgo
+\tcbset{riskbox/.style={
+  colback=WLight,
+  colframe=WRed,
+  boxrule=0.6pt,
+  arc=2pt,
+  left=10pt, right=10pt,
+  top=7pt, bottom=7pt,
+  fontupper=\small\color{WDark}
+}}
+
+%% Caja de resumen (highlight)
+\tcbset{highlightbox/.style={
+  colback=WNavy,
+  colframe=WNavy,
+  boxrule=0pt,
+  arc=2pt,
+  left=12pt, right=12pt,
+  top=10pt, bottom=10pt,
+  fontupper=\small\color{white}
+}}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%%  DOCUMENTO
+%% ═══════════════════════════════════════════════════════════════════════════
 \begin{document}
+\setlength{\parindent}{0pt}
+
+%% ── PORTADA / ENCABEZADO PRINCIPAL ──────────────────────────────────────────
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[WNavy] (current page.north west)
+    rectangle ([yshift=-4.8cm] current page.north east);
+  \fill[WGold] ([yshift=-4.8cm] current page.north west)
+    rectangle ([yshift=-5.1cm] current page.north east);
+\end{tikzpicture}
+
+\vspace*{0.3cm}
 
 \begin{center}
-    {\LARGE\bfseries\color{wayquiDark} ACUERDO MARCO DE INVERSIÓN SEMILLA Y CESIÓN DE DERECHOS FUNDACIONALES EN EXPECTATIVA}\\[0.3cm]
-    {\large\color{wayquiSlate} INSTRUMENTO S.A.F.E.}\\[0.8cm]
+  {\fontsize{28}{32}\selectfont\bfseries\color{white} WAYQUI}\\[0.25cm]
+  {\large\color{WGold}\textls[120]{INSTRUMENTO DE INVERSIÓN SEMILLA}}\\[0.2cm]
+  {\small\color{white!70!WNavy} Acuerdo Simple de Capital Futuro\enspace·\enspace S.A.F.E.}
 \end{center}
 
-Conste por el presente documento privado, el \textbf{Acuerdo de Inversión Semilla y Derechos Expectaticios}, que celebran de mutuo acuerdo y en total buena fe, el Desarrollador Fundador y el Inversor Ángel, de forma vinculante en las siguientes cláusulas:\vspace{0.6cm}
+\vspace{2.2cm}
 
-\section{I. COMPARECENCIA DE LAS PARTES}
+%% ── DEAL TERMS (tarjeta de condiciones clave) ────────────────────────────────
+\begin{tcolorbox}[dealbox,
+  title={\small\bfseries\color{WNavy}\uppercase{Condiciones Principales del Acuerdo}},
+  coltitle=WNavy,
+  attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=12pt},
+  boxed title style={colback=white, colframe=WNavy, boxrule=0.6pt, arc=2pt}]
+  \begin{tabularx}{\linewidth}{@{} >{\bfseries\color{WNavy}}l @{\hskip 0.6cm} X @{}}
+    Empresa           & WAYQUI — Plataforma Tecnológica de Servicios \\[4pt]
+    Tipo de Acuerdo   & S.A.F.E. (Simple Agreement for Future Equity) \\[4pt]
+    Participación     & \fillbox{1.8cm} Participaciones Fundacionales (\fillbox{1.2cm}\%) \\[4pt]
+    Monto Invertido   & S/\,\fillbox{2.5cm} \\[4pt]
+    Uso de Fondos     & Infraestructura Cloud, Operaciones y Escalamiento \\[4pt]
+    Conversión        & Sin dilución en la primera ronda de capitalización formal \\[4pt]
+    Jurisdicción      & Arequipa, Perú
+  \end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+%% ── DECLARACIÓN INTRODUCTORIA ────────────────────────────────────────────────
+{\small\color{WSlate}
+Conste por el presente documento privado el \textbf{Acuerdo de Inversión Semilla y Cesión de Derechos Expectaticios} celebrado de mutuo acuerdo y plena buena fe entre las partes identificadas en la Sección\,I, quienes aceptan y se obligan en los términos siguientes:}
+
+\vspace{0.2cm}\goldrule\vspace{0.4cm}
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{I.\quad Comparecencia de las Partes}
+
+\textbf{EL FUNDADOR — Parte Receptora y Desarrolladora}
+
 \vspace{0.3cm}
-\textbf{EL FUNDADOR \textemdash\ PARTE RECEPTORA Y DESARROLLADORA}\\[0.3cm]
-\begin{tabular}{@{}l p{10cm}@{}}
-    \textbf{Nombre Completo:} & José Gabriel Huanaco Muñoz \\
-    \textbf{DNI N$^\circ$:} & \fillbox{4cm} \\
-    \textbf{Domicilio Legal:} & \fillbox{7cm}, ciudad de Arequipa, Perú. \\
-    \textbf{Rol Corporativo:} & Creador, Desarrollador Principal y Titular Absoluto de la Propiedad Intelectual del Proyecto Tecnológico \textbf{\lq\lq WAYQUI\rq\rq}.
-\end{tabular}
-\vspace{0.7cm}
+\begin{tabularx}{\linewidth}{@{} >{\bfseries}p{3.8cm} X @{}}
+  Nombre Completo   & José Gabriel Huanaco Muñoz \\[5pt]
+  DNI N$^\circ$     & \fillbox{4cm} \\[5pt]
+  Domicilio Legal   & \fillbox{7cm},\ Arequipa, Perú \\[5pt]
+  Rol Corporativo   & Creador, Desarrollador Principal y Titular de la Propiedad Intelectual del Proyecto \textbf{WAYQUI}
+\end{tabularx}
 
-\textbf{EL INVERSOR ÁNGEL \textemdash\ PARTE EMISORA DEL CAPITAL}\\[0.3cm]
-\begin{tabular}{@{}l p{10cm}@{}}
-    \textbf{Nombre Completo:} & \fillbox{10cm} \\
-    \textbf{DNI N$^\circ$:} & \fillbox{4cm} \\
-    \textbf{Domicilio Legal:} & \fillbox{7cm}, ciudad de \fillbox{3cm}.
-\end{tabular}
 \vspace{0.6cm}
 
-\section{II. ANTECEDENTES DEL PROYECTO TÉCNICO}
-\textbf{SEGUNDA.} EL FUNDADOR ejerce como arquitecto de software y único propietario del código fuente, bases de datos y marca en formación "WAYQUI" (EL PROYECTO).\\[0.3cm]
-\textbf{TERCERA.} Su capitalización fundacional teórica se ha dividido en diez (10) Participaciones Fundacionales de manera administrativa, confiriendo cada una un diez por ciento (10\%) del valor patrimonial contingente futuro.
+\textbf{EL INVERSOR ÁNGEL — Parte Emisora del Capital}
 
-\section{III. OBJETO DEL CONTRATO Y FLUJO DE VALORACIÓN}
-\textbf{CUARTA.} A través del presente instrumento, EL INVERSOR acuerda ejecutar una inyección de capital semilla a favor de EL FUNDADOR para la operatividad e infraestructura cloud de EL PROYECTO.\\[0.3cm]
-\textbf{QUINTA.} En estricta contraprestación, EL FUNDADOR transfiere definitivamente a favor de EL INVERSOR la participación pactada, cediendo los derechos económicos futuros.
-
-\section{IV. NATURALEZA S.A.F.E. Y DECLARACIÓN DE RIESGO}
-\textbf{SEXTA.} EL PROYECTO opera de forma nativa sin encontrarse constituido como sociedad mercantil formal ante Registros Públicos al tiempo de esta firma. El capital encauza un \textbf{Acuerdo Simple para Capital Futuro (S.A.F.E)}.\\[0.3cm]
-\begin{tcolorbox}[colback=red!3,colframe=red!75!black,boxrule=1pt,arc=4pt,title=\textbf{SÉPTIMA: ADVERTENCIA DE ALTO RIESGO TECNOLÓGICO Y FINANCIERO}]
-    EL INVERSOR acota, certifica y asume la volatilidad hiper-elevada del desarrollo de \textit{Startups}. El retorno del capital \textbf{no se encuentra garantizado} a corto ni largo plazo; estando condicionado a la tracción del mercado y viabilidad de WAYQUI.
-\end{tcolorbox}
-
-\section{V. DERECHOS EXPECTATICIOS Y PROPIEDAD INTELECTUAL}
-\textbf{OCTAVA.} En el eventual hito donde EL PROYECTO se formalice como persona jurídica, EL FUNDADOR otorga a EL INVERSOR el derecho de permutar su participación por acciones oficiales \textbf{libres de dilución} ante la primera ronda oficial.\\[0.3cm]
-\textbf{NOVENA.} Los activos de Propiedad Intelectual e ingeniería continuarán bajo la potestad irreversible de EL FUNDADOR hasta la consolidación. EL INVERSOR renuncia a intervenir en las decisiones técnicas.
-
-\section{VI. RESUMEN DE COMPRA DE ACCIONES}
-Como declaración contable y resolutoria del acuerdo, se detalla la inyección de capital exacto y los derechos cedidos recíprocamente:\\[0.3cm]
-\begin{tcolorbox}[colback=wayquiSlate!3,colframe=wayquiSlate,boxrule=0.8pt,arc=3pt, boxsep=5pt]
-    \begin{tabular}{@{}l p{10cm}@{}}
-        \textbf{Volumen Cedido (Acciones):} & \fillbox{1.5cm} Participación(es) Fundacional(es). \\
-        \textbf{Porcentaje de Derechos (\%):} & \fillbox{1.5cm}\% de Propiedad Corporativa Futura. \\
-        \textbf{Costo de la Inversión (S/):} & S/ \fillbox{2.5cm} Cancelado en efectivo/abono directo. \\
-        \textbf{Uso de Fondos Destinado:} & Infraestructura, Operaciones y Arquitectura Cloud.
-    \end{tabular}
-\end{tcolorbox}
 \vspace{0.3cm}
+\begin{tabularx}{\linewidth}{@{} >{\bfseries}p{3.8cm} X @{}}
+  Nombre Completo   & \fillbox{9cm} \\[5pt]
+  DNI N$^\circ$     & \fillbox{4cm} \\[5pt]
+  Domicilio Legal   & \fillbox{6.5cm},\ ciudad de \fillbox{3cm}
+\end{tabularx}
 
-\section{VII. JURISDICCIÓN Y BUENA FE}
-\textbf{DÉCIMA.} Para cualquier controversia, las partes se adhieren totalitariamente al control de la magistratura judicial sita en la ciudad de Arequipa, eximiendo expresamente de consideración a cualquier otra sede o fuero territorial.
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{II.\quad Antecedentes del Proyecto}
+
+\textbf{Segunda.}\enspace EL FUNDADOR actúa como arquitecto de software y único propietario del código fuente, bases de datos, activos digitales y marca en formación \textbf{"WAYQUI"} (en adelante, \textbf{EL PROYECTO}).
+
+\vspace{0.4cm}
+\textbf{Tercera.}\enspace La capitalización fundacional de EL PROYECTO se ha estructurado en \textbf{diez (10) Participaciones Fundacionales}, confiriéndose a cada una el \textbf{diez por ciento (10\%)} del valor patrimonial contingente futuro de la sociedad.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{III.\quad Objeto del Contrato}
+
+\textbf{Cuarta.}\enspace EL INVERSOR acuerda ejecutar una inyección de capital semilla a favor de EL FUNDADOR destinada al financiamiento de operaciones e infraestructura tecnológica de EL PROYECTO.
+
+\vspace{0.4cm}
+\textbf{Quinta.}\enspace Como contraprestación, EL FUNDADOR transfiere a EL INVERSOR la participación pactada, cediendo los derechos económicos futuros descritos en la Sección\,VI del presente instrumento.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{IV.\quad Naturaleza S.A.F.E. y Declaración de Riesgo}
+
+\textbf{Sexta.}\enspace EL PROYECTO no se halla constituido como persona jurídica formal al tiempo de esta firma. El presente instrumento opera bajo la modalidad \textbf{S.A.F.E.} (Acuerdo Simple para Capital Futuro), de uso extendido en ecosistemas de \textit{startups} tecnológicas a nivel global.
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[riskbox,
+  title={\small\bfseries\color{WRed} Séptima:\enspace Advertencia de Riesgo},
+  coltitle=WRed,
+  attach boxed title to top left={yshift=-\tcboxedtitleheight/2, xshift=12pt},
+  boxed title style={colback=white, colframe=WRed, boxrule=0.6pt, arc=2pt}]
+  EL INVERSOR reconoce y asume la volatilidad inherente al desarrollo de \textit{startups} tecnológicas en etapa semilla. El retorno del capital \textbf{no está garantizado} y se encuentra condicionado a la tracción de mercado, escalabilidad y viabilidad comercial de WAYQUI. Esta inversión debe considerarse como de alto riesgo y largo plazo.
+\end{tcolorbox}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{V.\quad Derechos Expectaticios y Propiedad Intelectual}
+
+\textbf{Octava.}\enspace Ante la eventual formalización de EL PROYECTO como sociedad mercantil, EL FUNDADOR otorga a EL INVERSOR el derecho de convertir su participación en acciones ordinarias \textbf{libres de dilución} en la primera ronda oficial de capitalización.
+
+\vspace{0.4cm}
+\textbf{Novena.}\enspace La totalidad de los activos de Propiedad Intelectual, ingeniería y código fuente permanecerá bajo potestad exclusiva e irreversible de EL FUNDADOR hasta la consolidación societaria. EL INVERSOR renuncia expresamente a intervenir en decisiones técnicas o de desarrollo del producto.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{VI.\quad Resumen de Términos de Inversión}
+
+\vspace{0.2cm}
+\begin{tcolorbox}[highlightbox]
+  \begin{tabularx}{\linewidth}{@{} >{\bfseries\color{WGold}}p{5cm} X @{}}
+    Participaciones Cedidas   & \fillbox{1.8cm} Participación(es) Fundacional(es) \\[6pt]
+    Porcentaje de Propiedad   & \fillbox{1.5cm}\% del Patrimonio Corporativo Futuro \\[6pt]
+    Monto de Inversión (S/)   & S/\,\fillbox{2.5cm} — Pagado en efectivo o transferencia \\[6pt]
+    Destino de los Fondos     & Infraestructura, Arquitectura Cloud y Operaciones
+  \end{tabularx}
+\end{tcolorbox}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{VII.\quad Jurisdicción y Resolución de Controversias}
+
+\textbf{Décima.}\enspace Cualquier controversia derivada del presente instrumento será sometida a los órganos jurisdiccionales competentes de la ciudad de \textbf{Arequipa, Perú}, renunciando las partes a cualquier otro fuero que pudiera corresponderles.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+%% CIERRE Y FIRMAS
+%% ═══════════════════════════════════════════════════════════════════════════
 
 \vspace{0.8cm}
-Las partes proceden a firmar este instrumento en dos (2) réplicas fidedignas gozando del mismo rigor y peso legal.
+{\small\color{WSlate}Las partes suscriben el presente instrumento en \textbf{dos (2) ejemplares} de idéntico contenido y valor legal, en señal de plena conformidad con las condiciones estipuladas.}
 
-Suscrito presencialmente en \fillbox{3cm}, a los \fillbox{0.6cm} días del mes de \fillbox{2.5cm} del año \fillbox{1cm}.
+\vspace{0.3cm}
 
-\vspace{2.5cm}
+{\small Suscrito en \fillbox{3.2cm}, a los \fillbox{0.7cm} días del mes de \fillbox{2.8cm} del año \fillbox{1.2cm}.}
 
-% Área de Firmas Vectoriales (Uso de Minipage para máxima compatibilidad)
+\vspace{2.8cm}
+
+%% ─── BLOQUE DE FIRMAS ───────────────────────────────────────────────────────
 \noindent
-\begin{minipage}[t]{0.48\textwidth}
-    \centering
-    \begin{tikzpicture}
-        \draw[thick, wayquiDark] (0,0) -- (6.5,0);
-        \node[below, align=center] at (3.25,-0.2) {\textbf{JOSÉ GABRIEL HUANACO MUÑOZ} \\ EL FUNDADOR / DESARROLLADOR \\ DNI N$^\circ$: \fillbox{3cm}};
-        \draw[thick, wayquiSlate, rounded corners=3pt] (2.25,-2.8) rectangle (4.25,-5.5);
-        \node[text=wayquiSlate, font=\small, align=center] at (3.25,-4.15) {Huella\\Digital};
-    \end{tikzpicture}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\textwidth}
-    \centering
-    \begin{tikzpicture}
-        \draw[thick, wayquiDark] (0,0) -- (6.5,0);
-        \node[below, align=center] at (3.25,-0.2) {\textbf{\fillbox{5.5cm}} \\ EL INVERSOR ÁNGEL\\ DNI N$^\circ$: \fillbox{3cm}};
-        \draw[thick, wayquiSlate, rounded corners=3pt] (2.25,-2.8) rectangle (4.25,-5.5);
-        \node[text=wayquiSlate, font=\small, align=center] at (3.25,-4.15) {Huella\\Digital};
-    \end{tikzpicture}
+\begin{minipage}[t]{0.46\textwidth}
+  \centering
+  \begin{tikzpicture}
+    %% Línea de firma
+    \draw[WDark, thick] (0,0) -- (6.2,0);
+    %% Datos
+    \node[below, align=center, font=\small] at (3.1,-0.25) {%
+      \textbf{JOSÉ GABRIEL HUANACO MUÑOZ}\\[2pt]
+      {\color{WSlate}Fundador / Desarrollador Principal}\\[2pt]
+      {\color{WSlate}DNI N$^\circ$: \fillbox{3cm}}%
+    };
+    %% Recuadro huella
+    \draw[WRule, thin, rounded corners=2pt] (2.1,-3) rectangle (4.1,-5.6);
+    \node[font=\scriptsize\color{WSlate}, align=center] at (3.1,-4.3) {Huella\\Digital};
+  \end{tikzpicture}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.46\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \draw[WDark, thick] (0,0) -- (6.2,0);
+    \node[below, align=center, font=\small] at (3.1,-0.25) {%
+      \textbf{\fillbox{5.5cm}}\\[2pt]
+      {\color{WSlate}Inversor Ángel}\\[2pt]
+      {\color{WSlate}DNI N$^\circ$: \fillbox{3cm}}%
+    };
+    \draw[WRule, thin, rounded corners=2pt] (2.1,-3) rectangle (4.1,-5.6);
+    \node[font=\scriptsize\color{WSlate}, align=center] at (3.1,-4.3) {Huella\\Digital};
+  \end{tikzpicture}
 \end{minipage}
+
+\vspace{1.2cm}
+
+%% ─── PIE DE DOCUMENTO ───────────────────────────────────────────────────────
+\begin{center}
+  \goldrule\\[0.3cm]
+  {\scriptsize\color{WSlate}
+    \textbf{WAYQUI} — Documento Privado de Inversión Semilla\quad·\quad
+    Instrumento S.A.F.E.\quad·\quad
+    Arequipa, Perú
+  }
+\end{center}
 
 \end{document}
